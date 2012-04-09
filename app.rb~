@@ -54,7 +54,7 @@ error(Koala::Facebook::APIError) do
   redirect "/auth/facebook"
 end
 
-get "/index.erb" do
+get "/" do
   # Get base API Connection
   @graph  = Koala::Facebook::API.new(session[:access_token])
 
@@ -74,8 +74,8 @@ get "/index.erb" do
 end
 
 # used by Canvas apps - redirect the POST to be a regular GET
-post "/index.erb" do
-  redirect "/index.erb"
+post "/" do
+  redirect "/"
 end
 
 
