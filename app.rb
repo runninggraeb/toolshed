@@ -74,8 +74,8 @@ get "/index.erb" do
 end
 
 # used by Canvas apps - redirect the POST to be a regular GET
-post "/" do
-  redirect "/"
+post "/index.erb" do
+  redirect "/index.erb"
 end
 
 

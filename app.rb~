@@ -54,7 +54,7 @@ error(Koala::Facebook::APIError) do
   redirect "/auth/facebook"
 end
 
-get "/" do
+get "/index.erb" do
   # Get base API Connection
   @graph  = Koala::Facebook::API.new(session[:access_token])
 
@@ -77,6 +77,11 @@ end
 post "/" do
   redirect "/"
 end
+
+
+
+
+
 
 # used to close the browser window opened to post to wall/send to friends
 get "/close" do
