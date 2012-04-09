@@ -129,29 +129,24 @@
 
     <header class="clearfix">
       <% if @user %>
+          <img src="../public/images/header.png" height="70" width="200" align="right"/>
           <p id="picture" style="background-image: url(https://graph.facebook.com/<%= @user['id'] %>/picture?type=normal)"></p>
           <div>
-            <h1>Welcome, <strong><%= @user['name'] %></strong></h1>
+            <h1>Using state of the art technology, we have determined that your name is <strong><%= @user['name'] %></strong></h1>
             <p class="tagline">
               This is your app
-              <a href="<%= @app['@app'] %>"><%= @app['name'] %></a>
+              <a href="<%= @app['app'] %>"><%= @app['name'] %></a>
             </p>
             <div id="share-app">
-              <p>Share your app:</p>
               <ul>
                 <li>
-                  <a href="#" class="facebook-button" id="postToWall" data-url="<%= url %>">
+              <a hrev="#" class="facebook-button" id="postToWall" data-url="<%= url %>">
                     <span class="plus">Post to Wall</span>
                   </a>
                 </li>
                 <li>
-                  <a href="#" class="facebook-button speech-bubble" id="sendToFriends" data-url="<%= url %>">
-                    <span class="speech-bubble">Send Message</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="facebook-button apprequests" id="sendRequest" data-message="Test this awesome app">
-                    <span class="apprequests">Send Requests</span>
+                  <a class="facebook-button speech-bubble" href="#" id="sendToFriends" data-url="<%= url %>">
+                    <span class="speech-bubble">Send to Friends</span>
                   </a>
                 </li>
               </ul>
