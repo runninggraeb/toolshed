@@ -167,6 +167,8 @@
         </div>
       <% end %>
     </header>
+    <section class="toolbar">
+    </section>
     <section>
     <img src="../public/images/welcome_tab.jpg"/>
     <img src="../public/images/my_tools_tab.jpg"/>
