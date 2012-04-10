@@ -88,6 +88,14 @@ header .tagline {
 }
 /* ------------------------------------------ */
 
+/* =toolbar
+--------------------------------------------- */
+#toolbar {
+  background: url("../images/welcome_tab.jpg");
+  border: 1px solid #353d4f;
+}
+/* ------------------------------------------ */
+
 /* =buttons
 --------------------------------------------- */
 .facebook-button:link, .facebook-button:visited {
