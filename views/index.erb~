@@ -165,7 +165,6 @@
               <span class="fb_button_text">Log In</span>
             </a>
         </div>
-
       <% end %>
     </header>
     <section>

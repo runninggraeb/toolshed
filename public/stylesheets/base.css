@@ -88,6 +88,18 @@ header .tagline {
 }
 /* ------------------------------------------ */
 
+/* =toolbar
+--------------------------------------------- */
+#toolbar {
+  background: url("../images/welcome_tab.jpg");
+  background: url("../images/my_tools_tab.jpg");
+  background: url("../images/friends_tools_tab.jpg");
+  background: url("../images/about_us_tab.jpg");
+  background: url("../images/suggestions_tab.jpg");
+  border: 1px solid #353d4f;
+}
+/* ------------------------------------------ */
+
 /* =buttons
 --------------------------------------------- */
 .facebook-button:link, .facebook-button:visited {
