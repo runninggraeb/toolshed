@@ -130,6 +130,7 @@
     <header class="clearfix">
       <% if @user %>
           <p id="picture" style="background-image: url(https://graph.facebook.com/<%= @user['id'] %>/picture?type=normal)"></p>
+          <img src="../static/images/header.png" height="70" width="200" align="right"/>
           <div>
             <h1>Welcome, <strong><%= @user['name'] %></strong></h1>
             <p class="tagline">
@@ -167,101 +168,34 @@
 
       <% end %>
     </header>
+    <section>
+    <img src="../public/images/welcome_tab.jpg"/>
+    <img src="../public/images/my_tools_tab.jpg"/>
+    <img src="../public/images/friends_tools_tab.jpg"/>
+    <a href="https://apps.facebook.com/toolshed/about_us.html"><img src="../public/images/about_us_tab.jpg"/></a>
+    <img src="../public/images/suggestions_tab.jpg"/>
+    <br/>
+    <br/>
+    <p>Welcome to Toolshed!  Here, you can catalogue your vast (or not so vast) inventory of tools, then share those tools with friends & groups.  The point of this application: to get you started on <i>your</i> project, away from this computer.  Deciding what kind of project is completely up to your imagination.  Maybe throw in a quote here about building- that could be badass (kinda).</p><br/>
 
-    <section id="get-started">
-      <p>Welcome to your Facebook app, running on <span>heroku</span>!</p>
-      <a href="https://devcenter.heroku.com/articles/facebook?utm_source=facebook&utm_medium=app&utm_campaign=fb_integration" target="_top" class="button">Learn How to Edit This App</a>
-    </section>
-
-
-    <% if @user %>
-    <section id="samples" class="clearfix">
-          <h1>Examples of the Facebook Graph API</h1>
-
-          <div class="list">
-            <h3>A few of your friends</h3>
-            <ul class="friends">
-              <% @friends.each do |friend| %>
-                <li>
-                  <a href="#" onclick="window.open('http://www.facebook.com/<%= friend['id']%>')">
-                    <img src="https://graph.facebook.com/<%= friend['id'] %>/picture?type=square" alt="<%= friend['name'] %>">
-                    <%= friend['name'] %>
-                  </a>
-                </li>
-              <% end %>
-            </ul>
-          </div>
-
-          <div class="list inline">
-            <h3>Recent photos</h3>
-            <ul class="photos">
-              <% @photos.each_with_index do |photo, index| %>
-                <li style="background-image: url(<%= photo['picture'] %>)" class='<%= 'first-column' if (index%4).zero? %>'>
-                  <a href="#" onclick="window.open('http://www.facebook.com/<%= photo['id'] %>')">
-                    <%= photo['name'] %>
-                  </a>
-                </li>
-              <% end %>
-            </ul>
-          </div>
-
-          <div class="list">
-            <h3>Things you like</h3>
-            <ul class="things">
-              <% @likes.each do |like| %>
-                <li>
-                  <a href="#" onclick="window.open('http://www.facebook.com/<%= like['id'] %>')">
-                    <img src="https://graph.facebook.com/<%= like['id'] %>/picture?type=square" alt="<%= like['name'] %>">
-                    <%= like['name'] %>
-                  </a>
-                </li>
-              <% end %>
-            </ul>
-          </div>
-
-          <div class="list">
-            <h3>Friends using this app</h3>
-            <ul class="friends">
-              <% @friends_using_app.each do |friend_result| %>
-                <li>
-                  <a href="#" onclick="window.open('http://www.facebook.com/<%= friend_result['uid'] %>')">
-                    <img src="<%= friend_result['pic_square'] %>" alt="<%= friend_result['name'] %>">
-                    <%= friend_result['name'] %>
-                  </a>
-                </li>
-              <% end %>
-            </ul>
-          </div>
-        </section>
-    <% end %>
+    <p><h4><b>Updates:</h4></b>
+May 1,2012: We will be launching the beta version of Toolshed!  Invite friends and start sharing, and with any luck this application will be a success!  Remember to change the color and formatting of this section to make it look better!<br/></p>
 
 
-    <section id="guides" class="clearfix">
-      <h1>Learn More About Heroku &amp; Facebook Apps</h1>
-      <ul>
-        <li>
-          <a href="https://www.heroku.com/?utm_source=facebook&utm_medium=app&utm_campaign=fb_integration" target="_top" class="icon heroku">Heroku</a>
-          <p>Learn more about <a href="https://www.heroku.com/?utm_source=facebook&utm_medium=app&utm_campaign=fb_integration" target="_top">Heroku</a>, or read developer docs in the Heroku <a href="https://devcenter.heroku.com/" target="_top">Dev Center</a>.</p>
-        </li>
-        <li>
-          <a href="https://developers.facebook.com/docs/guides/web/" target="_top" class="icon websites">Websites</a>
-          <p>
-            Drive growth and engagement on your site with
-            Facebook Login and Social Plugins.
-          </p>
-        </li>
-        <li>
-          <a href="https://developers.facebook.com/docs/guides/mobile/" target="_top" class="icon mobile-apps">Mobile Apps</a>
-          <p>
-            Integrate with our core experience by building apps
-            that operate within Facebook.
-          </p>
-        </li>
-        <li>
-          <a href="https://developers.facebook.com/docs/guides/canvas/" target="_top" class="icon apps-on-facebook">Apps on Facebook</a>
-          <p>Let users find and connect to their friends in mobile apps and games.</p>
-        </li>
-      </ul>
+    <h4><b>Before you we get started, some quick suggestions for lenders</b></h4>
+    <p>1.  Always make sure that the tools you are lending follow basic safety standards.<br/>
+2.  Do not post that you are willing to lend tools if you are unwilling to do so.  Toolshed gives you the option to limit who can see your tools.  It is much better to screen users by limiting access to your tools than to deny requests from potential borrowers.  The major exception to this is if you don't feel it is safe to use a tool.  Here, it is better to be rude than to be responsible for creating a dangerous situation.<br/>
+3.  If you have the time, offer to help with the project.  This gets you outside, and you could learn something new.</p><br/>
+
+<h4><b>...and for borrowers</b></h4>
+<p>1.  ALWAYS make sure you know how to use a tool safely and correctly.  Exceeding your abilities could quickly lead to an injury.<br/>
+2.  Return tools in the same condition they were in when you borrowed them.  If a tool breaks, don't attempt to fix it yourself, as an incorrect repair job could be dangerous to its owner later on.<br/>
+3.  If something breaks, goes missing, or is stolen while in your possession, replace it.  On a related note, if you couldn't replace something, maybe you should think twice about borrowing it in the first place.<br/>
+4.  Be polite.  Somebody else is letting you use THEIR stuff.</p><br/>
+
+<h4><b>Disclaimer</b></h4>
+<p>Neither Toolshed or any of its owners or employees are liable for injuries or damage caused by tools borrowed on this site, or for any missing, stolen, or damaged tools.  Also, Toolshed is still in a developement phase, and Toolshed will not take responsibiliy for information that has been lost or compromised.  Toolshed reserves the right to deny access to any user at any time.  For the complete terms of use, visit us at ____.</p>
+
     </section>
   </body>
 </html>
