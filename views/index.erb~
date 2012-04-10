@@ -170,7 +170,7 @@
     <section class="toolbar">
     </section>
     <section>
-    <img url="../public/images/welcome_tab.jpg"/>
+    <img url("../public/images/welcome_tab.jpg")/>
     <img src="../public/images/my_tools_tab.jpg"/>
     <img src="../public/images/friends_tools_tab.jpg"/>
     <a href="https://apps.facebook.com/toolshed/about_us.html"><img src="../public/images/about_us_tab.jpg"/></a>
