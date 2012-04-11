@@ -131,7 +131,7 @@ header .tagline {
   background-image: -webkit-gradient(linear, left top, left bottom, from(#97afe2), to(#6073a1));
   background-image: -webkit-linear-gradient(top, #97afe2, #6073a1);
   background-image: linear-gradient(top, #97afe2, #6073a1);
-  border: none;
+  border: 1px solid #a9a9a9;
   -moz-border-radius: 30px;
   -webkit-border-radius: 30px;
   border-radius: 30px;
