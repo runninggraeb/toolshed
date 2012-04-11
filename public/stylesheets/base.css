@@ -6,7 +6,7 @@
 /* =global elements
 --------------------------------------------- */
 body {
-  color: #999;
+  color: #fff;
   font: 14px/1.5em "Lucida Grande", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   width: 720px;
@@ -90,7 +90,7 @@ header .tagline {
 
 /* =toolbar
 --------------------------------------------- */
-#toolbar {
+toolbar {
   background: url("../images/welcome_tab.jpg") no-repeat;
   border: 1px solid #a9a9a9;
   height: 32px;
