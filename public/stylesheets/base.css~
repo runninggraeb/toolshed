@@ -14,7 +14,7 @@ body {
 }
 
 a:link, a:visited {
-  color: #ffffff;
+  color: #3b5998;
   font-weight: bold;
   text-decoration: none;
 }
@@ -24,7 +24,7 @@ a:hover, a:active {
 }
 
 h1 {
-  color: #656565;
+  color: #ffffff;
   font-family: "Helvetica Neue", Arial, sans-serif;
   font-size: 18px;
   font-weight: normal;
