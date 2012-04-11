@@ -93,6 +93,7 @@ header .tagline {
 #toolbar {
   background: url("../images/welcome_tab.jpg");
   border: 1px solid #353d4f;
+  height: 32px;
 }
 /* ------------------------------------------ */
 

@@ -91,7 +91,7 @@ header .tagline {
 /* =toolbar
 --------------------------------------------- */
 #toolbar {
-  background: url("../images/welcome_tab.jpg");
+  background: url("../images/welcome_tab.jpg") no-repeat;
   border: 1px solid #353d4f;
   height: 32px;
 }
