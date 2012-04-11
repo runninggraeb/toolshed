@@ -76,10 +76,6 @@ header .tagline {
   float: right;
 }
 
-#share-app ur {
-  float: left;
-}
-
 #share-app p {
   float: left;
   margin-left: 8px;
@@ -94,7 +90,7 @@ header .tagline {
 
 /* =toolbar
 --------------------------------------------- */
-.toolbar:link, .toolbar:visited {
+.toolbar_button:link, .toolbar_button:visited {
   background-color: #eee;
   background-image: -moz-linear-gradient(top, #fdfdfd, #eaebeb);
   background-image: -ms-linear-gradient(top, #fdfdfd, #eaebeb);
@@ -118,8 +114,16 @@ header .tagline {
   text-decoration: none;
   text-shadow: 0 1px 1px rgba(255, 255, 255, .33);
 }
+.toolbar-button span {
+  background: url("../images/sprites.png") no-repeat;
+  padding: 0 7px 0 21px;
+}
 
-.toolbar_button:link, .toolbar_button:visited {
+.toolbar-button .welcome {
+  background-position: 6px 3px;
+}
+
+.toolbar:link, .toolbar:visited {
   background-color: #7a90c0;
   background-image: -moz-linear-gradient(top, #97afe2, #6073a1);
   background-image: -ms-linear-gradient(top, #97afe2, #6073a1);
@@ -142,7 +146,6 @@ header .tagline {
   text-decoration: none;
   text-shadow: 0 1px 1px rgba(255, 255, 255, .2);
 }
-
 
 
 /* ------------------------------------------ */
