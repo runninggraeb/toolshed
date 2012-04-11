@@ -90,7 +90,7 @@ header .tagline {
 
 /* =toolbar
 --------------------------------------------- */
-.toolbar_button:link, .toolbar_button:visited {
+.toolbar-button:link, .toolbar-button:visited {
   background-color: #eee;
   background-image: -moz-linear-gradient(top, #fdfdfd, #eaebeb);
   background-image: -ms-linear-gradient(top, #fdfdfd, #eaebeb);
