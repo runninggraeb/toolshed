@@ -97,8 +97,8 @@ header .tagline {
   background-image: -o-linear-gradient(top, #fdfdfd, #eaebeb));
   background-image: -webkit-gradient(linear, left top, left bottom, from(#fdfdfd), to(#eaebeb));
   background-image: -webkit-linear-gradient(top, #fdfdfd, #eaebeb);
-  background-image: linear-gradient(top, #fdfdfd, #eaebeb);
-  border: 1px solid #a9a9a9
+  backgroun-image: linear-gradient(top, #fdfdfd, #eaebeb);
+  border: 1px solid #a9a9a9;
   -moz-box-shadow: 0 1px 0 rgba(0, 0, 0, .1);
   -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, .1);
   box-shadow: 0 1px 0 rgba(0, 0, 0, .1);
@@ -114,6 +114,7 @@ header .tagline {
   text-decoration: none;
   text-shadow: 0 1px 1px rgba(255, 255, 255, .33);
 }
+
 .toolbar-button span {
   background: url("../images/sprites.png") no-repeat;
   padding: 0 7px 0 21px;
