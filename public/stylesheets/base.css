@@ -124,6 +124,22 @@ header .tagline {
   background-position: 6px 3px;
 }
 
+.toolbar-button .friends-tools {
+  background-position: 6px 3px;
+}
+
+.toolbar-button .my-tools {
+  background-position: 6px 3px;
+}
+
+.toolbar-button .about-us {
+  background-position: 6px 3px;
+}
+
+.toolbar-button .suggestions {
+  background-position: 6px 3px;
+}
+
 .button:link, .button:visited {
   background-color: #7a90c0;
   background-image: -moz-linear-gradient(top, #97afe2, #6073a1);

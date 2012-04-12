@@ -172,6 +172,8 @@
           <li>
             <a href="#" class="toolbar-button apprequests" data-url="https://apps.facebook.com/toolshed/">
              <span class="welcome">Welcome</span></a>
+            <a href="#" class="toolbar-button apprequests" data-url="https://apps.facebook.com/toolshed/">
+             <span class="welcome">My Tools</span></a>
           </li>
         </ur>
       </div>
