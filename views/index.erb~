@@ -172,13 +172,13 @@
           <li>
             <a href="#" class="toolbar-button" data-url="https://apps.facebook.com/toolshed/">
              <span class="welcome">Welcome</span></a>
-            <a href="#" class="toolbar-button" data-url="https://apps.facebook.com/toolshed/">
+            <a href="about_us.html" class="toolbar-button" data-url="https://apps.facebook.com/toolshed/about_us.html">
              <span class="friends-tools">Frend's Tools</span></a>
             <a href="https://apps.facebook.com/toolshed/" class="toolbar-button">
              <span class="my-tools">My Tools</span></a>
-            <a href="about_us.html" class="toolbar-button apprequests" data-url="https://apps.facebook.com/toolshed/about_us.html">
+            <a href="about_us.html" class="toolbar-button">
              <span class="about-us">About Us</span></a>
-            <a href="#" class="toolbar-button" data-url="https://apps.facebook.com/toolshed/about_us.html">
+            <a href="about_us.html" class="toolbar-button">
              <span class="suggestions">Suggestions</span></a>
           </li>
         </ur>
