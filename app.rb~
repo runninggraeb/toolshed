@@ -54,7 +54,7 @@ error(Koala::Facebook::APIError) do
   redirect "/auth/facebook"
 end
 
-get "/index.erb" do
+get "/index.html" do
   # Get base API Connection
   @graph  = Koala::Facebook::API.new(session[:access_token])
 
@@ -74,11 +74,11 @@ get "/index.erb" do
 end
 
 # used by Canvas apps - redirect the POST to be a regular GET
-post "/index.erb" do
-  redirect "/index.erb"
+post "/index.html" do
+  redirect "/index.html"
 end
 
-get "/about_us.erb" do
+get "/about_us.html" do
   # Get base API Connection
   @graph  = Koala::Facebook::API.new(session[:access_token])
 
@@ -98,8 +98,8 @@ get "/about_us.erb" do
 end
 
 # used by Canvas apps - redirect the POST to be a regular GET
-post "/about_us.erb" do
-  redirect "/about_us.erb"
+post "/about_us.html" do
+  redirect "/about_us.html"
 end
 
 # used to close the browser window opened to post to wall/send to friends
