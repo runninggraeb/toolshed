@@ -67,10 +67,7 @@ header .tagline {
   float: left;
 }
 
-#toolbar-style {
-}
-
-#toolbar-style ul {
+#invite-style{
   float: right;
   margin: 0px;
 }
