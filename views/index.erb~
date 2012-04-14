@@ -147,9 +147,8 @@
       <% end %>
     </header>
     <section class="clearfix">
-      <div id="toolbar-style">
+      <div>
         <ur>
-          <li>
             <a href="#" class="toolbar-button">
              <span class="welcome">Welcome</span></a>
             <a href="#" class="toolbar-button">
@@ -162,7 +161,6 @@
              <span class="comments">Comments</span></a>
             <a href="#" class="toolbar-button apprequests" id="sendRequest" data-message="Hey. You. Join this app.">
              <span class="apprequests">Invite Friends</span></a>
-          </li>
         </ur>
       </div>
     <br/>

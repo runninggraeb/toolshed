@@ -67,24 +67,6 @@ header .tagline {
   float: left;
 }
 
-#toolbar-style {
-}
-
-#toolbar-style ul {
-  float: right;
-  margin: 0px;
-}
-
-#toolbar-style p {
-  float: left;
-  margin-left: 0px;
-}
-
-#toolbar-style li {
-  float: left;
-  list-style: none;
-  margin-left: 0px;
-}
 /* ------------------------------------------ */
 
 /* =toolbar

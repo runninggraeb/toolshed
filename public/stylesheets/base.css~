@@ -68,11 +68,11 @@ header .tagline {
 }
 
 #toolbar-style {
- margin: 0px;
 }
 
 #toolbar-style ul {
   float: right;
+  margin: 0px;
 }
 
 #toolbar-style p {
