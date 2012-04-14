@@ -136,7 +136,7 @@ header .tagline {
   background-position: 6px 3px;
 }
 
-.toolbar-button .suggestions {
+.toolbar-button .comments {
   background-position: 6px 3px;
 }
 
