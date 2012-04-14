@@ -180,7 +180,7 @@
              <span class="about-us">About Us</span></a>
             <a href="about_us.html" class="toolbar-button">
              <span class="comments">Comments</span></a>
-            <a href="#" class="toolbar-button apprequests" id="sendRequest" data-message="Test this awesome app">
+            <a href="#" class="toolbar-button apprequests" data-message="Test this awesome app">
              <span class="apprequests">Invite Friends</span>
           </li>
         </ur>
