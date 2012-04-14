@@ -76,13 +76,13 @@ header .tagline {
 
 #toolbar-style p {
   float: left;
-  margin-left: 8px;
+  margin-left: 0px;
 }
 
 #toolbar-style li {
   float: left;
   list-style: none;
-  margin-left: px;
+  margin-left: 0px;
 }
 /* ------------------------------------------ */
 
