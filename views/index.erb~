@@ -147,7 +147,7 @@
       <% end %>
     </header>
     <section class="clearfix">
-      <div id="toolbar-style">
+      <div>
         <ur>
             <a href="#" class="toolbar-button">
              <span class="welcome">Welcome</span></a>

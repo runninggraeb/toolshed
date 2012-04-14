@@ -67,13 +67,6 @@ header .tagline {
   float: left;
 }
 
-#toolbar-style {
-}
-
-#toolbar-style ul {
-  float: right;
-  margin: 0px;
-}
 
 /* ------------------------------------------ */
 
