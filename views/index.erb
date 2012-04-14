@@ -136,26 +136,6 @@
               This is your app
               <a href="<%= @app['@app'] %>"><%= @app['name'] %></a>
             </p>
-            <div id="share-app">
-              <p>Share your app:</p>
-              <ul>
-                <li>
-                  <a href="#" class="facebook-button" id="postToWall" data-url="<%= url %>">
-                    <span class="plus">Post to Wall</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="facebook-button speech-bubble" id="sendToFriends" data-url="<%= url %>">
-                    <span class="speech-bubble">Send Message</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="facebook-button apprequests" id="sendRequest" data-message="Test this awesome app">
-                    <span class="apprequests">Send Requests</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
           </div>
       <% else %>
         <div>
@@ -167,8 +147,9 @@
       <% end %>
     </header>
     <section class="clearfix">
-      <div>
+      <div id="toolbar-style">
         <ur>
+          <li>
             <a href="#" class="toolbar-button">
              <span class="welcome">Welcome</span></a>
             <a href="#" class="toolbar-button">
@@ -181,6 +162,7 @@
              <span class="comments">Comments</span></a>
             <a href="#" class="toolbar-button apprequests" id="sendRequest" data-message="Hey. You. Join this app.">
              <span class="apprequests">Invite Friends</span></a>
+          </li>
         </ur>
       </div>
     <br/>

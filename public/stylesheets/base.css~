@@ -67,24 +67,22 @@ header .tagline {
   float: left;
 }
 
-#share-app {
-  float: right;
-  width: 344px;
+#toolbar {
 }
 
-#share-app ul {
+#toolbar ul {
   float: right;
 }
 
-#share-app p {
+#toolbar p {
   float: left;
   margin-left: 8px;
 }
 
-#share-app li {
+#toolbar li {
   float: left;
   list-style: none;
-  margin-left: 8px;
+  margin-left: px;
 }
 /* ------------------------------------------ */
 
