@@ -130,7 +130,6 @@
     <header class="clearfix">
       <% if @user %>
           <p id="picture" style="background-image: url(https://graph.facebook.com/<%= @user['id'] %>/picture?type=normal)"></p>
-          <p id="pucture" style="background-image: src(../public/images/header.png)"></p>
           <div>
             <h1>Welcome, <strong><%= @user['name'] %></strong></h1>
             <p class="tagline">
@@ -158,7 +157,7 @@
             <a href="about_us.html" class="toolbar-button">
              <span class="about-us">About Us</span></a>
             <a href="about_us.html" class="toolbar-button">
-             <span class="comments">Comments</span></a>
+             <span class="comments">Your Comments</span></a>
             <a href="#" class="toolbar-button apprequests" id="sendRequest" data-message="Hey. You. Join this app." id="invite-style">
              <span class="apprequests">Invite Friends</span></a>
       </div>
