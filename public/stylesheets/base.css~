@@ -67,6 +67,11 @@ header .tagline {
   float: left;
 }
 
+#invite-style{
+  float: right;
+  margin: 0px;
+}
+
 /* ------------------------------------------ */
 
 /* =toolbar
