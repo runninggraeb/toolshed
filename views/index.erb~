@@ -179,7 +179,7 @@
              <span class="about-us">About Us</span></a>
             <a href="about_us.html" class="toolbar-button">
              <span class="comments">Comments</span></a>
-            <a href="#" class="toolbar-button" id="sendRequest" data-message="Hey. You. Join this app.">
+            <a href="#" class="toolbar-button apprequests" id="sendRequest" data-message="Hey. You. Join this app.">
              <span class="apprequests">Invite Friends</span></a>
         </ur>
       </div>
