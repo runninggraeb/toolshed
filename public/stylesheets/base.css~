@@ -103,7 +103,7 @@ header .tagline {
 
 .toolbar-button span {
   background: url("../images/sprites.png") no-repeat;
-  padding: 0 7px 0 21px;
+  padding: 0 0px 0 21px;
 }
 
 .toolbar-button .welcome {
@@ -119,11 +119,11 @@ header .tagline {
 }
 
 .toolbar-button .about-us {
-  background-position: 0px 3px;
+  background-position: 6px 3px;
 }
 
 .toolbar-button .comments {
-  background-position: 6px 0px;
+  background-position: 6px 3px;
 }
 
 .toolbar-button .apprequests {

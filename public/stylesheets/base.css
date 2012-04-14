@@ -11,6 +11,12 @@ body {
   -webkit-font-smoothing: antialiased;
   width: 720px;
   margin: 20px;
+  border-left: 1px solid #b3b3b3;
+  border-right: 1px solid #b3b3b3;
+  border-bottom: 1px solid #b3b3b3;
+  border-top: 1px solid #b3b3b3;
+  font-size: 11px;
+  padding: 24px 18px;
 }
 
 a:link, a:visited {
@@ -34,14 +40,6 @@ h1 {
 
 /* =header
 --------------------------------------------- */
-header {
-  border-left: 1px solid #b3b3b3;
-  border-right: 1px solid #b3b3b3;
-  border-top: 1px solid #b3b3b3;
-  font-size: 11px;
-  padding: 24px 18px;
-}
-
 header h1 {
   border-bottom: 2px solid #e9e9e9;
   margin: 0 0 9px;
@@ -103,7 +101,7 @@ header .tagline {
 
 .toolbar-button span {
   background: url("../images/sprites.png") no-repeat;
-  padding: 0 0px 0 21px;
+  padding: 0 7px 0 21px;
 }
 
 .toolbar-button .welcome {
