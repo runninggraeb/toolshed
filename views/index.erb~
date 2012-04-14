@@ -167,14 +167,14 @@
       <% end %>
     </header>
     <section>
-      <div id="share-app">
+      <div>
         <ur>
           <li>
             <a href="#" class="toolbar-button">
              <span class="welcome">Welcome</span></a>
-            <a href="about_us.html" class="toolbar-button" data-url="https://apps.facebook.com/toolshed/about_us.html">
+            <a href="#" class="toolbar-button">
              <span class="friends-tools">Frend's Tools</span></a>
-            <a href="https://apps.facebook.com/toolshed/" class="toolbar-button">
+            <a href="#" class="toolbar-button">
              <span class="my-tools">My Tools</span></a>
             <a href="about_us.html" class="toolbar-button">
              <span class="about-us">About Us</span></a>
