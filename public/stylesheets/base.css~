@@ -119,11 +119,11 @@ header .tagline {
 }
 
 .toolbar-button .about-us {
-  background-position: 6px 3px;
+  background-position: 0px 3px;
 }
 
 .toolbar-button .comments {
-  background-position: 6px 3px;
+  background-position: 6px 0px;
 }
 
 .toolbar-button .apprequests {
