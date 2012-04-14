@@ -48,7 +48,7 @@ section {
   border-bottom: 1px solid #b3b3b3;
   font-size: 14px;
   font-color: #ffffff
-  padding: 24px 18px;
+  padding: 0px;
 }
 
 header h1 {
@@ -176,7 +176,7 @@ header .tagline {
   background-image: -o-linear-gradient(top, #fdfdfd, #eaebeb));
   background-image: -webkit-gradient(linear, left top, left bottom, from(#fdfdfd), to(#eaebeb));
   background-image: -webkit-linear-gradient(top, #fdfdfd, #eaebeb);
-  backgroun-image: linear-gradient(top, #fdfdfd, #eaebeb);
+  background-image: linear-gradient(top, #fdfdfd, #eaebeb);
   border: 1px solid #a9a9a9;
   -moz-box-shadow: 0 1px 0 rgba(0, 0, 0, .1);
   -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, .1);
