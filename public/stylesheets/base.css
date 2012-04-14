@@ -45,7 +45,8 @@ header {
 section {
   border-left: 1px solid #b3b3b3;
   border-right: 1px solid #b3b3b3;
-  font-size: 11px;
+  border-bottom: 1px solid #b3b3b3;
+  font-size: 14px;
   font-color: #ffffff
   padding: 24px 18px;
 }
