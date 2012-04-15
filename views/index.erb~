@@ -146,6 +146,7 @@
         </div>
       <% end %>
     </header>
+    <% if @user %>
     <section class="clearfix">
       <div>
             <a href="#" class="toolbar-button">
@@ -189,5 +190,6 @@ May 1,2012: We will be launching the beta version of Toolshed!  Invite friends a
 
     <br/>
     </section>
+  <% end %>
   </body>
 </html>
