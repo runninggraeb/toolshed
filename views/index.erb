@@ -92,7 +92,6 @@
     <![endif]-->
   </head>
   <body>
-    <% if @user %>
     <div id="fb-root"></div>
     <script type="text/javascript">
       window.fbAsyncInit = function() {
@@ -129,6 +128,7 @@
     </script>
 
     <header class="clearfix">
+      <% if @user %>
           <p id="picture" style="background-image: url(https://graph.facebook.com/<%= @user['id'] %>/picture?type=normal)"></p>
           <div>
             <h1>Welcome, <strong><%= @user['name'] %></strong></h1>
@@ -137,7 +137,16 @@
               <a href="<%= @app['@app'] %>"><%= @app['name'] %></a>
             </p>
           </div>
+      <% else %>
+        <div>
+          <h1>Welcome</h1>
+            <a href='/auth/facebook' class="fb_button fb_button_medium">
+              <span class="fb_button_text">Log In</span>
+            </a>
+        </div>
+      <% end %>
     </header>
+    <% if @user %>
     <section class="clearfix">
       <div>
             <a href="#" class="toolbar-button">
@@ -181,15 +190,6 @@ May 1,2012: We will be launching the beta version of Toolshed!  Invite friends a
 
     <br/>
     </section>
-      <% else %>
-       <section class="clearfix">
-        <div>
-          <h1>Welcome</h1>
-            <a href='/auth/facebook' class="fb_button fb_button_medium">
-              <span class="fb_button_text">Log In</span>
-            </a>
-        </div>
-       </section>
-      <% end %>
+  <% end %>
   </body>
 </html>
