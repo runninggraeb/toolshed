@@ -87,13 +87,7 @@ header .tagline {
 }
 
 img.logo {
-  padding-right: 20px;
   float: right;
-}
-
-#invite-style{
-  float: right;
-  margin: 0px;
 }
 
 /* ------------------------------------------ */
