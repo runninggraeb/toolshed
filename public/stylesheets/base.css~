@@ -42,6 +42,15 @@ header {
   padding: 24px 18px;
 }
 
+header .no-user {
+  border-left: 1px solid #b3b3b3;
+  border-right: 1px solid #b3b3b3;
+  border-top: 1px solid #b3b3b3;
+  border-bottom: 1px solid #b3b3b3;
+  font-size: 11px;
+  padding: 24px 18px;
+}
+
 section {
   border-left: 1px solid #b3b3b3;
   border-right: 1px solid #b3b3b3;
@@ -322,19 +331,6 @@ header .tagline {
   text-indent: -9999px;
 }
 
-
-/* ------------------------------------------ */
-
-/* =temp-page
---------------------------------------------- */
-.no-user{
-  border-left: 1px solid #b3b3b3;
-  border-right: 1px solid #b3b3b3;
-  border-top: 1px solid #b3b3b3;
-  border-bottom: 1px solid #b3b3b3;
-  font-size: 11px;
-  padding: 24px 18px;
-}
 
 /* ------------------------------------------ */
 
