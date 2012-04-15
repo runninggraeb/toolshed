@@ -87,7 +87,8 @@ header .tagline {
 }
 
 img.logo {
-  padding-left: 20px;
+  padding-right: 20px;
+  float: right;
 }
 
 #invite-style{
