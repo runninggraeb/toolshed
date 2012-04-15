@@ -34,7 +34,7 @@ h1 {
 
 /* =header
 --------------------------------------------- */
-header .norm {
+header.norm {
   border-left: 1px solid #b3b3b3;
   border-right: 1px solid #b3b3b3;
   border-top: 1px solid #b3b3b3;
@@ -42,7 +42,7 @@ header .norm {
   padding: 24px 18px;
 }
 
-header .no-user {
+header.no-user {
   border-left: 1px solid #b3b3b3;
   border-right: 1px solid #b3b3b3;
   border-top: 1px solid #b3b3b3;

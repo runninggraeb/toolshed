@@ -34,7 +34,7 @@ h1 {
 
 /* =header
 --------------------------------------------- */
-header {
+header .norm {
   border-left: 1px solid #b3b3b3;
   border-right: 1px solid #b3b3b3;
   border-top: 1px solid #b3b3b3;
