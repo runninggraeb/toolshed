@@ -126,9 +126,8 @@
         fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));
     </script>
-
-    <header class="clearfix">
-      <% if @user %>
+    <% if @user %>
+      <header class="clearfix">
           <p id="picture" style="background-image: url(https://graph.facebook.com/<%= @user['id'] %>/picture?type=normal)"></p>
           <div>
             <h1>Welcome, <strong><%= @user['name'] %></strong></h1>
@@ -137,15 +136,17 @@
               <a href="<%= @app['@app'] %>"><%= @app['name'] %></a>
             </p>
           </div>
-      <% else %>
+      </header>
+    <% else %>
+      <header class="clearfix" id="no-user">
         <div>
           <h1>Welcome</h1>
             <a href='/auth/facebook' class="fb_button fb_button_medium">
               <span class="fb_button_text">Log In</span>
             </a>
         </div>
-      <% end %>
-    </header>
+      </header>
+    <% end %>
     <% if @user %>
     <section class="clearfix">
       <div>
