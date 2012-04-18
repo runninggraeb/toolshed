@@ -126,54 +126,53 @@
         fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));
     </script>
-
-    <header class="clearfix">
-      <% if @user %>
+    <% if @user %>
+      <header class="clearfix">
+          <img class="logo" src="/images/header.png" height="60" width="200"/>
           <p id="picture" style="background-image: url(https://graph.facebook.com/<%= @user['id'] %>/picture?type=normal)"></p>
           <div>
             <h1>Welcome, <strong><%= @user['name'] %></strong></h1>
             <p class="tagline">
-              This is your app
+              Share tools.  Start Projects.  On
               <a href="<%= @app['@app'] %>"><%= @app['name'] %></a>
             </p>
-            <div id="share-app">
-              <p>Share your app:</p>
-              <ul>
-                <li>
-                  <a href="#" class="facebook-button" id="postToWall" data-url="<%= url %>">
-                    <span class="plus">Post to Wall</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="facebook-button speech-bubble" id="sendToFriends" data-url="<%= url %>">
-                    <span class="speech-bubble">Send Message</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="facebook-button apprequests" id="sendRequest" data-message="Test this awesome app">
-                    <span class="apprequests">Send Requests</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
           </div>
-      <% else %>
+      </header>
+    <% else redirect "/auth/facebook" %>
+      <header class="no-user">
         <div>
           <h1>Welcome</h1>
             <a href='/auth/facebook' class="fb_button fb_button_medium">
               <span class="fb_button_text">Log In</span>
             </a>
         </div>
-
-      <% end %>
-    </header>
-    <section>
-    <a href="https://apps.facebook.com/toolshed/"><img src="../public/images/welcome_tab.jpg"/></a>
-    <img src="../public/images/my_tools_tab.jpg"/>
-    <img src="../public/images/friends_tools_tab.jpg"/>
-    <img src="../public/images/about_us_tab.jpg"/>
-    <img src="../public/images/suggestions_tab.jpg"/>
-
+      </header>
+    <% end %>
+    <% if @user %>
+    <section class="clearfix">
+      <div>
+            <a href="#" class="toolbar-button">
+             <span class="welcome">Welcome</span></a>
+            <a href="friends_tools.html" class="toolbar-button">
+             <span class="friends-tools">Frend's Tools</span></a>
+            <a href="my_tools.html" class="toolbar-button">
+             <span class="my-tools">My Tools</span></a>
+            <a href="about_us.html" class="toolbar-button">
+             <span class="about-us">About Us</span></a>
+            <a href="comments.html" class="toolbar-button">
+             <span class="comments">Submit Comments</span></a>
+            <a href="#" class="toolbar-button apprequests" id="sendRequest" data-message="Welcoming message." id="invite-style">
+             <span class="apprequests">Invite Friends</span></a>
+      </div>
     </section>
+    <section>
+    <br/>
+
+
+
+
+    <br/>
+    </section>
+  <% end %>
   </body>
 </html>

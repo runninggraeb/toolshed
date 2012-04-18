@@ -153,13 +153,13 @@
       <div>
             <a href="#" class="toolbar-button">
              <span class="welcome">Welcome</span></a>
-            <a href="#" class="toolbar-button">
+            <a href="friends_tools.html" class="toolbar-button">
              <span class="friends-tools">Frend's Tools</span></a>
-            <a href="#" class="toolbar-button">
+            <a href="my_tools.html" class="toolbar-button">
              <span class="my-tools">My Tools</span></a>
             <a href="about_us.html" class="toolbar-button">
              <span class="about-us">About Us</span></a>
-            <a href="about_us.html" class="toolbar-button">
+            <a href="comments.html" class="toolbar-button">
              <span class="comments">Submit Comments</span></a>
             <a href="#" class="toolbar-button apprequests" id="sendRequest" data-message="Welcoming message." id="invite-style">
              <span class="apprequests">Invite Friends</span></a>
