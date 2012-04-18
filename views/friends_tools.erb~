@@ -126,54 +126,54 @@
         fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));
     </script>
-    <% if @user %>
-      <header class="clearfix">
-          <img class="logo" src="/images/header.png" height="60" width="200"/>
+
+    <header class="clearfix">
+      <% if @user %>
           <p id="picture" style="background-image: url(https://graph.facebook.com/<%= @user['id'] %>/picture?type=normal)"></p>
           <div>
             <h1>Welcome, <strong><%= @user['name'] %></strong></h1>
             <p class="tagline">
-              Share tools.  Start Projects.  On
+              This is your app
               <a href="<%= @app['@app'] %>"><%= @app['name'] %></a>
             </p>
+            <div id="share-app">
+              <p>Share your app:</p>
+              <ul>
+                <li>
+                  <a href="#" class="facebook-button" id="postToWall" data-url="<%= url %>">
+                    <span class="plus">Post to Wall</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="facebook-button speech-bubble" id="sendToFriends" data-url="<%= url %>">
+                    <span class="speech-bubble">Send Message</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="facebook-button apprequests" id="sendRequest" data-message="Test this awesome app">
+                    <span class="apprequests">Send Requests</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
-      </header>
-    <% else redirect "/auth/facebook" %>
-      <header class="no-user">
+      <% else %>
         <div>
           <h1>Welcome</h1>
             <a href='/auth/facebook' class="fb_button fb_button_medium">
               <span class="fb_button_text">Log In</span>
             </a>
         </div>
-      </header>
-    <% end %>
-    <% if @user %>
-    <section class="clearfix">
-      <div>
-            <a href="" class="toolbar-button">
-             <span class="welcome">Welcome</span></a>
-            <a href="friends_tools.html" class="toolbar-button">
-             <span class="friends-tools">Frend's Tools</span></a>
-            <a href="my_tools.html" class="toolbar-button">
-             <span class="my-tools">My Tools</span></a>
-            <a href="about_us.html" class="toolbar-button">
-             <span class="about-us">About Us</span></a>
-            <a href="comments.html" class="toolbar-button">
-             <span class="comments">Submit Comments</span></a>
-            <a href="#" class="toolbar-button apprequests" id="sendRequest" data-message="Welcoming message." id="invite-style">
-             <span class="apprequests">Invite Friends</span></a>
-      </div>
-    </section>
+
+      <% end %>
+    </header>
     <section>
-    <br/>
-    <p>Toolshed is web application developed by Ryan Graebner.  The current version of the program is still in its developement phase, but as it attracts more users, I will work on improving the application to better serve you.<br/><br/>
+    <a href="https://apps.facebook.com/toolshed/"><img src="../public/images/welcome_tab.jpg"/></a>
+    <img src="../public/images/my_tools_tab.jpg"/>
+    <img src="../public/images/friends_tools_tab.jpg"/>
+    <img src="../public/images/about_us_tab.jpg"/>
+    <img src="../public/images/suggestions_tab.jpg"/>
 
-Unlike many applications on Facebook, Toolshed is designed primarily to get users OFF their computers, and to encourage REAL interactions with others.  However, if the chance arises, Toolshed will take on advertisers in order to help pay for expenses like server space (for the time being, this is coming out of my pocket).  Also, if Toolshed turns into one of the "successful" apps on Facebook, there is a whole line of similar apps I hope to launch.<br/><br/>
-
-On a similar note, I am always interested in ideas for Facebook applications that give actual benefits to users.  If you need help setting up an application, send me a cover letter describing the basic funtions of the app, how it benefits users, and why you think it could become successful.  Please include what you need help with and who you would want to be responsible for running the application.  Send completed cover letters to ____________.</p>
-    <br/>
     </section>
-  <% end %>
   </body>
 </html>
