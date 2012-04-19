@@ -133,7 +133,7 @@
           <div>
             <h1>Welcome, <strong><%= @user['name'] %></strong></h1>
             <p class="tagline">
-              Share tools.  Start Projects.  On
+              Share tools & start projects on
               <a href="<%= @app['@app'] %>"><%= @app['name'] %></a>
             </p>
           </div>
