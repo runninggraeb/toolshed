@@ -167,7 +167,8 @@
     </section>
     <section>
     <br/>
-    <header>We have your Current location set as <b>Eugene, Oregon</b> {Change Button}</header>
+    <p align="center"><font size="1">We have your current location set as <strong>Eugene, Oregon</strong> {Change Button}</font></p>
+    <h2><strong>Add tools to your collection:</strong></h2>
     <form method="post" action="mailto:tennis343@yahoo.com">
       Type:
       <select name="type">
@@ -178,8 +179,10 @@
       </select>
       Tool name:<input type="text" size="10" maxlength="20" name="tool">
       Comments:<input type="text" size="10" maxlength="50" name="additional_info">
-      <input type="submit" value="send">
+      <input type="submit" value="Add">
     </form>
+    <br/>
+    <h2><strong>Tools currently in your collection:</strong></h2>
     <br/>
     </section>
   <% end %>
