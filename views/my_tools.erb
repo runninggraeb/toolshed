@@ -167,10 +167,19 @@
     </section>
     <section>
     <br/>
-
-
-
-
+    <header>We have your Current location set as <b>Eugene, Oregon</b> {Change Button}</header>
+    <form method="post" action="mailto:tennis343@yahoo.com">
+      Type:
+      <select name="type">
+        <option value="carpentry" selected>Carpentry</option>
+        <option value="plumbing" selected>Plumbing</option>
+        <option value="electrical" selected>Electrical</option>
+        <option value="other" selected>Other</option>
+      </select>
+      Tool name:<input type="text" size="10" maxlength="20" name="tool">
+      Comments:<input type="text" size="10" maxlength="50" name="additional_info">
+      <input type="submit" value="send">
+    </form>
     <br/>
     </section>
   <% end %>
