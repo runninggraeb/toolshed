@@ -120,9 +120,9 @@ img.logo {
 }
 
 .toolbar-button span {
-  background: url("../images/sprites.png") no-repeat;
   padding: 0 7px 0 21px;
 }
+
 .button:link, .button:visited {
   background-color: #7a90c0;
   background-image: -moz-linear-gradient(top, #97afe2, #6073a1);
