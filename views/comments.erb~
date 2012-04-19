@@ -170,7 +170,7 @@
     <p>Are there any problems you've had with toolshed?  Do you have and suggestions on how to make it better?  Is there that one little thing on that one page that bugs you, but you don't know why?  At this stage of developement, we want to hear it all.  Send me a message here, and I'll take a look at what you have to say.  If you would like a response, please include a working e-mail address in the message.</p><br/>
     <form method="post" action="mailto:tennis343@yahoo.com">
       <textarea rows="6" cols="60" wrap="physical" name="comments" style="width:80%;"></textarea><br/>
-      <input type="submit" value="Submit">
+      <input id="comment" type="submit" value="Submit">
     </form>
     <br/>
     </section>

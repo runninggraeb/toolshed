@@ -90,6 +90,12 @@ img.logo {
   float: right;
 }
 
+input.comment {
+  margin-left:auto;
+  margin-right:auto;
+}
+
+
 /* ------------------------------------------ */
 
 /* =toolbar

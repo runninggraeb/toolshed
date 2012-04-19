@@ -90,8 +90,14 @@ img.logo {
   float: right;
 }
 
-input.comment {
-  float:center;
+textarea.centered {
+  margin-left:auto;
+  margin-right:auto;
+}
+
+input.centered {
+  margin-left:auto;
+  margin-right:auto;
 }
 
 
