@@ -90,11 +90,6 @@ img.logo {
   float: right;
 }
 
-#invite-style{
-  float: right;
-  margin: 0px;
-}
-
 /* ------------------------------------------ */
 
 /* =toolbar
