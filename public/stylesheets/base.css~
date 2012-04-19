@@ -125,15 +125,15 @@ img.logo {
 }
 
 .toolbar-button .welcome {
-  background-position: 6px 3px;
+  background-position: 6px -27px;
 }
 
 .toolbar-button .friends-tools {
-  background-position: 6px 3px;
+  background-position: 6px -17px;
 }
 
 .toolbar-button .my-tools {
-  background-position: 6px 3px;
+  background-position: 6px -7px;
 }
 
 .toolbar-button .about-us {
@@ -141,11 +141,11 @@ img.logo {
 }
 
 .toolbar-button .comments {
-  background-position: 6px 3px;
+  background-position: 6px 13px;
 }
 
 .toolbar-button .apprequests {
-  background-position: 6px -37px;
+  background-position: 6px 23px;
 }
 
 

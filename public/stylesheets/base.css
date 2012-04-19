@@ -123,32 +123,6 @@ img.logo {
   background: url("../images/sprites.png") no-repeat;
   padding: 0 7px 0 21px;
 }
-
-.toolbar-button .welcome {
-  background-position: 6px -27px;
-}
-
-.toolbar-button .friends-tools {
-  background-position: 6px -17px;
-}
-
-.toolbar-button .my-tools {
-  background-position: 6px -7px;
-}
-
-.toolbar-button .about-us {
-  background-position: 6px 3px;
-}
-
-.toolbar-button .comments {
-  background-position: 6px 13px;
-}
-
-.toolbar-button .apprequests {
-  background-position: 6px 23px;
-}
-
-
 .button:link, .button:visited {
   background-color: #7a90c0;
   background-image: -moz-linear-gradient(top, #97afe2, #6073a1);
