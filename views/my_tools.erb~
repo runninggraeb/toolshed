@@ -168,13 +168,16 @@
     <section>
     <br/>
     <p align="center"><font size="1">We have your current location set as <strong>Eugene, Oregon</strong> {Change Button}</font></p>
-    <h2><strong>Add tools to your collection:</strong></h2>
+    <br/>
+    <h2>Add tools to your collection:</h2>
     <form method="post" action="mailto:tennis343@yahoo.com">
       Type:
       <select name="type">
         <option value="carpentry" selected>Carpentry</option>
         <option value="plumbing" selected>Plumbing</option>
         <option value="electrical" selected>Electrical</option>
+        <option value="other" selected>Yard Work</option>
+        <option value="other" selected>Painting</option>
         <option value="other" selected>Other</option>
       </select>
       Tool name:<input type="text" size="10" maxlength="20" name="tool">
@@ -182,7 +185,8 @@
       <input type="submit" value="Add">
     </form>
     <br/>
-    <h2><strong>Tools currently in your collection:</strong></h2>
+    <br/>
+    <h2>Tools currently in your collection:</h2>
     <br/>
     </section>
   <% end %>
