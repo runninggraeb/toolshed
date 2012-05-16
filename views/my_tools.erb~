@@ -138,7 +138,7 @@
     <h2>Add tools to your collection:</h2>
     <form method="post" action="mailto:tennis343@yahoo.com">
       Type:
-      <select name="type">
+      <select name="type_1">
         <option value="carpentry" selected>Carpentry</option>
         <option value="plumbing" selected>Plumbing</option>
         <option value="electrical" selected>Electrical</option>
@@ -146,8 +146,52 @@
         <option value="other" selected>Painting</option>
         <option value="other" selected>Other</option>
       </select>
-      Tool name:<input type="text" size="10" maxlength="20" name="tool">
-      Comments:<input type="text" size="10" maxlength="50" name="additional_info">
+      Tool name:<input type="text" size="10" maxlength="20" name="tool_1">
+      <br/>
+      Type:
+      <select name="type_2">
+        <option value="carpentry" selected>Carpentry</option>
+        <option value="plumbing" selected>Plumbing</option>
+        <option value="electrical" selected>Electrical</option>
+        <option value="other" selected>Yard Work</option>
+        <option value="other" selected>Painting</option>
+        <option value="other" selected>Other</option>
+      </select>
+      Tool name:<input type="text" size="10" maxlength="20" name="tool_2">
+      <br/>
+      Type:
+      <select name="type_3">
+        <option value="carpentry" selected>Carpentry</option>
+        <option value="plumbing" selected>Plumbing</option>
+        <option value="electrical" selected>Electrical</option>
+        <option value="other" selected>Yard Work</option>
+        <option value="other" selected>Painting</option>
+        <option value="other" selected>Other</option>
+      </select>
+      Tool name:<input type="text" size="10" maxlength="20" name="tool_3">
+      <br/>
+      Type:
+      <select name="type_4">
+        <option value="carpentry" selected>Carpentry</option>
+        <option value="plumbing" selected>Plumbing</option>
+        <option value="electrical" selected>Electrical</option>
+        <option value="other" selected>Yard Work</option>
+        <option value="other" selected>Painting</option>
+        <option value="other" selected>Other</option>
+      </select>
+      Tool name:<input type="text" size="10" maxlength="20" name="tool_4">
+      <br/>
+      Type:
+      <select name="type_5">
+        <option value="carpentry" selected>Carpentry</option>
+        <option value="plumbing" selected>Plumbing</option>
+        <option value="electrical" selected>Electrical</option>
+        <option value="other" selected>Yard Work</option>
+        <option value="other" selected>Painting</option>
+        <option value="other" selected>Other</option>
+      </select>
+      Tool name:<input type="text" size="10" maxlength="20" name="tool_5">
+      <br/>
       <input type="submit" value="Add">
     </form>
     <br/>
