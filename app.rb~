@@ -26,10 +26,6 @@ before do
   end
 end
 
-m=Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644')
-
-
-
 helpers do
   def host
     request.env['HTTP_HOST']
