@@ -1,5 +1,6 @@
 require "sinatra"
 require 'koala'
+require 'mysql'
 
 enable :sessions
 set :raise_errors, false
@@ -24,6 +25,10 @@ before do
     redirect "https://#{request.env['HTTP_HOST']}"
   end
 end
+
+m=Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644?reconnect=true')
+
+
 
 helpers do
   def host
