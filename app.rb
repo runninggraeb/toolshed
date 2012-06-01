@@ -26,8 +26,6 @@ before do
   end
 end
 
-m=Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644')
-
 helpers do
   def host
     request.env['HTTP_HOST']
@@ -117,6 +115,18 @@ get "/my_tools.html" do
     @friends = @graph.get_connections('me', 'friends')
     @photos  = @graph.get_connections('me', 'photos')
     @likes   = @graph.get_connections('me', 'likes').first(4)
+    @tools   = begin
+    m = Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644')  
+    an = m.query "SELECT * FROM OR_TEST1 WHERE fid IN (id)"
+    puts "We have #{an.num_rows} row(s)"
+    an.each_hash do |row|
+       puts row['fid'] + " " + row['city']
+    end      
+rescue Mysql::Error => e
+    puts e
+ensure
+    m.close if m
+end
 
     # for other data you can always run fql
     @friends_using_app = @graph.fql_query("SELECT uid, name, is_app_user, pic_square FROM user WHERE uid in (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1")
