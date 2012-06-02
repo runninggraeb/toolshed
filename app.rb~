@@ -118,13 +118,11 @@ get "/my_tools.html" do
     @friends = @graph.get_connections('me', 'friends')
     @photos  = @graph.get_connections('me', 'photos')
     @likes   = @graph.get_connections('me', 'likes').first(4)
-    @tool = begin
+    begin
       m = Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644')  
       an = m.query "SELECT * FROM OR_TEST1 WHERE fid IN (100000686899395)"
-      an.each_hash do |row|
-        puts row['fid'] + " " + row['city']
-      end
-    end      
+    end 
+    @tool = an.fetch_row
 rescue Mysql::Error => e
     puts e
 ensure
