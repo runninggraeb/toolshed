@@ -118,11 +118,9 @@ get "/my_tools.html" do
     @friends = @graph.get_connections('me', 'friends')
     @photos  = @graph.get_connections('me', 'photos')
     @likes   = @graph.get_connections('me', 'likes').first(4)
-    begin
-      m = Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644')  
-      an = m.query "SELECT * FROM OR_TEST1 WHERE fid IN (100000686899395)"
-    end 
-    @tool = an.fetch_row
+    @m = Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644')  
+    @an = @m.query "SELECT * FROM OR_TEST1 WHERE fid IN (100000686899395)"
+    @tool = @an.fetch_row
 rescue Mysql::Error => e
     puts e
 ensure
