@@ -123,6 +123,7 @@ get "/my_tools.html" do
       an = m.query "SELECT * FROM OR_TEST1 WHERE fid IN (100000686899395)"
       an.each_hash do |row|
         puts row['fid'] + " " + row['city']
+      end
     end      
 rescue Mysql::Error => e
     puts e
