@@ -131,7 +131,7 @@ get "/my_tools.html" do
     end
   end
 
-  object=Mysql.new
+  @object=Mysql.new
 
   if session[:access_token]
     @user    = @graph.get_object("me")
