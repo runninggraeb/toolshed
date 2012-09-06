@@ -117,10 +117,11 @@ get "/my_tools.html" do
     @likes   = @graph.get_connections('me', 'likes').first(4)
 
     @m = Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644')
-    @an = @m.query("SELECT * FROM OR_TEST1 WHERE fid IN (@me)")
+    @an = @m.query("SELECT * FROM OR_TEST1 WHERE fid IN @me")
     @n_rows  = @an.num_rows
     @inventory = @an.fetch_row.join("\s")
     @m.close
+
     # for other data you can always run fql
     @friends_using_app = @graph.fql_query("SELECT uid, name, is_app_user, pic_square FROM user WHERE uid in (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1")
   end
