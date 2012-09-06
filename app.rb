@@ -85,7 +85,9 @@ get "/friends_tools.html" do
 
   # Get public details of current application
   @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
-
+  
+  @object = 
+  
   if session[:access_token]
     @user    = @graph.get_object("me")
     @friends = @graph.get_connections('me', 'friends')
@@ -111,7 +113,10 @@ get "/my_tools.html" do
   @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
 
   @m = Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644')
-  @tool = @m.query("SELECT * FROM OR_TEST1 WHERE fid IN (100000686899395)")
+  @an = @m.query("SELECT * FROM OR_TEST1")
+  @n_rows = @an.num_rows
+  @n_rows.times do
+    @inventory=@an.fetch_row.join("\s")
   @m.close
 
   if session[:access_token]
