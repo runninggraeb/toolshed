@@ -110,12 +110,12 @@ get "/my_tools.html" do
   # Get public details of current application
   @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
 
-  @m = Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644')
-  @an = @m.query("SELECT * FROM OR_TEST1")
-  @n_rows = @an.num_rows
+  @setting = Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644')
+  @request = @setting.query("SELECT * FROM OR_TEST1")
+  @n_rows = @request.num_rows
   @n_rows.times do
-    @inventory=@an.fetch_row.join("\s")
-  @m.close
+    @inventory = @request.fetch_row.join("\s")
+  @setting.close
 
   if session[:access_token]
     @user    = @graph.get_object("me")

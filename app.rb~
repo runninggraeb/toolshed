@@ -86,8 +86,6 @@ get "/friends_tools.html" do
   # Get public details of current application
   @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
   
-  @object = 
-  
   if session[:access_token]
     @user    = @graph.get_object("me")
     @friends = @graph.get_connections('me', 'friends')
