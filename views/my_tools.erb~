@@ -136,9 +136,9 @@
     <p align="center"><font size="1">We have your current location set as Eugene, Oregon {Change}</font></p>
     <br/>
     <h2>Add tools to your collection:</h2>
-    <form method="post" action="mailto:tennis343@yahoo.com">
+    <form method="post" action="add_tools">
       Type:
-      <select name="add_tools">
+      <select name="type_1">
         <option value="carpentry" selected>Carpentry</option>
         <option value="plumbing" selected>Plumbing</option>
         <option value="electrical" selected>Electrical</option>
@@ -149,6 +149,14 @@
       Tool name:<input type="text" size="10" maxlength="20" name="tool_1">
       <input type="submit" value="Add">
     </form>
+
+    <% form_tag :action => 'add_tools' do %>
+      <%= text_area :myform, :type_1, :cols => '30', :rows => '1' %>
+      <%= submit_tag "Submit" %>
+    <% end %>
+
+
+
     <br/>
     <p>My Current Tools: <%= @inventory %></p>
 

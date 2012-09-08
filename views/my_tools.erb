@@ -149,6 +149,14 @@
       Tool name:<input type="text" size="10" maxlength="20" name="tool_1">
       <input type="submit" value="Add">
     </form>
+
+    <% form_tag :action => 'add_tools' do %>
+      <%= text_area :myform, :type_1, :cols => '30', :rows => '1' %>
+      <%= submit_tag "Submit" %>
+    <% end %>
+
+
+
     <br/>
     <p>My Current Tools: <%= @inventory %></p>
 
