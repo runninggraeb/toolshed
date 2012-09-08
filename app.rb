@@ -35,6 +35,11 @@ helpers do
     request.scheme
   end
 
+  def add_tools
+    type_1=params['myform']['type_1']
+    tool_1=params['myform']['tool_1']
+  end
+
   def url_no_scheme(path = '')
     "//#{host}#{path}"
   end
