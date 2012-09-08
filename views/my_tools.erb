@@ -150,10 +150,10 @@
       <input type="submit" value="Add">
     </form>
 
-    <% form_tag :action => 'add_tools' do %>
+    <%= form_tag :action => 'add_tools' do %>
       <%= text_area :myform, :type_1, :cols => '30', :rows => '1' %>
       <%= submit_tag "Submit" %>
-    <% end %>
+    <%= end %>
 
 
 
