@@ -151,7 +151,7 @@
     </form>
 
     <%= form_tag :action => 'add_tools', :id => @new_tool %>
-      <%= text_field 'tool_1', :'type_1', 'size'=>20 %>
+      <%= text_field 'tool_1', 'type_1', 'size'=>20 %>
     <%= end_form_tag %>
 
 
