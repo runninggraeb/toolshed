@@ -150,10 +150,10 @@
       <input type="submit" value="Add">
     </form>
 
-    <%= form_tag :action => 'add_tools', :id => @new_tool %>
-      <%= text_field 'tool_1', 'type_1', 'size'=>20 %>
-    <%= end_form_tag %>
-
+    <%= form_tag("add_tools", :method => "post") do %>
+      <%= text_field_tag(:q) %>
+      <%= submit_tag("Search") %>
+    <% end %>
 
 
     <br/>

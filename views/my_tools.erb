@@ -150,11 +150,6 @@
       <input type="submit" value="Add">
     </form>
 
-    <%= form_tag("add_tools", :method => "post") do %>
-      <%= text_field_tag(:q) %>
-      <%= submit_tag("Search") %>
-    <% end %>
-
 
     <br/>
     <p>My Current Tools: <%= @inventory %></p>
