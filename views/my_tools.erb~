@@ -149,8 +149,14 @@
       Tool name:<input type="text" size="10" maxlength="20" name="tool_1">
       <input type="submit" value="Add">
     </form>
-
-
+    <br/>
+    <p>
+    <%= form_tag("/search", :method => "get") do %>
+      <%= label_tag(:q, "Search for:") %>
+      <%= text_field_tag(:q) %>
+      <%= submit_tag("Search") %>
+    <% end %>
+    </p>
     <br/>
     <p>My Current Tools: <%= @inventory %></p>
 
