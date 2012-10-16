@@ -124,7 +124,7 @@ get "/my_tools.html" do
 
     def new
       m=Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644')
-      m.query "INSERT INTO OR_TEST3 (fid,city,state,count,tool1,type1) VALUES('#{@user['id']}','Eugene','OR','1','Circular Saw','Carpentry')"
+      m.query "INSERT INTO OR_TEST3 (fid,city,state,count,tool1,type1) VALUES('#{@user['id']}','Eugene','OR','1','#{[tool_1]}','#{[type_1]}')"
     end
 
 
