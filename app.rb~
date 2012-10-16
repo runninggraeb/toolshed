@@ -35,11 +35,6 @@ helpers do
     request.scheme
   end
 
-  def add_tools
-    type_1=params['myform']['type_1']
-    tool_1=params['myform']['tool_1']
-  end
-
   def url_no_scheme(path = '')
     "//#{host}#{path}"
   end
@@ -127,14 +122,6 @@ get "/my_tools.html" do
     @inventory = @an.fetch_row.join("\s")
     @m.close
 
-    def new
-     @post = Post.new
- 
-     respond_to do |format|
-      format.html  # new.html.erb
-      format.json  { render :json => @post }
-     end
-    end
 
     # for other data you can always run fql
     @friends_using_app = @graph.fql_query("SELECT uid, name, is_app_user, pic_square FROM user WHERE uid in (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1")
