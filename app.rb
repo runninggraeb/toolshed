@@ -103,7 +103,7 @@ get "/new.html" do
     @new.query "INSERT INTO OR_TEST3 (fid,city,state,count,tool1,type1) VALUES('#{@user['id']}','Eugene','OR','1','#{@query[tool_1]}','#{@query[type_1]}')"
     @new.close
   end
-  erb :index
+  erb :my_tools_F
 end
 
 # used by Canvas apps - redirect the POST to be a regular GET

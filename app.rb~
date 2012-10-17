@@ -98,7 +98,7 @@ get "/new.html" do
     # for other data you can always run fql
     @friends_using_app = @graph.fql_query("SELECT uid, name, is_app_user, pic_square FROM user WHERE uid in (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1")
 
-    @query=CGI->new
+    @query=CGI.new
     @new=Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644')
     @new.query "INSERT INTO OR_TEST3 (fid,city,state,count,tool1,type1) VALUES('#{@user['id']}','Eugene','OR','1','#{@query[tool_1]}','#{@query[type_1]}')"
     @new.close
