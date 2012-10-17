@@ -55,7 +55,7 @@ error(Koala::Facebook::APIError) do
   redirect "/auth/facebook"
 end
 
-get "new" do
+get "/new.html" do
   @graph  = Koala::Facebook::API.new(session[:access_token])
 
   # Get public details of current application
