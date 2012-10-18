@@ -137,15 +137,6 @@
     <br/>
     <h2>Add tools to your collection:</h2>
     <form method="post" action="new.html">
-      Type:
-      <select name="type_1">
-        <option value="carpentry" selected>Carpentry</option>
-        <option value="plumbing" selected>Plumbing</option>
-        <option value="electrical" selected>Electrical</option>
-        <option value="yard_work" selected>Yard Work</option>
-        <option value="painting" selected>Painting</option>
-        <option value="other" selected>Other</option>
-      </select>
       Tool name:<input type="text" size="10" maxlength="20" name="tool_1">
       <input type="submit" value="Add" id="form">
     </form>
