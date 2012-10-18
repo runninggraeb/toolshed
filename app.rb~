@@ -100,7 +100,8 @@ get "/new.html" do
     @friends_using_app = @graph.fql_query("SELECT uid, name, is_app_user, pic_square FROM user WHERE uid in (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1")
 
     @query=CGI.new
-    @input=@query["form"]
+    @int=@query.params
+    @input=@int["form"]
 
 
 

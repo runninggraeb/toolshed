@@ -101,7 +101,7 @@ get "/new.html" do
 
     @query=CGI.new
     @int=@query.params
-    @input=@int["form"]
+    @input=@int["tool_1"]
 
 
 
