@@ -7,6 +7,8 @@ enable :sessions
 set :raise_errors, false
 set :show_exceptions, false
 
+$query=CGI.new
+
 # Scope defines what permissions that we are asking the user to grant.
 # In this example, we are asking for the ability to publish stories
 # about using the app, access to what the user likes, and to be able
@@ -99,9 +101,7 @@ get "/new.html" do
     # for other data you can always run fql
     @friends_using_app = @graph.fql_query("SELECT uid, name, is_app_user, pic_square FROM user WHERE uid in (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1")
 
-    @query=CGI.new
-    @int=@query.params
-    @input=@int["tool_1"]
+    @input=$query["tool_1"]
 
 
 
