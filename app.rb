@@ -101,7 +101,7 @@ get "/new.html" do
     # for other data you can always run fql
     @friends_using_app = @graph.fql_query("SELECT uid, name, is_app_user, pic_square FROM user WHERE uid in (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1")
 
-    @input=$query["tool_1"]
+    @input=$query.params["tool_1"]
 
 
 
