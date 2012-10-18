@@ -102,6 +102,8 @@ get "/new.html" do
     @query=CGI.new
     @input=@query.params["tool_1"]
 
+
+
   end
   erb :my_tools_F
 end
