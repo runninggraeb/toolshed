@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html xmlns:fb="http://ogp.me/ns/fb#" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes" />
+
+    <title><%= @app['name'] %></title>
+    <link rel="stylesheet" href="stylesheets/screen.css" media="Screen" type="text/css" />
+    <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-width: 480px), only screen and (max-device-width: 480px)" type="text/css" />
+
+    <!--[if IEMobile]>
+    <link rel="stylesheet" href="mobile.css" media="screen" type="text/css"  />
+    <![endif]-->
+
+    <meta property="og:title" content="<%= @app['name'] %>" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="<%= url %>" />
+    <meta property="og:image" content="<%= url('/logo.png') %>" />
+    <meta property="og:site_name" content="<%= @app['name'] %>" />
+    <meta property="og:description" content="My First App" />
+    <meta property="fb:app_id" content="<%= @app['name'] %>" />
+
+    <script type="text/javascript" src="/javascripts/jquery-1.7.1.min.js"></script>
+
+    <script type="text/javascript">
+      function logResponse(response) {
+        if (console && console.log) {
+          console.log('The response was', response);
+        }
+      }
+
+      $(function(){
+        $('#postToWall').click(function() {
+          FB.ui(
+            {
+              method : 'feed',
+              link   : $(this).attr('data-url')
+            },
+            function (response) {
+              if (response != null) {
+                logResponse(response);
+              }
+            }
+          );
+        });
+
+        $('#sendToFriends').click(function() {
+          FB.ui(
+            {
+              method : 'send',
+              link   : $(this).attr('data-url')
+            },
+            function (response) {
+              if (response != null) {
+                logResponse(response);
+              }
+            }
+          );
+        });
+
+        $('#sendRequest').click(function() {
+          FB.ui(
+            {
+              method  : 'apprequests',
+              message : $(this).attr('data-message')
+            },
+            function (response) {
+              if (response != null) {
+                logResponse(response);
+              }
+            }
+          );
+        });
+      });
+    </script>
+
+    <!--[if IE]>
+      <script type="text/javascript">
+        var tags = ['header', 'section'];
+        while(tags.length)
+          document.createElement(tags.pop());
+      </script>
+    <![endif]-->
+  </head>
+  <body>
+    <div id="fb-root"></div>
+    <script type="text/javascript">
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : "<%= @app['id'] %>",
+          channelUrl : "<%= url_no_scheme('/channel.html') %>",
+          status     : true,
+          cookie     : true,
+          xfbml      : true
+        });
+        FB.Event.subscribe('auth.login', function(response) {
+          window.location = window.location;
+        });
+
+        FB.Canvas.setAutoGrow();
+      };
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <% if @user %>
+      <header class="clearfix">
+          <img class="logo" src="/images/header.png" height="60" width="200"/>
+          <p id="picture" style="background-image: url(https://graph.facebook.com/<%= @user['id'] %>/picture?type=normal)"></p>
+          <div>
+            <h1>Welcome, <strong><%= @user['name'] %></strong></h1>
+            <p class="tagline">
+              Share tools & start projects on
+              <a href="<%= @app['@app'] %>"><%= @app['name'] %></a>
+            </p>
+          </div>
+      </header>
+    <% else redirect "/auth/facebook" %>
+      <header class="no-user">
+        <div>
+          <h1>Welcome</h1>
+            <a href='/auth/facebook' class="fb_button fb_button_medium">
+              <span class="fb_button_text">Log In</span>
+            </a>
+        </div>
+      </header>
+    <% end %>
+    <% if @user %>
+    <section class="clearfix">
+      <div>
+            <a href="/" class="toolbar-button">
+             <span>Welcome</span></a>
+            <a href="friends_tools.html" class="toolbar-button">
+             <span>Frend's Tools</span></a>
+            <a href="my_tools.html" class="toolbar-button">
+             <span>My Tools</span></a>
+            <a href="about_us.html" class="toolbar-button">
+             <span>About Us</span></a>
+            <a href="comments.html" class="toolbar-button">
+             <span>Submit Comments</span></a>
+            <a href="#" class="toolbar-button apprequests" id="sendRequest" data-message="Welcoming message." id="invite-style">
+             <span>Invite Friends</span></a>
+      </div>
+    </section>
+    <section>
+    <br/>
+
+
+
+
+    <br/>
+    </section>
+  <% end %>
+  </body>
+</html>
