@@ -1,6 +1,6 @@
 #!/usr/local/bin/ruby
 
-put "Content-type: text/html\n\n";
+put "Content-type: text/html\n\n"
 $query=CGI.new()
 
 require "sinatra"
