@@ -1,7 +1,6 @@
 #!/usr/local/bin/ruby
 
 put "Content-type: text/html\n\n"
-$query=CGI.new()
 
 require "sinatra"
 require "koala"
@@ -110,9 +109,6 @@ get "/new.html" do
     @n_rows  = @an.num_rows
     @inventory = @an.fetch_row.join("\s")
     @m.close
-
-    @input=$query["tool_1"]
-
 
 
   end

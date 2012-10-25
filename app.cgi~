@@ -111,7 +111,7 @@ get "/new.html" do
     @inventory = @an.fetch_row.join("\s")
     @m.close
 
-    $input=@query["tool_1"]
+    @input=$query["tool_1"]
 
 
 
