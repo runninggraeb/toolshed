@@ -1,4 +1,4 @@
-#!/usr/local/bin/ruby -wT
+#!/usr/local/bin/ruby
 
 puts "Content-type: text/html\n\n"
 
