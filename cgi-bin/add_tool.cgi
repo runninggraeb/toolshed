@@ -1,5 +1,16 @@
+#!/usr/local/cgi-bin/ruby
+
 require "cgi"
 require "mysql"
+
+class Guess
+  attr_accessor :user_guess
+
+
+
+
+
+
 
 query=CGI.new
 query=CGI.new
