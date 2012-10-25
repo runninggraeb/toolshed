@@ -1,5 +1,7 @@
+#!/usr/local/bin/ruby -wT
+
 require "sinatra"
-require 'koala'
+require "koala"
 require "mysql"
 require "cgi"
 
@@ -105,10 +107,6 @@ get "/new.html" do
     @n_rows  = @an.num_rows
     @inventory = @an.fetch_row.join("\s")
     @m.close
-
-    @query=CGI.new()
-    @input=@query["tool_1"]
-
 
 
   end
