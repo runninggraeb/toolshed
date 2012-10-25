@@ -1,7 +1,9 @@
 #!/usr/local/bin/ruby
 
+put "Content-type: text/html\n\n";
+
 require "sinatra"
-require 'koala'
+require "koala"
 require "mysql"
 require "cgi"
 
