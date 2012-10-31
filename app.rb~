@@ -1,4 +1,4 @@
-require "sinatra/param"
+require "sinatra"
 require "koala"
 require "mysql"
 
