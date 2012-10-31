@@ -100,13 +100,7 @@ get "/new.html" do
     @friends_using_app = @graph.fql_query("SELECT uid, name, is_app_user, pic_square FROM user WHERE uid in (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1")
     
 
-    @input = param[tool_1]
-    @m = Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644')
-    @an = @m.query "SELECT * FROM OR_TEST3 WHERE fid = '#{@user['id']}'"
-    @n_rows  = @an.num_rows
-    @inventory = @an.fetch_row.join("\s")
-    @m.close
-
+    @input = param[:tool_1]
 
   end
   erb :my_tools_F
