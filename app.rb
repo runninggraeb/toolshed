@@ -101,7 +101,7 @@ get "/new.html" do
 
 
   end
-  erb :my_tools_F
+  erb :new
 end
 
 # used by Canvas apps - redirect the POST to be a regular GET
