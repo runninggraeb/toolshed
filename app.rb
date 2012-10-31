@@ -98,9 +98,7 @@ get "/new.html" do
 
     # for other data you can always run fql
     @friends_using_app = @graph.fql_query("SELECT uid, name, is_app_user, pic_square FROM user WHERE uid in (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1")
-    
 
-    @input = param[:tool_1]
 
   end
   erb :my_tools_F
@@ -108,6 +106,7 @@ end
 
 # used by Canvas apps - redirect the POST to be a regular GET
 post "/new.html" do
+  @input = params[:tool_1]
   redirect "/new.html"
 end
 
