@@ -122,9 +122,7 @@ get "/my_tools.html" do
     @likes   = @graph.get_connections('me', 'likes').first(4)
 
     @m = Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644')
-    @an = @m.query "SELECT * FROM OR_TEST3 WHERE fid = '#{@user['id']}'"
-    @n_rows  = @an.num_rows
-    @inventory = @an.fetch_row.join("\s")
+    @inventory = @m.query("SELECT * FROM OR_TEST3 WHERE fid = '#{@user['id']}'").fetch_row
     @m.close
 
     @inventory = @inventory.at(4)

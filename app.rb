@@ -125,7 +125,7 @@ get "/my_tools.html" do
     @inventory = @m.query("SELECT * FROM OR_TEST3 WHERE fid = '#{@user['id']}'").fetch_row
     @m.close
 
-    @inventory = @inventory.at(4)
+    @inventory = @inventory.at(5)
 
     # for other data you can always run fql
     @friends_using_app = @graph.fql_query("SELECT uid, name, is_app_user, pic_square FROM user WHERE uid in (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1")
