@@ -135,12 +135,21 @@ end
 
 # used by Canvas apps - redirect the POST to be a regular GET
 post "/my_tools.html" do
+
+  @graph  = Koala::Facebook::API.new(session[:access_token])
+  @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
+  if session[:access_token]
+    @user    = @graph.get_object("me")
+    @friends_using_app = @graph.fql_query("SELECT uid, name, is_app_user, pic_square FROM user WHERE uid in (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1")
+  end
+
+
+
   @tool_1 = params[:tool_1]
   @type_1 = params[:type_1]
   @new=Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644')
   @new.query "INSERT INTO OR_TEST3 (fid,city,state,count,tool1,type1) VALUES('#{@user['id']}','Eugene','OR','1','#{@tool_1}','#{@type_1}')"
   @new.close
-
   redirect "/my_tools.html"
 end
 
