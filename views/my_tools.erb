@@ -146,10 +146,12 @@
         <option value="painting" selected>Painting</option>
         <option value="other" selected>Other</option>
       </select>
-      Tool name:<input type="text" size="10" maxlength="20" name="tool_1",value="<%= @inventory %>">
+      Tool name:<input type="text" size="10" maxlength="20" name="tool_1",value="Old">
       <input type="submit" value="Update">
     </form>
 
+    <br/>
+    <p>My Current Tools: <%= @inventory %></p>
 
     <br/>
     </section>
