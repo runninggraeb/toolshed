@@ -133,10 +133,12 @@
     </section>
     <section>
     <br/>
-    <p align="center"><font size="1">We have your current location set as Eugene, Oregon {Change}</font></p>
     <br/>
     <form method="post" action="my_tools.html">
-      We have your location set as <input type="text" size="5" maxlength="20" name="city" value="<%= @city %>">, <input type="text" size="1" maxlength="2" name="state" value="<%= @state %>">
+      <p>We have your current location set as: 
+        <input type="text" size="5" maxlength="20" name="city" value="<%= @city %>">, 
+        <input type="text" size=".5" maxlength="2" name="state" value="<%= @state %>">
+      </p>
       <br/>
       <br/>
       <h2>Add tools to your collection:</h2>
