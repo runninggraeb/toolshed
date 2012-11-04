@@ -142,20 +142,6 @@
       <br/>
       <br/>
       <%=
-        for i in 1..@count
-          @type = @all.at(4+2*i)
-          @tool = @all.at(3+2*i)
-          print "
-            <select name="type">
-             <option <%= if @type=="carpentry";print "selected="selected"";end %> value="carpentry" selected>Carpentry</option>
-             <option <%= if @type=="plumbing";print "selected="selected"";end %> value="plumbing" selected>Plumbing</option>
-             <option <%= if @type=="electrical";print "selected="selected"";end %> value="electrical" selected>Electrical</option>
-             <option <%= if @type=="yard_work";print "selected="selected"";end %> value="yard_work" selected>Yard Work</option>
-             <option <%= if @type=="painting";print "selected="selected"";end %> value="painting" selected>Painting</option>
-             <option <%= if @type=="other";print "selected="selected"";end %> value="other" selected>Other</option>
-            </select>
-            Tool name:<input type="text" size="10" maxlength="20" name="tool" value="<%= @tool %>"><br/>"
-        end
 
         for i in 1..5
           print "
