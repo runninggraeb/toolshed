@@ -141,18 +141,35 @@
       </p>
       <br/>
       <br/>
-      <h2>Add tools to your collection:</h2>
-      <br/>
-      Type:
-      <select name="type_1">
-        <option value="carpentry" selected>Carpentry</option>
-        <option value="plumbing" selected>Plumbing</option>
-        <option value="electrical" selected>Electrical</option>
-        <option value="yard_work" selected>Yard Work</option>
-        <option value="painting" selected>Painting</option>
-        <option value="other" selected>Other</option>
-      </select>
-      Tool name:<input type="text" size="10" maxlength="20" name="tool_1" value="<%= @inventory %>">
+      <%=
+        for i in 1..@count
+          @type = @all.at(4+2*i)
+          @tool = @all.at(3+2*i)
+          print "
+            <select name="type">
+             <option <%= if @type=="carpentry";print "selected="selected"";end %> value="carpentry" selected>Carpentry</option>
+             <option <%= if @type=="plumbing";print "selected="selected"";end %> value="plumbing" selected>Plumbing</option>
+             <option <%= if @type=="electrical";print "selected="selected"";end %> value="electrical" selected>Electrical</option>
+             <option <%= if @type=="yard_work";print "selected="selected"";end %> value="yard_work" selected>Yard Work</option>
+             <option <%= if @type=="painting";print "selected="selected"";end %> value="painting" selected>Painting</option>
+             <option <%= if @type=="other";print "selected="selected"";end %> value="other" selected>Other</option>
+            </select>
+            Tool name:<input type="text" size="10" maxlength="20" name="tool" value="<%= @tool %>"><br/>"
+        end
+
+        for i in 1..5
+          print "
+            <select name="type">
+              <option value="carpentry">Carpentry</option>
+              <option value="plumbing">Plumbing</option>
+              <option value="electrical">Electrical</option>
+              <option value="yard_work">Yard Work</option>
+              <option value="painting">Painting</option>
+              <option value="other">Other</option>
+            </select>
+            Tool name:<input type="text" size="10" maxlength="20" name="tool">"
+        end
+      %>
       <input type="submit" value="Update">
     </form>
     <br/>
