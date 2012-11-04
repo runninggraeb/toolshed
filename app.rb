@@ -103,6 +103,7 @@ get "/my_tools.html" do
     @m.close
     @city = @all.at(2)
     @state = @all.at(3)
+    @count = @all.at(4)
     @inventory = @all.at(5)
 
   end
@@ -118,8 +119,8 @@ post "/my_tools.html" do
     @user    = @graph.get_object("me")
   end
 
-  @tool_1 = params[:tool_1]
-  @type_1 = params[:type_1]
+  @tool = params[:tool]
+  @type = params[:type]
   @city = params[:city]
   @state = params[:state]
   @new=Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644')
