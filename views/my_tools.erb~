@@ -142,6 +142,7 @@
       <br/>
       <br/>
       <% for i in 1..@count %>
+        <% @tool_1 = @all.at(3+2*i) %>
           <select name="type">
             <option value="carpentry">Carpentry</option>
             <option value="plumbing">Plumbing</option>
@@ -150,13 +151,13 @@
             <option value="painting">Painting</option>
             <option value="other">Other</option>
           </select>
-          Tool name:<input type="text" size="10" maxlength="20" name="tool"><br/>
+          Tool name:<input type="text" size="10" maxlength="20" name="tool" value="<%= @tool_1 %>"><br/>
       <% end %>
 
 
       <br/>
       <% for i in 1..5 %>
-            <select name="type">
+            <select name="type_new">
               <option value="carpentry">Carpentry</option>
               <option value="plumbing">Plumbing</option>
               <option value="electrical">Electrical</option>
@@ -164,7 +165,7 @@
               <option value="painting">Painting</option>
               <option value="other">Other</option>
             </select>
-            Tool name:<input type="text" size="10" maxlength="20" name="tool"><br/>
+            Tool name:<input type="text" size="10" maxlength="20" name="tool_new"><br/>
       <% end %>
       <input type="submit" value="Update">
     </form>
