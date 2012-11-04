@@ -141,8 +141,7 @@
       </p>
       <br/>
       <br/>
-      <% for i in 1..5 %>
-        <% @tool_1 = @all.at(3+2*i) %>
+      <% for i in 1..@count %>
           <select name="type">
             <option value="carpentry">Carpentry</option>
             <option value="plumbing">Plumbing</option>
@@ -151,7 +150,7 @@
             <option value="painting">Painting</option>
             <option value="other">Other</option>
           </select>
-          Tool name:<input type="text" size="10" maxlength="20" name="tool" value="<%= @tool_1 %>"><br/>
+          Tool name:<input type="text" size="10" maxlength="20" name="tool"><br/>
       <% end %>
 
 
