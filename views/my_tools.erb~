@@ -146,7 +146,7 @@
 
 
 
-
+      <p>
       <% for i in 1..5 %>
             <select name="type">
               <option value="carpentry">Carpentry</option>
@@ -157,7 +157,8 @@
               <option value="other">Other</option>
             </select>
             Tool name:<input type="text" size="10" maxlength="20" name="tool" value="<%= @inventroy %>"><br/>
-        <% end %>
+      <% end %>
+      </p>
       <input type="submit" value="Update">
     </form>
     <br/>
