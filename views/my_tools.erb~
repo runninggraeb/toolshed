@@ -141,8 +141,23 @@
       </p>
       <br/>
       <br/>
-      <% for i in 1..5
-          print "
+
+      <% for i in 1..@count %>
+        <select name="type">
+          <option value="carpentry">Carpentry</option>
+          <option value="plumbing">Plumbing</option>
+          <option value="electrical">Electrical</option>
+          <option value="yard_work">Yard Work</option>
+          <option value="painting">Painting</option>
+          <option value="other">Other</option>
+        </select>
+        Tool name:<input type="text" size="10" maxlength="20" name="tool"><br/>
+      <% end %>
+
+
+
+
+      <% for i in 1..5 %>
             <select name="type">
               <option value="carpentry">Carpentry</option>
               <option value="plumbing">Plumbing</option>
@@ -151,8 +166,8 @@
               <option value="painting">Painting</option>
               <option value="other">Other</option>
             </select>
-            Tool name:<input type="text" size="10" maxlength="20" name="tool">"
-        end %>
+            Tool name:<input type="text" size="10" maxlength="20" name="tool"><br/>
+        <% end %>
       <input type="submit" value="Update">
     </form>
     <br/>
