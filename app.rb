@@ -123,13 +123,27 @@ post "/my_tools.html" do
     @user    = @graph.get_object("me")
   end
 
-  @tool = params[:tool]
-  @type = params[:type]
-  @city = params[:city]
-  @state = params[:state]
   @new=Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644')
   @new.query "DELETE FROM OR_TEST3 WHERE fid = '#{@user['id']}'"
-  @new.query "INSERT INTO OR_TEST3 (fid,city,state,count,tool1,type1) VALUES('#{@user['id']}','#{@city}','#{@state}','1','#{@tool.at(1)}','#{@type.at(1)}')"
+  @all = @m.query("SELECT * FROM OR_TEST3 WHERE fid = '#{@user['id']}'").fetch_row
+
+  @count = @all.at(4)
+
+  @enter=1
+  @adds=0
+  @news=Array.new(@count+5)
+  for i in 1..(@count+5)
+    if instance_variable_get(":" + "tool_#{@enter}")
+      @adds +=1
+      @news.at(@adds*2-1)=params[instance_variable_get(":" + "tool_#{@enter}")]
+      @news.at(@adds*2)=params[instance_variable_get(":" + "type_#{@enter}")]
+    end
+    @enter +=1
+  end
+  @city = params[:city]
+  @state = params[:state]
+
+  @new.query "INSERT INTO OR_TEST3 (fid,city,state,count,tool1,type1) VALUES('#{@user['id']}','#{@city}','#{@state}','#{@adds}',#{@news})"
   @new.close
   redirect "/my_tools.html"
 end
