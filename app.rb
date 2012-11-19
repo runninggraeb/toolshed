@@ -133,9 +133,9 @@ post "/my_tools.html" do
   @adds=0
   @news=Array.new(@count+5)
   for i in 1..(@count+5)
-    if instance_variable_get(":" + "tool_#{@enter}")
-      @news[@adds*2]=params[instance_variable_get(":" + "tool_#{@enter}")]
-      @news[@adds*2+1]=params[instance_variable_get(":" + "type_#{@enter}")]
+    if params[":tool_#{@enter}"]
+      @news[@adds*2]=params[":tool_#{@enter}"]
+      @news[@adds*2+1]=params[":type_#{@enter}"]
       @adds +=1
     end
     @enter +=1
