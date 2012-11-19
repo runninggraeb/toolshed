@@ -97,10 +97,14 @@ get "/my_tools.html" do
 
   if session[:access_token]
     @user    = @graph.get_object("me")
-
-    @m = Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644')
-    @all = @m.query("SELECT * FROM OR_TEST3 WHERE fid = '#{@user['id']}'").fetch_row
-    @m.close
+    begin
+      @m = Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644')
+      @all = @m.query("SELECT * FROM OR_TEST3 WHERE fid = '#{@user['id']}'").fetch_row
+    rescue
+      @m.query "INSERT INTO OR_TEST3 (fid,city,state,count,tool1,type1) VALUES('#{@user['id']}','Eugene','OR','1','Circular Saw','Carpentry')"
+    ensure
+      @m.close
+    end
     @city = @all.at(2)
     @state = @all.at(3)
     @count = @all.at(4)
@@ -126,7 +130,7 @@ post "/my_tools.html" do
   @state = params[:state]
   @new=Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644')
   @new.query "DELETE FROM OR_TEST3 WHERE fid = '#{@user['id']}'"
-  @new.query "INSERT INTO OR_TEST3 (fid,city,state,count,tool1,type1) VALUES('#{@user['id']}','#{@city}','#{@state}','1','#{@tool}','#{@type}')"
+  @new.query "INSERT INTO OR_TEST3 (fid,city,state,count,tool1,type1) VALUES('#{@user['id']}','#{@city}','#{@state}','1','#{@tool_1}','#{@type_1}')"
   @new.close
   redirect "/my_tools.html"
 end

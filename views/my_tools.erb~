@@ -155,6 +155,9 @@
           </select>
           Tool name:<input type="text" size="10" maxlength="20" name="tool" value="<%= @all.at(3+@it*2)%>"><br/>
       <% end %>
+
+      <br/>
+
       <% for i in 1..5 %>
             <select name="type_new">
               <option value="other">Other</option>
