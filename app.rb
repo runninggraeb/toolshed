@@ -101,7 +101,7 @@ get "/my_tools.html" do
       @m = Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644')
       @all = @m.query("SELECT * FROM OR_TEST3 WHERE fid = '#{@user['id']}'").fetch_row
     rescue
-      @m.query "INSERT INTO OR_TEST3 (fid,city,state,count,tool1,type1) VALUES('#{@user['id']}','Eugene','OR','0')"
+      @m.query "INSERT INTO OR_TEST3 (fid,city,state,count) VALUES('#{@user['id']}','Eugene','OR','0')"
     ensure
       @m.close
     end
