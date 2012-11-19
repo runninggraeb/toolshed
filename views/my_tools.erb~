@@ -153,12 +153,10 @@
             <option <% if @type=="yard_work" %> selected="selected" <% end %> value="yard_work">Yard Work</option>
             <option <% if @type=="painting" %> selected="selected" <% end %> value="painting">Painting</option>
           </select>
-          Tool name:<input type="text" size="10" maxlength="20" name="tool" value="<%= @all.at(3+@it*2)%>"><br/>
+          Tool name:<input type="text" size="10" maxlength="20" name="tool_#{@it}" value="<%= @all.at(3+@it*2)%>"><br/>
       <% end %>
-
-      <br/>
-
       <% for i in 1..5 %>
+        <% @it +=1 %>
             <select name="type_new">
               <option value="other">Other</option>
               <option value="carpentry">Carpentry</option>
@@ -167,7 +165,7 @@
               <option value="yard_work">Yard Work</option>
               <option value="painting">Painting</option>
             </select>
-            Tool name:<input type="text" size="10" maxlength="20" name="tool_new"><br/>
+            Tool name:<input type="text" size="10" maxlength="20" name="tool_"><br/>
       <% end %>
       <input type="submit" value="Update">
     </form>
