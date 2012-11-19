@@ -141,7 +141,8 @@
       </p>
       <br/>
       <br/>
-      <%(1..@count).each do|i|%>
+      
+      <% for i in 1..@count %>
           <select name="type">
             <option value="carpentry">Carpentry</option>
             <option value="plumbing">Plumbing</option>
