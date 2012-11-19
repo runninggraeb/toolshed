@@ -146,27 +146,23 @@
         <% @it +=1 %>
           <select name="type">
             <% @type=@all.at(4+@it*2) %>
+            <option <% if @type=="other" %> selected="selected" <% end %> value="other">Other</option>
             <option <% if @type=="carpentry" %> selected="selected" <% end %> value="carpentry">Carpentry</option>
             <option <% if @type=="plumbing" %> selected="selected" <% end %> value="plumbing">Plumbing</option>
             <option <% if @type=="electrical" %> selected="selected" <% end %> value="electrical">Electrical</option>
             <option <% if @type=="yard_work" %> selected="selected" <% end %> value="yard_work">Yard Work</option>
             <option <% if @type=="painting" %> selected="selected" <% end %> value="painting">Painting</option>
-            <option <% if @type=="other" %> selected="selected" <% end %> value="other">Other</option>
           </select>
           Tool name:<input type="text" size="10" maxlength="20" name="tool" value="<%= @all.at(3+@it*2)%>"><br/>
       <% end %>
-
-
-      <br/>
-
       <% for i in 1..5 %>
             <select name="type_new">
+              <option value="other">Other</option>
               <option value="carpentry">Carpentry</option>
               <option value="plumbing">Plumbing</option>
               <option value="electrical">Electrical</option>
               <option value="yard_work">Yard Work</option>
               <option value="painting">Painting</option>
-              <option value="other">Other</option>
             </select>
             Tool name:<input type="text" size="10" maxlength="20" name="tool_new"><br/>
       <% end %>
