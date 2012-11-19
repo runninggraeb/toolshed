@@ -151,12 +151,14 @@
             <option value="painting">Painting</option>
             <option value="other">Other</option>
           </select>
-          Tool name:<input type="text" size="10" maxlength="20" name="tool" value="<%= @all.at(3+i*2) %>><br/>
+          Tool name:<input type="text" size="10" maxlength="20" name="tool" value="<%= @all.at(3+i*2)%>"><br/>
       <% end %>
 
 
       <br/>
+      <% @it=0 %>
       <% for i in 1..5 %>
+            <% @it +=1
             <select name="type_new">
               <option value="carpentry">Carpentry</option>
               <option value="plumbing">Plumbing</option>
