@@ -125,7 +125,7 @@ post "/my_tools.html" do
 
   @new=Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644')
   @new.query "DELETE FROM OR_TEST3 WHERE fid = '#{@user['id']}'"
-  @all = @m.query("SELECT * FROM OR_TEST3 WHERE fid = '#{@user['id']}'").fetch_row
+  @all = @new.query("SELECT * FROM OR_TEST3 WHERE fid = '#{@user['id']}'").fetch_row
 
   @count = @all.at(4)
 
