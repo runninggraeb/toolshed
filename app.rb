@@ -108,7 +108,7 @@ get "/my_tools.html" do
     @city = @all.at(2)
     @state = @all.at(3)
     @count = @all.at(4)
-    @count = @cound.to_i
+    @count = @count.to_i
 
   end
   erb :my_tools
