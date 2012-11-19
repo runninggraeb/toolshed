@@ -141,7 +141,7 @@
       </p>
       <br/>
       <br/>
-      <% for i in 1..(@count) %>
+      <% for i in 1..@count do %>
           <select name="type">
             <option value="carpentry">Carpentry</option>
             <option value="plumbing">Plumbing</option>

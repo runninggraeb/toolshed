@@ -141,7 +141,8 @@
       </p>
       <br/>
       <br/>
-      <% for i in 1..@count do %>
+      <% @i=0; while @i<@count do %>
+          <% @i +=1 %>
           <select name="type">
             <option value="carpentry">Carpentry</option>
             <option value="plumbing">Plumbing</option>
