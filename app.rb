@@ -143,6 +143,9 @@ post "/my_tools.html" do
     end
     @enter +=1
   end
+
+  @labels=@labels.join(',')
+
   @city = params[:city]
   @state = params[:state]
 
