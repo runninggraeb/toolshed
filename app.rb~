@@ -101,7 +101,7 @@ get "/my_tools.html" do
     @all = @m.query("SELECT * FROM OR_TEST3 WHERE fid = '#{@user['id']}'").fetch_row
     if @all
     else
-      @m.query "INSERT INTO OR_TEST3 (fid,city,state,count) VALUES('#{@user['id']}','Eugene','OR','1')"
+      @m.query "INSERT INTO OR_TEST3 (fid,city,state,count) VALUES('#{@user['id']}','Eugene','OR','0')"
       @all = @m.query("SELECT * FROM OR_TEST3 WHERE fid = '#{@user['id']}'").fetch_row
     end
     @m.close
