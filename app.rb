@@ -101,7 +101,7 @@ get "/my_tools.html" do
     @all = @m.query("SELECT * FROM OR_TEST3 WHERE fid = '#{@user['id']}'").fetch_row
     if @all
     else
-      @m.query "INSERT INTO OR_TEST3 (fid,city,state,count) VALUES('#{@user['id']}','Eugene','OR','1')"
+      @m.query "INSERT INTO OR_TEST3 (fid,city,state,count) VALUES('#{@user['id']}','Eugene','OR','0')"
       @all = @m.query("SELECT * FROM OR_TEST3 WHERE fid = '#{@user['id']}'").fetch_row
     end
     @m.close
@@ -132,10 +132,13 @@ post "/my_tools.html" do
   @enter=1
   @adds=0
   @news=Array.new(@count+5)
+  @labels=Array.new(@count+5)
   for i in 1..(@count+5)
     if params[:'tool_#{@enter}']
       @news[@adds*2]=params[:'tool_#{@enter}']
       @news[@adds*2+1]=params[:'type_#{@enter}']
+      @labels[@adds*2]='tool#{@enter}'
+      @labels[@adds*2+1]='type#{@enter}'
       @adds +=1
     end
     @enter +=1
@@ -143,7 +146,7 @@ post "/my_tools.html" do
   @city = params[:city]
   @state = params[:state]
 
-  @new.query "INSERT INTO OR_TEST3 (fid,city,state,count,tool1,type1) VALUES('#{@user['id']}','#{@city}','#{@state}','#{@adds}',#{@news})"
+  @new.query "INSERT INTO OR_TEST3 (fid,city,state,count,#{@labels}) VALUES('#{@user['id']}','#{@city}','#{@state}','#{@adds}',#{@news})"
   @new.close
   redirect "/my_tools.html"
 end

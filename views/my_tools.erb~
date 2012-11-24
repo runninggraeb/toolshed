@@ -165,7 +165,7 @@
               <option value="yard_work">Yard Work</option>
               <option value="painting">Painting</option>
             </select>
-            Tool name:<input type="text" size="10" maxlength="20" name="tool_"><br/>
+            Tool name:<input type="text" size="10" maxlength="20" name="tool_#{@it}"><br/>
       <% end %>
       <input type="submit" value="Update">
     </form>
