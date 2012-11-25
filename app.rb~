@@ -136,7 +136,7 @@ post "/my_tools.html" do
   for i in 1..(@count+5)
     @enter +=1
     @temp=params[:"tool_#{@enter}"]
-    if @temp !=""
+    if @temp != nil
       @news[@adds*2+1] = "'#{@temp}'"
       @temp=params[:"type_#{@enter}"]
       @news[@adds*2+2] = "'#{@temp}'"
@@ -148,8 +148,8 @@ post "/my_tools.html" do
 
  #Try route matching
 
- # @news=@news[1..(@adds*2)]
- # @labels=@labels[1..(@adds*2)]
+  @news=@news[1..(@adds*2)]
+  @labels=@labels[1..(@adds*2)]
 
   @news=@news.join(',')
   @labels=@labels.join(',')
