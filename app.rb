@@ -157,15 +157,15 @@ post "/my_tools.html" do
 
   @news=@news[1..2]
  # @news=@news[1..(@adds*2)]
-  @labels=@labels[1..(@adds*2)]
+ # @labels=@labels[1..(@adds*2)]
 
   @news=@news.join(',')
-  @labels=@labels.join(',')
+ # @labels=@labels.join(',')
 
   @city = params[:city]
   @state = params[:state]
 
-  @new.query "INSERT INTO OR_TEST3 (fid,city,state,count,tool1,type1) VALUES('#{@user['id']}','#{@city}','#{@state}','#{@adds}',#{puts @news})"
+  @new.query "INSERT INTO OR_TEST3 (fid,city,state,count,tool1,type1) VALUES('#{@user['id']}','#{@city}','#{@state}','#{@adds}',#{@news})"
 
   @new.close
   redirect "/my_tools.html"
