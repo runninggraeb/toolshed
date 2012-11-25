@@ -128,6 +128,7 @@ post "/my_tools.html" do
   @new.query "DELETE FROM OR_TEST3 WHERE fid = '#{@user['id']}'"
 
   @count = @all.at(4)
+  @count = @count.to_i
 
   @enter=1
   @adds=0
@@ -143,6 +144,9 @@ post "/my_tools.html" do
     end
     @enter +=1
   end
+
+  @labels=@labels.join(',')
+
   @city = params[:city]
   @state = params[:state]
 

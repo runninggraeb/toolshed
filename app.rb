@@ -128,6 +128,7 @@ post "/my_tools.html" do
   @new.query "DELETE FROM OR_TEST3 WHERE fid = '#{@user['id']}'"
 
   @count = @all.at(4)
+  @count = @count.to_i
 
   @enter=1
   @adds=0
@@ -135,8 +136,8 @@ post "/my_tools.html" do
   @labels=Array.new(@count*2+10)
   for i in 1..(@count+5)
     if params[:'tool_#{@enter}']
-      @news[@adds*2]=params[:'tool_#{@enter}']
-      @news[@adds*2+1]=params[:'type_#{@enter}']
+      @news[@adds*2]=params[:"'tool_#{@enter}'"]
+      @news[@adds*2+1]=params[:"'type_#{@enter}'"]
       @labels[@adds*2]='tool#{@enter}'
       @labels[@adds*2+1]='type#{@enter}'
       @adds +=1
@@ -144,7 +145,7 @@ post "/my_tools.html" do
     @enter +=1
   end
 
-  @labels=@labels.join(',')
+  @news=@news.join(',')
 
   @city = params[:city]
   @state = params[:state]
