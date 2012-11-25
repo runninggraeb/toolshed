@@ -136,7 +136,7 @@ post "/my_tools.html" do
   for i in 1..(@count+5)
     @enter +=1
     @temp=params[:"tool_#{@enter}"]
-    if @temp != nil
+    if @temp.size > 2
       @news[@adds*2+1] = "'#{@temp}'"
       @temp=params[:"type_#{@enter}"]
       @news[@adds*2+2] = "'#{@temp}'"
