@@ -149,11 +149,12 @@ post "/my_tools.html" do
 
  #Try route matching
 
-  @temp=params[:tool_1]
-  @news[0+1] = "'#{@temp}'"
-  @temp=params[:type_1]
-  @news[0+2] = "'#{@temp}'"
   @adds=1
+  @temp=params[:"tool_#{@adds}"]
+  @news[0+1] = "'#{@temp}'"
+  @temp=params[:"type_#{@adds}"]
+  @news[0+2] = "'#{@temp}'"
+
 
   @news=@news[1..2]
  # @news=@news[1..(@adds*2)]
