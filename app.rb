@@ -136,7 +136,7 @@ post "/my_tools.html" do
   @labels=Array.new(@count*2+11)
   for i in 1..(@count+5)
     @temp=params[:"tool_#{@enter}"]
-    if @temp
+    if @temp != ""
       @news[@adds*2+1] = "'#{@temp}'"
       @temp=params[:"type_#{@enter}"]
       @news[@adds*2+2] = "'#{@temp}'"
