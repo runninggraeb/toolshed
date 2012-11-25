@@ -132,8 +132,8 @@ post "/my_tools.html" do
 
   @enter=1
   @adds=0
-  @news=Array.new(@count*2+11)
-  @labels=Array.new(@count*2+11)
+  @news=Array.new(@count*2+5)
+  @labels=Array.new(@count*2+5)
   for i in 1..(@count+5)
     @temp=params[:"tool_#{@enter}"]
     if @temp
@@ -156,7 +156,7 @@ post "/my_tools.html" do
   @city = params[:city]
   @state = params[:state]
 
-  #@new.query "INSERT INTO OR_TEST3 (fid,city,state,count,#{@labels}) VALUES('#{@user['id']}','#{@city}','#{@state}','#{@adds}',#{@news})"
+  @new.query "INSERT INTO OR_TEST3 (fid,city,state,count,tool1) VALUES('#{@user['id']}','#{@city}','#{@state}','#{@adds}','#{@news}')"
 
   @new.close
   redirect "/my_tools.html"
