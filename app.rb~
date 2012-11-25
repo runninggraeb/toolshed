@@ -132,8 +132,8 @@ post "/my_tools.html" do
 
   @enter=1
   @adds=0
-  @news=Array.new(@count*2+5)
-  @labels=Array.new(@count*2+5)
+  @news=Array.new(@count*2+11)
+  @labels=Array.new(@count*2+11)
   for i in 1..(@count+5)
     @temp=params[:"tool_#{@enter}"]
     if @temp
