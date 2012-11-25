@@ -125,7 +125,6 @@ post "/my_tools.html" do
 
   @new=Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644')
   @all = @new.query("SELECT * FROM OR_TEST3 WHERE fid = '#{@user['id']}'").fetch_row
-  @new.query "DELETE FROM OR_TEST3 WHERE fid = '#{@user['id']}'"
 
   @count = @all.at(4)
   @count = @count.to_i
@@ -136,9 +135,11 @@ post "/my_tools.html" do
   @labels=Array.new(@count*2+11)
   for i in 1..(@count+5)
     @temp=params[:"tool_#{@enter}"]
+    @temp=@temp.gsub(/[']/,'')
     if @temp != ""
       @news[@adds*2+1] = "'#{@temp}'"
       @temp=params[:"type_#{@enter}"]
+      @temp=@temp.gsub(/[']/,'')
       @news[@adds*2+2] = "'#{@temp}'"
       @labels[@adds*2+1]="tool#{@enter}"
       @labels[@adds*2+2]="type#{@enter}"
@@ -158,6 +159,7 @@ post "/my_tools.html" do
   @city = params[:city]
   @state = params[:state]
 
+  @new.query "DELETE FROM OR_TEST3 WHERE fid = '#{@user['id']}'"
   @new.query "INSERT INTO OR_TEST3 (fid,city,state,count,#{@labels}) VALUES('#{@user['id']}','#{@city}','#{@state}','#{@adds}',#{@news})"
 
   @new.close
