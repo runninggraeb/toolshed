@@ -125,7 +125,7 @@ post "/my_tools.html" do
 
   @new=Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644')
   @all = @new.query("SELECT * FROM OR_TEST3 WHERE fid = '#{@user['id']}'").fetch_row
-  @new.query "DELETE FROM OR_TEST3 WHERE fid = '#{@user['id']}'"
+ # @new.query "DELETE FROM OR_TEST3 WHERE fid = '#{@user['id']}'"
 
   @count = @all.at(4)
   @count = @count.to_i
@@ -134,29 +134,29 @@ post "/my_tools.html" do
   @adds=0
   @news=Array.new(@count*2+11)
   @labels=Array.new(@count*2+11)
-  for i in 1..(@count+5)
-    @temp=params[:"tool_#{@enter}"]
-    if @temp
-      @news[@adds*2+1] = "'#{@temp}'"
-      @temp=params[:"type_#{@enter}"]
-      @news[@adds*2+2] = "'#{@temp}'"
-      @labels[@adds*2+1]="tool#{@enter}"
-      @labels[@adds*2+2]="type#{@enter}"
-      @adds +=1
-    end
-    @enter +=1
-  end
+ # for i in 1..(@count+5)
+ #   @temp=params[:"tool_#{@enter}"]
+ #   if @temp
+ #     @news[@adds*2+1] = "'#{@temp}'"
+ #     @temp=params[:"type_#{@enter}"]
+ #     @news[@adds*2+2] = "'#{@temp}'"
+ #     @labels[@adds*2+1]="tool#{@enter}"
+ #     @labels[@adds*2+2]="type#{@enter}"
+ #     @adds +=1
+ #   end
+ #   @enter +=1
+ # end
 
-  @news=@news[1..(@adds*2)]
-  @labels=@labels[1..(@adds*2)]
+ # @news=@news[1..(@adds*2)]
+ # @labels=@labels[1..(@adds*2)]
 
-  @news=@news.join(',')
-  @labels=@labels.join(',')
+ # @news=@news.join(',')
+ # @labels=@labels.join(',')
 
-  @city = params[:city]
-  @state = params[:state]
+ # @city = params[:city]
+ # @state = params[:state]
 
-  @new.query "INSERT INTO OR_TEST3 (fid,city,state,count,#{@labels}) VALUES('#{@user['id']}','#{@city}','#{@state}','#{@adds}',#{@news})"
+ # @new.query "INSERT INTO OR_TEST3 (fid,city,state,count,#{@labels}) VALUES('#{@user['id']}','#{@city}','#{@state}','#{@adds}',#{@news})"
 
   @new.close
   redirect "/my_tools.html"
