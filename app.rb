@@ -129,13 +129,14 @@ post "/my_tools.html" do
   @count = @all.at(4)
   @count = @count.to_i
 
-  @enter=1
+  @enter=0
   @adds=0
   @news=Array.new(@count*2+11)
   @labels=Array.new(@count*2+11)
   for i in 1..(@count+5)
+    @enter +=1
     @temp=params[:"tool_#{@enter}"]
-    if @temp != ''
+    if @temp !=""
       @news[@adds*2+1] = "'#{@temp}'"
       @temp=params[:"type_#{@enter}"]
       @news[@adds*2+2] = "'#{@temp}'"
@@ -143,7 +144,6 @@ post "/my_tools.html" do
       @labels[@adds*2+2]="type#{@enter}"
       @adds +=1
     end
-    @enter +=1
   end
 
  #Try route matching
