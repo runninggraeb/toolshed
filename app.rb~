@@ -149,9 +149,9 @@ post "/my_tools.html" do
 
  #Try route matching
 
-  @temp=[:tool_1]
+  @temp=params[:tool_1]
   @news[0+1] = "'#{@temp}'"
-  @temp=[:type_1]
+  @temp=params[:type_1]
   @news[0+2] = "'#{@temp}'"
   @adds=1
 
