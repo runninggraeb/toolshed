@@ -138,8 +138,8 @@ post "/my_tools.html" do
     @news[@adds*2+1]=params[:"'tool_#{@enter}'"]
     if @news[@adds*2+1]
       @news[@adds*2+2]=params[:"'type_#{@enter}'"]
-      @labels[@adds*2+1]='tool#{@enter}'
-      @labels[@adds*2+2]='type#{@enter}'
+      @labels[@adds*2+1]="tool#{@enter}"
+      @labels[@adds*2+2]="type#{@enter}"
       @adds +=1
     end
     @enter +=1
@@ -149,6 +149,7 @@ post "/my_tools.html" do
   @labels=@labels[1..(@adds*2)]
 
   @news=@news.join(",")
+  @labels=@labels.join(",")
 
   @city = params[:city]
   @state = params[:state]

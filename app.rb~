@@ -127,7 +127,7 @@ post "/my_tools.html" do
   @all = @new.query("SELECT * FROM OR_TEST3 WHERE fid = '#{@user['id']}'").fetch_row
   @new.query "DELETE FROM OR_TEST3 WHERE fid = '#{@user['id']}'"
 
-  @count = @all.at(4)
+  @count = @all.at(3)
   @count = @count.to_i
 
   @enter=1
