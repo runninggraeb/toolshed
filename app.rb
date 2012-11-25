@@ -147,6 +147,9 @@ post "/my_tools.html" do
     @enter +=1
   end
 
+  @temp=params[:"tool_1"]
+  @news[0+1] = "'#{@temp}'"
+
  # @news=@news[1..(@adds*2)]
   @labels=@labels[1..(@adds*2)]
 
