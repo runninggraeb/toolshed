@@ -149,9 +149,9 @@ post "/my_tools.html" do
 
  #Try route matching
 
-  @temp="dog"
+  @temp=[:tool_1]
   @news[0+1] = "'#{@temp}'"
-  @temp="carpentry"
+  @temp=[:type_1]
   @news[0+2] = "'#{@temp}'"
   @adds=1
 

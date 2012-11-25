@@ -144,7 +144,7 @@
       <% @it=0 %>
       <% for i in 1..@count %>
         <% @it +=1 %>
-          <select name="type">
+          <select name="type_<%= @it %>">
             <% @type=@all.at(4+@it*2) %>
             <option <% if @type=="other" %> selected="selected" <% end %> value="other">Other</option>
             <option <% if @type=="carpentry" %> selected="selected" <% end %> value="carpentry">Carpentry</option>
@@ -153,11 +153,11 @@
             <option <% if @type=="yard_work" %> selected="selected" <% end %> value="yard_work">Yard Work</option>
             <option <% if @type=="painting" %> selected="selected" <% end %> value="painting">Painting</option>
           </select>
-          Tool name:<input type="text" size="10" maxlength="20" name="tool_#{@it}" value="<%= @all.at(3+@it*2)%>"><br/>
+          Tool name:<input type="text" size="10" maxlength="20" name="tool_<%= @it %>" value="<%= @all.at(3+@it*2)%>"><br/>
       <% end %>
       <% for i in 1..5 %>
         <% @it +=1 %>
-            <select name="type_new">
+            <select name="type_<%= @it %>">
               <option value="other">Other</option>
               <option value="carpentry">Carpentry</option>
               <option value="plumbing">Plumbing</option>
@@ -165,7 +165,7 @@
               <option value="yard_work">Yard Work</option>
               <option value="painting">Painting</option>
             </select>
-            Tool name:<input type="text" size="10" maxlength="20" name="tool_#{@it}"><br/>
+            Tool name:<input type="text" size="10" maxlength="20" name="tool_<%= @it %>"><br/>
       <% end %>
       <input type="submit" value="Update">
     </form>
