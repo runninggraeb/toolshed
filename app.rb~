@@ -135,8 +135,8 @@ post "/my_tools.html" do
   @news=Array.new(@count*2+10)
   @labels=Array.new(@count*2+10)
   for i in 1..(@count+5)
-    if params[:'tool_#{@enter}']
-      @news[@adds*2]=params[:"'tool_#{@enter}'"]
+    @news[@adds*2]=params[:"'tool_#{@enter}'"]
+    if @news[@adds*2]
       @news[@adds*2+1]=params[:"'type_#{@enter}'"]
       @labels[@adds*2]='tool#{@enter}'
       @labels[@adds*2+1]='type#{@enter}'
@@ -148,7 +148,7 @@ post "/my_tools.html" do
   @news=@news[1..(@adds*2)]
   @labels=@labels[1..(@adds*2)]
 
-  @news=@news.join(',')
+  @news=@news.join(",")
 
   @city = params[:city]
   @state = params[:state]
