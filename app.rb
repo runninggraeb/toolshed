@@ -147,11 +147,11 @@ post "/my_tools.html" do
     @enter +=1
   end
 
-  @news=@news[1..(@adds*2)]
-  @labels=@labels[1..(@adds*2)]
+ # @news=@news[1..(@adds*2)]
+ # @labels=@labels[1..(@adds*2)]
 
-  @news=@news.join(',')
-  @labels=@labels.join(',')
+ # @news=@news.join(',')
+ # @labels=@labels.join(',')
 
   @city = params[:city]
   @state = params[:state]
