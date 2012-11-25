@@ -149,9 +149,9 @@ post "/my_tools.html" do
 
  #Try route matching
 
-  @temp=params[:tool_1]
+  @temp="dog"
   @news[0+1] = "'#{@temp}'"
-  @temp=params[:type_1]
+  @temp="carpentry"
   @news[0+2] = "'#{@temp}'"
   @adds=1
 
@@ -165,7 +165,7 @@ post "/my_tools.html" do
   @city = params[:city]
   @state = params[:state]
 
-  @new.query "INSERT INTO OR_TEST3 (fid,city,state,count,tool1,type1) VALUES('#{@user['id']}','#{@city}','#{@state}','#{@adds}',#{@news})"
+  @new.query "INSERT INTO OR_TEST3 (fid,city,state,count,tool1,type1) VALUES('#{@user['id']}','#{@city}','#{@state}','#{@adds}',#{puts @news})"
 
   @new.close
   redirect "/my_tools.html"
