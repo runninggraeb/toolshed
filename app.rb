@@ -134,18 +134,18 @@ post "/my_tools.html" do
   @adds=0
   @news=Array.new(@count*2+11)
   @labels=Array.new(@count*2+11)
-  for i in 1..(@count+5)
-    @temp=params[:"tool_#{@enter}"]
-    if @temp
-      @news[@adds*2+1] = "'#{@temp}'"
-      @temp=params[:"type_#{@enter}"]
-      @news[@adds*2+2] = "'#{@temp}'"
-      @labels[@adds*2+1]="tool#{@enter}"
-      @labels[@adds*2+2]="type#{@enter}"
-      @adds +=1
-    end
-    @enter +=1
-  end
+ # for i in 1..(@count+5)
+ #   @temp=params[:"tool_#{@enter}"]
+ #   if @temp
+ #     @news[@adds*2+1] = "'#{@temp}'"
+ #     @temp=params[:"type_#{@enter}"]
+ #     @news[@adds*2+2] = "'#{@temp}'"
+ #     @labels[@adds*2+1]="tool#{@enter}"
+ #     @labels[@adds*2+2]="type#{@enter}"
+ #     @adds +=1
+ #   end
+ #   @enter +=1
+ # end
 
   @temp=params[:tool_1]
   @news[0+1] = "'#{@temp}'"
