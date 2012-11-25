@@ -138,7 +138,6 @@ post "/my_tools.html" do
     if @temp != ""
       @news[@adds*2+1] = "'#{@temp}'"
       @temp=params[:"type_#{@enter}"]
-      @temp=@temp.gsub(/[']/,'')
       @news[@adds*2+2] = "'#{@temp}'"
       @labels[@adds*2+1]="tool#{@enter}"
       @labels[@adds*2+2]="type#{@enter}"
