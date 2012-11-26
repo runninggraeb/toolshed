@@ -157,7 +157,7 @@
       <% end %>
       <% for i in 1..5 %>
         <% @it +=1 %>
-            <select name="type_new">
+            <select name="type_<%= @it %>">
               <option value="other">Other</option>
               <option value="carpentry">Carpentry</option>
               <option value="plumbing">Plumbing</option>
