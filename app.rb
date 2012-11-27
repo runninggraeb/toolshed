@@ -83,16 +83,15 @@ get "/friends_tools.html" do
 
   #initiate array
   @friend_count=0
-  @length=@fr_app.length
-
+  @list=Array.new(@fr_app.length)
   @fr_app.each do |friend_result|
     @m = Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644')
     @lend=@m.query("SELECT * FROM OR_TEST3 WHERE fid = '3413462'").fetch_row
     @m.close
-    @friend_count +=1
+
     if @lend != nil
-      #add to array
-      # friend_result['uid'] calls id
+      @fr_count +=1
+      @list[@fr_count] = @lend[5..64]
     end
   end
 
