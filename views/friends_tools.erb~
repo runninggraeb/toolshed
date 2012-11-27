@@ -44,20 +44,6 @@
           );
         });
 
-        $('#sendToFriends').click(function() {
-          FB.ui(
-            {
-              method : 'send',
-              link   : $(this).attr('data-url')
-            },
-            function (response) {
-              if (response != null) {
-                logResponse(response);
-              }
-            }
-          );
-        });
-
         $('#sendRequest').click(function() {
           FB.ui(
             {
@@ -150,6 +136,7 @@
     <br/>
 
     <p><%= @fr_app %></p>
+    <p><%= @friend_count %></p>
 
     <br/>
     </section>

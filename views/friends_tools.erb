@@ -29,35 +29,6 @@
         }
       }
 
-      $(function(){
-        $('#postToWall').click(function() {
-          FB.ui(
-            {
-              method : 'feed',
-              link   : $(this).attr('data-url')
-            },
-            function (response) {
-              if (response != null) {
-                logResponse(response);
-              }
-            }
-          );
-        });
-
-        $('#sendToFriends').click(function() {
-          FB.ui(
-            {
-              method : 'send',
-              link   : $(this).attr('data-url')
-            },
-            function (response) {
-              if (response != null) {
-                logResponse(response);
-              }
-            }
-          );
-        });
-
         $('#sendRequest').click(function() {
           FB.ui(
             {
