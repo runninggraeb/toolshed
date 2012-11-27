@@ -91,7 +91,7 @@ get "/friends_tools.html" do
     @friend=@fr_app.at(@fr_count)
     @lend=@m.query("SELECT * FROM OR_TEST3 WHERE fid = '#{@friend['uid']}'").fetch_row
     if @lend != nil
-      @list[@fr_w_count] = @lend
+      @list[@fr_w_count] = @lend.compact
       @fr_w_count +=1
     end
     @fr_count +=1
