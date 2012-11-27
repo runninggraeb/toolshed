@@ -149,7 +149,7 @@
     <section>
     <br/>
 
-    <p><%= @friends_using_app %></p>
+    <p><%= @fr_app['uid'] %></p>
 
 
     <br/>
