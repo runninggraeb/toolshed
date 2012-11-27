@@ -81,10 +81,6 @@ get "/friends_tools.html" do
     @fr_app = @graph.fql_query("SELECT uid, name, is_app_user FROM user WHERE uid in (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1")
   end
 
-  @friend_count=0
-  for i in 1..@fr_app['uid'].length
-    @friend_count +=1
-  end
 
 
   erb :friends_tools

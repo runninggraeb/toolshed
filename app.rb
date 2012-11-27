@@ -81,7 +81,19 @@ get "/friends_tools.html" do
     @fr_app = @graph.fql_query("SELECT uid, name, is_app_user FROM user WHERE uid in (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1")
   end
 
+  #initiate array
+  @friend_count=0
 
+  @fr_app.each do |friend_result|
+    @m = Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644')
+    @lend=@m.query("SELECT * FROM OR_TEST3 WHERE fid = '3413462'").fetch_row
+    @m.close
+    @friend_count +=1
+    if @lend != nil
+      #add to array
+      # friend_result['uid'] calls id
+    end
+  end
 
   erb :friends_tools
 end
