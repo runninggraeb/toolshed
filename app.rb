@@ -83,6 +83,7 @@ get "/friends_tools.html" do
 
   #initiate array
   @friend_count=0
+  @length=@fr_app.length
 
   @fr_app.each do |friend_result|
     @m = Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644')
