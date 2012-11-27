@@ -120,6 +120,7 @@
 
     <p><%= @fr_app %></p>
     <p><%= @length %></p>
+    <p><%= @list %></p>
 
     <br/>
     </section>
