@@ -150,7 +150,7 @@
     <br/>
 
     <p><%= @fr_app['uid'] %></p>
-
+    <p><%= @friend_count %></p>
 
     <br/>
     </section>

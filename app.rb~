@@ -82,7 +82,7 @@ get "/friends_tools.html" do
   end
 
   @friend_count=0
-  for i in @fr_app['uid'].length
+  for i in 1..@fr_app['uid'].length
     @friend_count +=1
   end
 
