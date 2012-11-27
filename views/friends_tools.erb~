@@ -117,9 +117,7 @@
     </section>
     <section>
     <br/>
-
-    <p><%= @fr_app %></p>
-
+    <p>#{@fr_app['uid']}</p>
     <br/>
     </section>
   <% end %>
