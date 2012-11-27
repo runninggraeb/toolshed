@@ -90,7 +90,7 @@ get "/friends_tools.html" do
     @m.close
 
     if @lend != nil
-      @list[@fr_count] = @lend.at(5..64)
+  #    @list[@fr_count] = @lend
       @fr_count +=1
     end
   end
