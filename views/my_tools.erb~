@@ -144,6 +144,9 @@
       <% @it=0 %>
       <% for i in 1..@count %>
         <% @it +=1 %>
+        <% while @all.at(3+@it*2) == nil%>
+          <% @it +=1 %>
+        <% end %>
           <select name="type_<%= @it %>">
             <% @type=@all.at(4+@it*2) %>
             <option <% if @type=="other" %> selected="selected" <% end %> value="other">Other</option>
