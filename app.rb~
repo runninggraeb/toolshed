@@ -90,11 +90,11 @@ get "/friends_tools.html" do
     @lend=@m.query("SELECT * FROM OR_TEST3 WHERE fid = '#{@fr_app['uid']}'").fetch_row
     @m.close
 
-    if @lend != nil
-      @lend1=@lend
+ #   if @lend != nil
+ #     @lend1=@lend
  #     @list[@fr_count] = @lend
-      @fr_count +=1
-    end
+ #     @fr_count +=1
+ #   end
   end
 
   erb :friends_tools
