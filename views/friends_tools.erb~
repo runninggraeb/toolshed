@@ -119,7 +119,7 @@
     <br/>
     <p><%= @fr_app %></p>
     <br/>
-    <p><%= @user %></p>
+    <p><%= @lend %></p>
     <br/>
     </section>
   <% end %>
