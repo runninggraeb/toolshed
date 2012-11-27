@@ -78,8 +78,15 @@ get "/friends_tools.html" do
     @user    = @graph.get_object("me")
 
     # for other data you can always run fql
-    @friends_using_app = @graph.fql_query("SELECT uid, name, is_app_user FROM user WHERE uid in (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1")
+    @fr_app = @graph.fql_query("SELECT uid, name, is_app_user FROM user WHERE uid in (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1")
   end
+
+  @friend_count=0
+  for i in @fr_app['uid'].length
+    @friend_count +=1
+  end
+
+
   erb :friends_tools
 end
 
