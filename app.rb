@@ -86,13 +86,15 @@ get "/friends_tools.html" do
   @fr_w_count=0
   @l=@fr_app.length
   @list=Array.new(@l)
+  @names=Array.new(@l)
   @m = Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644')
   @fr_app.each do |friend_result|
     @friend=@fr_app.at(@fr_count)
-    @lend=@m.query("SELECT * FROM OR_TEST3 WHERE fid = '#{@friend['uid']}'").fetch_row.compact
+    @lend=@m.query("SELECT * FROM OR_TEST3 WHERE fid = '#{@friend['uid']}'").fetch_row
     if @lend != nil
-      @list[@fr_w_count] = @lend
+      @list[@fr_w_count] = @lend.compact
       @fr_w_count +=1
+      @names[@fr_w_count] = @friend['name']
     end
     @fr_count +=1
   end
