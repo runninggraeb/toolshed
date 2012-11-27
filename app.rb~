@@ -82,19 +82,21 @@ get "/friends_tools.html" do
   end
 
   #initiate array
-  @friend_count=0
+  @fr_count=0
+  @fr_w_count=0
   @l=@fr_app.length
   @list=Array.new(@l)
   @m = Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644')
   @fr_app.each do |friend_result|
-  #  @lend=@m.query("SELECT * FROM OR_TEST3 WHERE fid = '#{@fr_app['uid']}'").fetch_row
-  #  @lend is causing the problems.  @fr_app id call is causing the problems.
 
-  #  if @lend != nil
-  #    @list[@fr_count] = @lend
-  #    @fr_count +=1
-  #  end
+    @friend=@fr_app.at(@fr_count)
+    @lend=@m.query("SELECT * FROM OR_TEST3 WHERE fid = '#{@friend['uid']}'").fetch_row
 
+    if @lend != nil
+      @list[@fr_w_count] = @lend
+      @fr_w_count +=1
+    end
+    @fr_count +=1
   end
   @m.close
 
