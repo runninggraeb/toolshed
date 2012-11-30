@@ -127,6 +127,9 @@ get "/friends_tools.html" do
     @c=6
     @inv_size=@temp_inv.at(4)
     for i in 1..@inv_size.to_i
+
+=begin
+
       if @temp_inv.at(@c) == "carpentry"
         @temp_type=0
       end
@@ -146,6 +149,9 @@ get "/friends_tools.html" do
         @temp_type=5
       end
       instance_variable_get("@#{@temp_inv.at(3)}")[@temp_type] +=[[@temp_inv.at(@c-1),@temp_fr,@temp_inv.at(2)]]
+
+=end
+
       c +=2
     end
 
