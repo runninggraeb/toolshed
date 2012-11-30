@@ -148,7 +148,7 @@ get "/friends_tools.html" do
       instance_variable_get("@#{@temp_inv.at(3)}")[@temp_type] +=[[@temp_inv.at(@c-1),@temp_fr,@temp_inv.at(2)]]
       c +=2
     end
-=end
+
 
 
 
