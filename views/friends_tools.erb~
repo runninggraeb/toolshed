@@ -146,8 +146,7 @@
     <br/>
 
     <% @html_states=0 %>
-    <% @html_state_length=@states_list.length %>
-    <% for i in 1..@html_state_length %>
+    <% for i in 1..(@states_list.length) %>
 
       <% @html_states +=1 %>  
     <% end %>
