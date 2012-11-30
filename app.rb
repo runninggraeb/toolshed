@@ -121,33 +121,35 @@ get "/friends_tools.html" do
       @state_count +=1
     end
 
-=begin
+
+
 
     @c=6
     for i in 1..@temp_inv.at(4)
-      if @temp_inv.at(@c+6) == "carpentry"
+      if @temp_inv.at(@c) == "carpentry"
         @temp_type=0
       end
-      if @temp_inv.at(@c+6) == "plumbing"
+      if @temp_inv.at(@c) == "plumbing"
         @temp_type=1
       end
-      if @temp_inv.at(@c+6) == "electrical"
+      if @temp_inv.at(@c) == "electrical"
         @temp_type=2
       end
-      if @temp_inv.at(@c+6) == "yard_work"
+      if @temp_inv.at(@c) == "yard_work"
         @temp_type=3
       end
-      if @temp_inv.at(@c+6) == "painting"
+      if @temp_inv.at(@c) == "painting"
         @temp_type=4
       end
-      if @temp_inv.at(@c+6) == "other"
+      if @temp_inv.at(@c) == "other"
         @temp_type=5
       end
       instance_variable_get("@#{@temp_inv.at(3)}")[@temp_type] +=[[@temp_inv.at(@c-1),@temp_fr,@temp_inv.at(2)]]
       c +=2
     end
 
-=end
+
+
 
     @it +=1
 
