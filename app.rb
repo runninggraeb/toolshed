@@ -109,8 +109,9 @@ get "/friends_tools.html" do
   @template[4]=Array.new(0)
   @template[5]=Array.new(0)
 
-  instance_variable_set(:@state_user, Array.new(@template))
-  @state_list[0]=@state_user
+  @state_list[0]=@state
+  instance_variable_set(:@state, Array.new(@template))
+
 
   @it=0
   for i in 1..@names.length
