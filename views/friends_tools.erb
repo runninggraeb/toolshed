@@ -119,7 +119,7 @@
             <a href="/" class="toolbar-button">
              <span>Welcome</span></a>
             <a href="friends_tools.html" class="toolbar-button">
-             <span>Frend's Tools</span></a>
+             <span>Friend's Tools</span></a>
             <a href="my_tools.html" class="toolbar-button">
              <span>My Tools</span></a>
             <a href="about_us.html" class="toolbar-button">
@@ -144,6 +144,25 @@
     <br/>
     <p><%= @CO %></p>
     <br/>
+    <% @html_states=0 %>
+    <% for i in 1..@state_list.length %>
+      <p><%= @state_list.at(@html_states) %></p>
+      <% @html_state_temp=instance_variable_get("@#{@state_list.at(@html_states)}")
+      <% @html_tools_temp=0 %>
+      <% for i in 1..@html_state_temp.at(0).length %>
+        <% @html_tool_temp=@html_state_temp.at(0)
+        <p><%= @html_tools_temp.at(0) %> <%= @html_tools_temp.at(1) %> <%= @html_tools_temp.at(2) %> Carpentry</p><br/>
+        <% @html_tools_temp +=1 %>
+      <% end %>
+
+
+      <% @html_states +=1 %>
+    <% end %>
+
+
+
+
+
 
     </section>
   <% end %>
