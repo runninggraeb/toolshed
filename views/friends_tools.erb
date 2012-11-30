@@ -146,7 +146,8 @@
     <br/>
 
     <% @html_states=0 %>
-    <% for i in 1..(@state_list.length) %>
+    <% @html_state_length=@states_list.length %>
+    <% for i in 1..@html_state_length %>
 <!--      <p><%= @state_list.at(@html_states) %></p>
       <% @html_state_temp=instance_variable_get("@#{@state_list.at(@html_states)}")
       <% @html_tools_temp=0 %>
