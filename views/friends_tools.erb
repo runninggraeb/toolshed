@@ -150,39 +150,45 @@
       <p><%= @state_list.at(@html_states) %></p>
       <% @html_state_temp=instance_variable_get("@#{@state_list.at(@html_states)}") %>
 
+      <p>Carpentry</p>
       <% @html_type_temp = @html_state_temp.at(0) %>
       <% @html_type_temp.each do|n| %>
-        <p><%= n.at(0) %> <%= n.at(1) %> <%= n.at(2) %> Carpentry</p>
+        <p><%= n.at(0) %> <%= n.at(1) %> <%= n.at(2) %></p>
       <% end %>
       <br/>
 
-      <% @html_type_temp = @html_state_temp.at(0) %>
+      <p>Plumbing</p>
+      <% @html_type_temp = @html_state_temp.at(1) %>
       <% @html_type_temp.each do|n| %>
-        <p><%= n.at(0) %> <%= n.at(1) %> <%= n.at(2) %> Plumbing</p>
+        <p><%= n.at(0) %> <%= n.at(1) %> <%= n.at(2) %></p>
       <% end %>
       <br/>
 
-      <% @html_type_temp = @html_state_temp.at(0) %>
+      <p>Electrical</p>
+      <% @html_type_temp = @html_state_temp.at(2) %>
       <% @html_type_temp.each do|n| %>
-        <p><%= n.at(0) %> <%= n.at(1) %> <%= n.at(2) %> Electrical</p>
+        <p><%= n.at(0) %> <%= n.at(1) %> <%= n.at(2) %></p>
       <% end %>
       <br/>
 
-      <% @html_type_temp = @html_state_temp.at(0) %>
+      <p>Yard Work</p>
+      <% @html_type_temp = @html_state_temp.at(3) %>
       <% @html_type_temp.each do|n| %>
-        <p><%= n.at(0) %> <%= n.at(1) %> <%= n.at(2) %> Yard Work</p>
+        <p><%= n.at(0) %> <%= n.at(1) %> <%= n.at(2) %></p>
       <% end %>
       <br/>
 
-      <% @html_type_temp = @html_state_temp.at(0) %>
+      <p>Painting</p>
+      <% @html_type_temp = @html_state_temp.at(4) %>
       <% @html_type_temp.each do|n| %>
-        <p><%= n.at(0) %> <%= n.at(1) %> <%= n.at(2) %> Painting</p>
+        <p><%= n.at(0) %> <%= n.at(1) %> <%= n.at(2) %></p>
       <% end %>
       <br/>
 
-      <% @html_type_temp = @html_state_temp.at(0) %>
+      <p>Other</p>
+      <% @html_type_temp = @html_state_temp.at(5) %>
       <% @html_type_temp.each do|n| %>
-        <p><%= n.at(0) %> <%= n.at(1) %> <%= n.at(2) %> Other</p>
+        <p><%= n.at(0) %> <%= n.at(1) %> <%= n.at(2) %></p>
       <% end %>
       <br/>
       <br/>
