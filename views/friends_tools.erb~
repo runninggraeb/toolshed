@@ -144,7 +144,7 @@
     <br/>
     <p><%= @CO %></p>
     <br/>
-    <p><%= @friends %></p>
+    <p><%= @fr_app %></p>
     <br/>
 <!--    <% @html_states=0 %>
     <% for i in 1..@state_list.length %>
