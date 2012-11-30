@@ -153,7 +153,8 @@
       <% @html_carp_temp = @html_state_temp.at(0) %>
 
       <% @html_carp_temp.each do|n| %>
-        <%= n %>
+        <% @html_tool_temp=@html_carp_temp.at(n-1) %>
+        <p><%= @html_tool_temp.at(0) %> <%= @html_tool_temp.at(1) %> <%= @html_tool_temp.at(2) %> Carpentry</p><br/>
       <% end %>
 
       <% @html_states +=1 %>  
