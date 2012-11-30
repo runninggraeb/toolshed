@@ -130,22 +130,22 @@ get "/friends_tools.html" do
 
     for i in 1..@inv_size
 
-      if @temp_inv.at(@c) == "carpentry"
+      if @temp_inv.at(@c) == "Carpentry"
         @temp_type=0
       end
-      if @temp_inv.at(@c) == "plumbing"
+      if @temp_inv.at(@c) == "Plumbing"
         @temp_type=1
       end
-      if @temp_inv.at(@c) == "electrical"
+      if @temp_inv.at(@c) == "Electrical"
         @temp_type=2
       end
-      if @temp_inv.at(@c) == "yard_work"
+      if @temp_inv.at(@c) == "Yard Work"
         @temp_type=3
       end
-      if @temp_inv.at(@c) == "painting"
+      if @temp_inv.at(@c) == "Painting"
         @temp_type=4
       end
-      if @temp_inv.at(@c) == "other"
+      if @temp_inv.at(@c) == "Other"
         @temp_type=5
       end
 
