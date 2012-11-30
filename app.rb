@@ -112,6 +112,7 @@ get "/friends_tools.html" do
   instance_variable_set(:"@#{@temp_inv.at(3)}", Array.new(@template))
   @state_list[0]=@state
 
+=begin
   for i in 1..@names.length
     @temp_fr=@names.at(@it)
     @temp_inv=@list.at(@it)
@@ -146,14 +147,11 @@ get "/friends_tools.html" do
     end
     @it +=1
   end
+=end
 
 
 
 
-
-  #Now, sort the tools into categories, each with a name next to it.
-  #important: tools, type, name, location
-  #Maybe add prefered viewing to personal array (by type, by person, by location)
 
 
   erb :friends_tools
