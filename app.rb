@@ -98,7 +98,7 @@ get "/friends_tools.html" do
 
   @names=@names.compact
   @state_count=1
-  @it=0
+
   @state_list=Array.new(50)
 
   @template=Array.new(6)
@@ -112,6 +112,7 @@ get "/friends_tools.html" do
   instance_variable_set(:@state, Array.new(@template))
   @state_list[0]=@state_user
 
+  @it=0
   for i in 1..@names.length
     @temp_fr=@names.at(@it)
     @temp_inv=@list.at(@it)
@@ -120,13 +121,10 @@ get "/friends_tools.html" do
       @state_list[@state_count]=@temp_inv.at(3)
       @state_count +=1
     end
-
     @c=6
     @inv_size=@temp_inv.at(4)
     @inv_size=@inv_size.to_i
-
     for i in 1..@inv_size
-
       if @temp_inv.at(@c) == "carpentry"
         @temp_type=0
       end
@@ -145,16 +143,10 @@ get "/friends_tools.html" do
       if @temp_inv.at(@c) == "other"
         @temp_type=5
       end
-
       instance_variable_get("@#{@temp_inv.at(3)}")[@temp_type] +=[[@temp_inv.at(@c-1),@temp_fr,@temp_inv.at(2)]]
-
       @c +=2
-
     end
-
-
     @it +=1
-
   end
 
   @state_list=@state_list.compact
