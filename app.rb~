@@ -166,7 +166,7 @@ get "/friends_tools.html" do
 
 
   for i in 1..@state_list
-    instance_variable_set(:"@#{@state_list.at(@state_count)}") = instance_variable_get("@#{@state_list.at(@state_count)}").compact
+#    instance_variable_set(:"@#{@state_list.at(@state_count)}") = instance_variable_get("@#{@state_list.at(@state_count)}").compact
   end
 
   erb :friends_tools
@@ -175,6 +175,11 @@ end
 post "/friends_tools.html" do
   redirect "/friends_tools.html"
 end
+
+
+
+
+
 
 get "/my_tools.html" do
   @graph  = Koala::Facebook::API.new(session[:access_token])
