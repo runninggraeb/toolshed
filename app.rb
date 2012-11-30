@@ -95,7 +95,7 @@ get "/friends_tools.html" do
     @fr_count +=1
   end
   @m.close
-
+=begin
   @names=@names.compact
   @state_count=1
   @it=0
@@ -112,7 +112,7 @@ get "/friends_tools.html" do
   instance_variable_set(:"@#{@temp_inv.at(3)}", Array.new(@template))
   @state_list[0]=@state
 
-=begin
+
   for i in 1..@names.length
     @temp_fr=@names.at(@it)
     @temp_inv=@list.at(@it)
