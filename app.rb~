@@ -50,10 +50,8 @@ end
 
 
 get "/" do
-  # Get base API Connection
   @graph  = Koala::Facebook::API.new(session[:access_token])
 
-  # Get public details of current application
   @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
 
   if session[:access_token]
@@ -62,22 +60,18 @@ get "/" do
   erb :index
 end
 
-# used by Canvas apps - redirect the POST to be a regular GET
 post "/" do
   redirect "/"
 end
 
 get "/friends_tools.html" do
-  # Get base API Connection
   @graph  = Koala::Facebook::API.new(session[:access_token])
 
-  # Get public details of current application
   @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
 
   if session[:access_token]
     @user    = @graph.get_object("me")
 
-    # for other data you can always run fql
     @fr_app = @graph.fql_query("SELECT uid, name, is_app_user FROM user WHERE uid in (SELECT uid2 FROM friend WHERE uid1 = me()) AND is_app_user = 1")
   end
 
@@ -88,31 +82,89 @@ get "/friends_tools.html" do
   @list=Array.new(@l)
   @names=Array.new(@l)
   @m = Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644')
+  @all = @new.query("SELECT * FROM OR_TEST3 WHERE fid = '#{@user['id']}'").fetch_row
+  @state = @all.at(3)
   @fr_app.each do |friend_result|
     @friend=@fr_app.at(@fr_count)
     @lend=@m.query("SELECT * FROM OR_TEST3 WHERE fid = '#{@friend['uid']}'").fetch_row
     if @lend != nil
       @list[@fr_w_count] = @lend.compact
-      @fr_w_count +=1
       @names[@fr_w_count] = @friend['name']
+      @fr_w_count +=1
     end
     @fr_count +=1
   end
   @m.close
 
+  @names=@names.compact
+  @state_count=1
+  @it=0
+  @state_list=Array.new(50)
+
+  @template=Array.new(6)
+  @template[0]=Array.new(0)
+  @template[1]=Array.new(0)
+  @template[2]=Array.new(0)
+  @template[3]=Array.new(0)
+  @template[4]=Array.new(0)
+  @template[5]=Array.new(0)
+
+  instance_variable_set(:"@#{@temp_inv.at(3)}", Array.new(@template))
+  @state_list.at(0)=@state
+
+  for i in 1..@names.length
+    @temp_fr=@names.at(@it)
+    @temp_inv=@list.at(@it)
+    if instance_variable_get("@#{@temp_inv.at(3)}") == nil
+      instance_variable_set(:"@#{@temp_inv.at(3)}", Array.new(@template))
+      @state_list.at(@state_count)=@temp_inv.at(3)
+      @state_count +=1
+    end
+
+    @c=6
+    for i in 1..@temp_inv.at(4)
+      if @temp_inv.at(@c+6) == "carpentry"
+        @temp_type=0
+      end
+      if @temp_inv.at(@c+6) == "plumbing"
+        @temp_type=1
+      end
+      if @temp_inv.at(@c+6) == "electrical"
+        @temp_type=2
+      end
+      if @temp_inv.at(@c+6) == "yard_work"
+        @temp_type=3
+      end
+      if @temp_inv.at(@c+6) == "painting"
+        @temp_type=4
+      end
+      if @temp_inv.at(@c+6) == "other"
+        @temp_type=5
+      end
+      instance_variable_get("@#{@temp_inv.at(3)}")[@temp_type] +=[[@temp_inv.at(@c-1),@temp_fr,@temp_inv.at(2)]]
+      c +=2
+    @it +=1
+  end
+
+
+
+
+
+  #Now, sort the tools into categories, each with a name next to it.
+  #important: tools, type, name, location
+  #Maybe add prefered viewing to personal array (by type, by person, by location)
+
+
   erb :friends_tools
 end
 
-# used by Canvas apps - redirect the POST to be a regular GET
 post "/friends_tools.html" do
   redirect "/friends_tools.html"
 end
 
 get "/my_tools.html" do
-  # Get base API Connection
   @graph  = Koala::Facebook::API.new(session[:access_token])
 
-  # Get public details of current application
   @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
 
   if session[:access_token]
@@ -134,7 +186,6 @@ get "/my_tools.html" do
   erb :my_tools
 end
 
-# used by Canvas apps - redirect the POST to be a regular GET
 post "/my_tools.html" do
 
   @graph  = Koala::Facebook::API.new(session[:access_token])
@@ -185,10 +236,9 @@ post "/my_tools.html" do
 end
 
 get "/about_us.html" do
-  # Get base API Connection
+
   @graph  = Koala::Facebook::API.new(session[:access_token])
 
-  # Get public details of current application
   @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
 
   if session[:access_token]
@@ -197,16 +247,13 @@ get "/about_us.html" do
   erb :about_us
 end
 
-# used by Canvas apps - redirect the POST to be a regular GET
 post "/about_us.html" do
   redirect "/about_us.html"
 end
 
 get "/comments.html" do
-  # Get base API Connection
   @graph  = Koala::Facebook::API.new(session[:access_token])
 
-  # Get public details of current application
   @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
 
   if session[:access_token]
@@ -215,7 +262,6 @@ get "/comments.html" do
   erb :comments
 end
 
-# used by Canvas apps - redirect the POST to be a regular GET
 post "/comments.html" do
   redirect "/comments.html"
 end

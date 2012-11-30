@@ -27,6 +27,21 @@
         }
       }
       $(function(){
+        $('#sendToFriends').click(function() {
+          FB.ui(
+            {
+              method : 'send',
+              link : $(this).attr('data-url')
+            },
+            function (response) {
+              // If response is null the user canceled the dialog
+              if (response != null) {
+                logResponse(response);
+              }
+            }
+          );
+        });
+
         $('#sendRequest').click(function() {
           FB.ui(
             {
@@ -117,7 +132,7 @@
     </section>
     <section>
     <br/>
-    <p><%= @fr_app %></p>
+    <p><%= @names %></p>
     <br/>
     <p><%= @list %></p>
     <br/>
