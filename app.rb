@@ -151,6 +151,7 @@ get "/friends_tools.html" do
   end
 
   @state_list=@state_list.compact
+  @state_number=@state_list.length
 
   erb :friends_tools
 end
