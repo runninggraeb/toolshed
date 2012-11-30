@@ -158,8 +158,6 @@ get "/friends_tools.html" do
     end
 
 
-    instance_variable_get("@#{@temp_inv.at(3)}")=instance_variable_get("@#{@temp_inv.at(3)}").compact
-
     @it +=1
 
   end
