@@ -129,7 +129,6 @@ get "/friends_tools.html" do
     @inv_size=@inv_size.to_i
 
     for i in 1..@inv_size
-=begin
 
       if @temp_inv.at(@c) == "carpentry"
         @temp_type=0
@@ -153,7 +152,7 @@ get "/friends_tools.html" do
 
 
       @c +=2
-=end
+
     end
 
 
