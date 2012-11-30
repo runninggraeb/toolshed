@@ -121,6 +121,8 @@ get "/friends_tools.html" do
       @state_count +=1
     end
 
+=begin
+
     @c=6
     for i in 1..@temp_inv.at(4)
       if @temp_inv.at(@c+6) == "carpentry"
@@ -144,9 +146,12 @@ get "/friends_tools.html" do
       instance_variable_get("@#{@temp_inv.at(3)}")[@temp_type] +=[[@temp_inv.at(@c-1),@temp_fr,@temp_inv.at(2)]]
       c +=2
     end
-    @it +=1
-  end
 
+=end
+
+    @it +=1
+
+  end
 
 
   erb :friends_tools

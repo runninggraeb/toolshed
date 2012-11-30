@@ -111,8 +111,6 @@ get "/friends_tools.html" do
 
   instance_variable_set(:@state, Array.new(@template))
   @state_list[0]=@state
-=begin
-
 
   for i in 1..@names.length
     @temp_fr=@names.at(@it)
@@ -122,6 +120,8 @@ get "/friends_tools.html" do
       @state_list[@state_count]=@temp_inv.at(3)
       @state_count +=1
     end
+
+=begin
 
     @c=6
     for i in 1..@temp_inv.at(4)
@@ -146,13 +146,12 @@ get "/friends_tools.html" do
       instance_variable_get("@#{@temp_inv.at(3)}")[@temp_type] +=[[@temp_inv.at(@c-1),@temp_fr,@temp_inv.at(2)]]
       c +=2
     end
-    @it +=1
-  end
+
 =end
 
+    @it +=1
 
-
-
+  end
 
 
   erb :friends_tools
