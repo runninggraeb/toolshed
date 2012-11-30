@@ -108,11 +108,11 @@ get "/friends_tools.html" do
   @template[3]=Array.new(0)
   @template[4]=Array.new(0)
   @template[5]=Array.new(0)
-
+=begin
   instance_variable_set(:"@#{@temp_inv.at(3)}", Array.new(@template))
   @state_list[0]=@state
 
-=begin
+
 
   for i in 1..@names.length
     @temp_fr=@names.at(@it)
