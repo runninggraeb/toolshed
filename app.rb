@@ -83,7 +83,7 @@ get "/friends_tools.html" do
   @names=Array.new(@l)
   @m = Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644')
   @all = @m.query("SELECT * FROM OR_TEST3 WHERE fid = '#{@user['id']}'").fetch_row
-  @state = @all.at(3)
+  @state_user = @all.at(3)
   @fr_app.each do |friend_result|
     @friend=@fr_app.at(@fr_count)
     @lend=@m.query("SELECT * FROM OR_TEST3 WHERE fid = '#{@friend['uid']}'").fetch_row
@@ -110,7 +110,7 @@ get "/friends_tools.html" do
   @template[5]=Array.new(0)
 
   instance_variable_set(:@state, Array.new(@template))
-  @state_list[0]=@state
+  @state_list[0]=@state_user
 
   for i in 1..@names.length
     @temp_fr=@names.at(@it)
@@ -166,7 +166,7 @@ get "/friends_tools.html" do
   @state_count=0
 
   for i in 1..@state_list.length
- #   instance_variable_set(:"@#{@state_list.at(@state_count)}", instance_variable_get("@#{@state_list.at(@state_count)}").compact) 
+    instance_variable_set(:"@#{@state_list.at(@state_count)}", instance_variable_get("@#{@state_list.at(@state_count)}").compact) 
     @state_count +=1
   end
 
