@@ -126,8 +126,8 @@ get "/friends_tools.html" do
 
     @c=6
     @inv_size=@temp_inv.at(4)
-=begin
-    for i in 1..@inv_size.to_i
+
+    for i in 1..@inv_size
 
 
 
@@ -156,7 +156,6 @@ get "/friends_tools.html" do
       c +=2
     end
 
-=end
 
 
 
