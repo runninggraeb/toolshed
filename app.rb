@@ -165,7 +165,7 @@ get "/friends_tools.html" do
   @state_list=@state_list.compact
   @state_count=0
 
-  for i in 1..@state_list.compact
+  for i in 1..@state_list
     instance_variable_get("@#{@state_list.at(@state_count)}") = instance_variable_get("@#{@state_list.at(@state_count)}").compact
   end
 
