@@ -151,7 +151,10 @@
       <% @html_state_temp=instance_variable_get("@#{@state_list.at(@html_states)}") %>
 
       <% @html_carp_temp = @html_state_temp.at(0) %>
-      <p><%= @html_carp_temp %></p>
+
+      <% @html_carp_temp.each do|n| %>
+        <%= n %>
+      <% end %>
 
       <% @html_states +=1 %>  
     <% end %>
