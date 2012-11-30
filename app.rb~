@@ -127,26 +127,26 @@ get "/friends_tools.html" do
 
     for i in 1..@inv_size
 
-      if @temp_inv.at(@c) == "Carpentry"
+      if @temp_inv.at(@c) == "carpentry"
         @temp_type=0
       end
-      if @temp_inv.at(@c) == "Plumbing"
+      if @temp_inv.at(@c) == "plumbing"
         @temp_type=1
       end
-      if @temp_inv.at(@c) == "Electrical"
+      if @temp_inv.at(@c) == "electrical"
         @temp_type=2
       end
-      if @temp_inv.at(@c) == "Yard Work"
+      if @temp_inv.at(@c) == "yard_work"
         @temp_type=3
       end
-      if @temp_inv.at(@c) == "Painting"
+      if @temp_inv.at(@c) == "painting"
         @temp_type=4
       end
-      if @temp_inv.at(@c) == "Other"
+      if @temp_inv.at(@c) == "other"
         @temp_type=5
       end
 
-      instance_variable_get("@#{@temp_inv.at(3)}")[@temp_type] +=[[@temp_inv.at(@c-1),@temp_fr,@temp_inv.at(2)]]
+      instance_variable_get("@#{@temp_inv.at(3)}")[@temp_type] +=[@temp_inv.at(@c-1),@temp_fr,@temp_inv.at(2)]
 
       @c +=2
 
