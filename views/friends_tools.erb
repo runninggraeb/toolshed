@@ -132,18 +132,6 @@
     </section>
     <section>
     <br/>
-    <p><%= @names %></p>
-    <br/>
-    <p><%= @list %></p>
-    <br/>
-    <p><%= @state_list %></p>
-    <br/>
-    <p><%= @state_user %></p>
-    <br/>
-    <p><%= @OR %></p>
-    <br/>
-    <p><%= @CO %></p>
-    <br/>
 
     <% @html_states=0 %>
     <% for i in 1..@state_number %>
@@ -197,6 +185,14 @@
       <% @html_states +=1 %>  
     <% end %>
     <br/>
+
+    <li>
+      <a href="#" class="facebook-button speech-bubble" id="sendToFriends" data-url="<%= url %>">
+        <span class="speech-bubble">Send Message</span>
+      </a>
+    </li>
+
+
 
     </section>
   <% end %>
