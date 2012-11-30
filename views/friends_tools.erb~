@@ -147,10 +147,9 @@
 
     <% @html_states=0 %>
     <% for i in 1..@state_number %>
-
+      <p><%= @state_list.at(@html_states) %></p>
       <% @html_states +=1 %>  
     <% end %>
-    <p><%= @html_states %></p>
     <br/>
 
     </section>
