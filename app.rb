@@ -121,9 +121,6 @@ get "/friends_tools.html" do
       @state_count +=1
     end
 
-
-
-
     @c=6
     @inv_size=@temp_inv.at(4)
     @inv_size=@inv_size.to_i
@@ -149,9 +146,7 @@ get "/friends_tools.html" do
         @temp_type=5
       end
 
-
       instance_variable_get("@#{@temp_inv.at(3)}")[@temp_type] +=[[@temp_inv.at(@c-1),@temp_fr,@temp_inv.at(2)]]
-
 
       @c +=2
 
