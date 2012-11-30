@@ -111,8 +111,6 @@ get "/friends_tools.html" do
 
   instance_variable_set(:@state, Array.new(@template))
   @state_list[0]=@state
-=begin
-
 
   for i in 1..@names.length
     @temp_fr=@names.at(@it)
@@ -148,10 +146,6 @@ get "/friends_tools.html" do
     end
     @it +=1
   end
-=end
-
-
-
 
 
 
