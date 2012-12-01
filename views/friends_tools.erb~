@@ -138,42 +138,42 @@
       <p><%= @state_list.at(@html_states) %></p>
       <% @html_state_temp=instance_variable_get("@#{@state_list.at(@html_states)}") %>
 
-      <p>Carpentry</p>
+      <p><b>Carpentry</b></p>
       <% @html_type_temp = @html_state_temp.at(0) %>
       <% @html_type_temp.each do|n| %>
         <p><%= n.at(0) %> <%= n.at(1) %> <%= n.at(2) %></p>
       <% end %>
       <br/>
 
-      <p>Plumbing</p>
+      <p><b>Plumbing</b></p>
       <% @html_type_temp = @html_state_temp.at(1) %>
       <% @html_type_temp.each do|n| %>
         <p><%= n.at(0) %> <%= n.at(1) %> <%= n.at(2) %></p>
       <% end %>
       <br/>
 
-      <p>Electrical</p>
+      <p><b>Electrical</b></p>
       <% @html_type_temp = @html_state_temp.at(2) %>
       <% @html_type_temp.each do|n| %>
         <p><%= n.at(0) %> <%= n.at(1) %> <%= n.at(2) %></p>
       <% end %>
       <br/>
 
-      <p>Yard Work</p>
+      <p><b>Yard Work</b></p>
       <% @html_type_temp = @html_state_temp.at(3) %>
       <% @html_type_temp.each do|n| %>
         <p><%= n.at(0) %> <%= n.at(1) %> <%= n.at(2) %></p>
       <% end %>
       <br/>
 
-      <p>Painting</p>
+      <p><b>Painting</b></p>
       <% @html_type_temp = @html_state_temp.at(4) %>
       <% @html_type_temp.each do|n| %>
         <p><%= n.at(0) %> <%= n.at(1) %> <%= n.at(2) %></p>
       <% end %>
       <br/>
 
-      <p>Other</p>
+      <p><b>Other</b></p>
       <% @html_type_temp = @html_state_temp.at(5) %>
       <% @html_type_temp.each do|n| %>
         <p><%= n.at(0) %> <%= n.at(1) %> <%= n.at(2) %></p>
@@ -187,8 +187,8 @@
     <br/>
 
     <li>
-      <a href="#" class="facebook-button speech-bubble" id="sendToFriends" data-url="<%= url %>">
-        <span class="speech-bubble">Send Message</span>
+      <a href="#" id="sendToFriends" data-url="<%= url %>">
+        <span >Send Message</span>
       </a>
     </li>
 
