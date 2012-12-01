@@ -141,7 +141,7 @@
 
       <% @html_type_temp = @html_state_temp.at(0) %>
       <p><b>Carpentry</b></p>
-      <% if @html_type_temp.at(0) !=nil %>
+      <% if @html_type_temp.at(0).at(0) !=nil %>
         <% @html_type_temp.each do|n| %>
           <p><%= n.at(0) %> <%= n.at(1) %> <%= n.at(2) %></p>
         <% end %>
@@ -151,7 +151,7 @@
 
       <% @html_type_temp = @html_state_temp.at(1) %>
       <p><b>Plumbing</b></p>
-      <% if @html_type_temp.at(0) !=nil %>
+      <% if @html_type_temp.at(0).at(0) !=nil %>
         <% @html_type_temp.each do|n| %>
           <p><%= n.at(0) %> <%= n.at(1) %> <%= n.at(2) %></p>
         <% end %>
@@ -161,7 +161,7 @@
 
       <% @html_type_temp = @html_state_temp.at(2) %>
       <p><b>Electrical</b></p>
-      <% if @html_type_temp.at(0) !=nil %>
+      <% if @html_type_temp.at(0).at(0) !=nil %>
         <% @html_type_temp.each do|n| %>
           <p><%= n.at(0) %> <%= n.at(1) %> <%= n.at(2) %></p>
         <% end %>
@@ -171,7 +171,7 @@
 
       <% @html_type_temp = @html_state_temp.at(3) %>
       <p><b>Yard Work</b></p>
-      <% if @html_type_temp.at(0) !=nil %>
+      <% if @html_type_temp.at(0).at(0) !=nil %>
         <% @html_type_temp.each do|n| %>
           <p><%= n.at(0) %> <%= n.at(1) %> <%= n.at(2) %></p>
         <% end %>
@@ -181,7 +181,7 @@
 
       <% @html_type_temp = @html_state_temp.at(4) %>
       <p><b>Painting</b></p>
-      <% if @html_type_temp.at(0) !=nil %>
+      <% if @html_type_temp.at(0).at(0) !=nil %>
         <% @html_type_temp.each do|n| %>
           <p><%= n.at(0) %> <%= n.at(1) %> <%= n.at(2) %></p>
         <% end %>
@@ -191,7 +191,7 @@
 
       <% @html_type_temp = @html_state_temp.at(5) %>
       <p><b>Other</b></p>
-      <% if @html_type_temp.at(0) !=nil %>
+      <% if @html_type_temp.at(0).at(0) !=nil %>
         <% @html_type_temp.each do|n| %>
           <p><%= n.at(0) %> <%= n.at(1) %> <%= n.at(2) %></p>
         <% end %>
