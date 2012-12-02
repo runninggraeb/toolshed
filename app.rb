@@ -266,11 +266,11 @@ get "/comments.html" do
 end
 
 post "/comments.html" do
-
+  @graph  = Koala::Facebook::API.new(session[:access_token])
+  @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
   if session[:access_token]
     @user    = @graph.get_object("me")
   end
-
   @t=Time.now
   @time="#{@t.day}-#{@t.month}-#{@t.year}"
   @comment=params[:comment]

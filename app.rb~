@@ -275,11 +275,8 @@ post "/comments.html" do
   @time="#{@t.day}-#{@t.month}-#{@t.year}"
   @comment=params[:comment]
   @new=Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644')
-  @new.query "INSERT INTO Comments (fid,name,date,comment) VALUES('#{@user['id']}','#{@user['name']}','#{@time}','#{@comment})"
-
-
-
-
+  @new.query "INSERT INTO Comments (fid,name,date,comment) VALUES('#{@user['id']}','#{@user['name']}','#{@time}','#{@comment}')"
+  @new.close
 
   redirect "/comments.html"
 end
