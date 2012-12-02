@@ -176,7 +176,7 @@ get "/my_tools.html" do
     @user    = @graph.get_object("me")
     @m = Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644')
     @all = @m.query("SELECT * FROM Final_uni WHERE fid = '#{@user['id']}'").fetch_row
-
+    @location=@user['location']
     @state="Ohio"
     @city="siny"
     @count=0
