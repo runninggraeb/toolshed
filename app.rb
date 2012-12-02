@@ -181,6 +181,7 @@ get "/my_tools.html" do
     @location_first=@location.first
     @state="Ohio"
     @city="siny"
+    @state_number=0
 =begin
     if @all
     else

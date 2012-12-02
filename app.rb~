@@ -179,6 +179,8 @@ get "/my_tools.html" do
 
     @location=@user['location'].rpartition(", ")
     @location_first=@location.first
+    @state="Ohio"
+    @city="siny"
 =begin
     if @all
     else
