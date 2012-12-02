@@ -76,7 +76,6 @@ get "/friends_tools.html" do
   end
 
   #initiate array
-  @fr_count=0
   @fr_w_count=0
   @l=@fr_app.length
   @list=Array.new(@l)
@@ -85,14 +84,12 @@ get "/friends_tools.html" do
   @all = @m.query("SELECT * FROM Final_uni WHERE fid = '#{@user['id']}'").fetch_row
   @state_user = @all.at(3)
   @fr_app.each do |friend_result|
-    @friend=@fr_app.at(@fr_count)
-    @lend=@m.query("SELECT * FROM Final_uni WHERE fid = '#{@friend['uid']}'").fetch_row
+    @lend=@m.query("SELECT * FROM Final_uni WHERE fid = '#{friend_result['uid']}'").fetch_row
     if @lend != nil
       @list[@fr_w_count] = @lend.compact
-      @names[@fr_w_count] = @friend['name']
+      @names[@fr_w_count] = friend_result['name']
       @fr_w_count +=1
     end
-    @fr_count +=1
   end
   @m.close
 
