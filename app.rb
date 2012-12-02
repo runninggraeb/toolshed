@@ -83,6 +83,7 @@ get "/friends_tools.html" do
   @m = Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644')
   @all = @m.query("SELECT * FROM Final_uni WHERE fid = '#{@user['id']}'").fetch_row
   @state_user = @all.at(3)
+
   @fr_app.each do |friend_result|
     @lend=@m.query("SELECT * FROM Final_uni WHERE fid = '#{friend_result['uid']}'").fetch_row
     if @lend != nil
@@ -106,8 +107,8 @@ get "/friends_tools.html" do
   @template[4]=Array.new(0)
   @template[5]=Array.new(0)
 
-  @state_list[0]=@state
-  instance_variable_set(:@state, Array.new(@template))
+  @state_list[0]=@state_user
+  instance_variable_set(:@state_user, Array.new(@template))
 
 
   @it=0
@@ -173,7 +174,8 @@ get "/my_tools.html" do
     @all = @m.query("SELECT * FROM Final_uni WHERE fid = '#{@user['id']}'").fetch_row
     if @all
     else
-      @m.query "INSERT INTO Final_uni (fid,city,state,count) VALUES('#{@user['id']}','Eugene','OR','0')"
+      @location=@user['location'].rpartition(", ")
+      @m.query "INSERT INTO Final_uni (fid,city,state,count) VALUES('#{@user['id']}','#{@location.first}','#{@location.last}','0')"
       @all = @m.query("SELECT * FROM Final_uni WHERE fid = '#{@user['id']}'").fetch_row
     end
     @m.close
