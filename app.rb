@@ -266,6 +266,11 @@ get "/comments.html" do
 end
 
 post "/comments.html" do
+
+  if session[:access_token]
+    @user    = @graph.get_object("me")
+  end
+
   @t=Time.now
   @time="#{@t.day}-#{@t.month}-#{@t.year}"
   @comment=params[:comment]
