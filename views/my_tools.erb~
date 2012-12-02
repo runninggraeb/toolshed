@@ -112,6 +112,7 @@
       <p>We have your current location set as: 
         <input type="text" size="5" maxlength="20" name="city" value="<%= @city %>">, 
         <select name="state">
+          <option value=""></option>
           <option <% if @state=="Alabama" %> selected="selected" <% end %> value="Alabama">Alabama</option>
           <option <% if @state=="Alaska" %> selected="selected" <% end %> value="Alaska">Alaska</option>
           <option <% if @state=="Arizona" %> selected="selected" <% end %> value="Arizona">Arizona</option>
