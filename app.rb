@@ -186,7 +186,7 @@ get "/my_tools.html" do
       @m.query "INSERT INTO Final_uni (fid,city,state,count) VALUES('#{@user['id']}','#{@location.first}','#{@location.last}','0')"
       @all = @m.query("SELECT * FROM Final_uni WHERE fid = '#{@user['id']}'").fetch_row
     else
-      @m.query "INSERT INTO Final_uni (fid,city,state,count) VALUES('#{@user['id']}','','','0')"
+      @m.query "INSERT INTO Final_uni (fid,city,state,count) VALUES('#{@user['id']}',' ',' ','0')"
       @all = @m.query("SELECT * FROM Final_uni WHERE fid = '#{@user['id']}'").fetch_row
     end
     @m.close

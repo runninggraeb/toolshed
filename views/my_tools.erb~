@@ -197,7 +197,7 @@
       <% end %>
       <input type="submit" value="Update">
     </form>
-    <%= @location %>
+    <p><%= @location %></p>
     <br/>
     </section>
   <% end %>
