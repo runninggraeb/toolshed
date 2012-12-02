@@ -111,7 +111,6 @@
     <form method="post" action="my_tools.html">
       <p>We have your current location set as: 
         <input type="text" size="5" maxlength="20" name="city" value="<%= @city %>">, 
-        <input type="text" size="1" maxlength="2" name="state" value="<%= @state %>">
         <select name="state">
           <option <% if @state=="Alabama" %> selected="selected" <% end %> value="Alabama">Alabama</option>
           <option <% if @state=="Alaska" %> selected="selected" <% end %> value="Alaska">Alaska</option>
