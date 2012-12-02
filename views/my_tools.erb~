@@ -94,7 +94,7 @@
             <a href="/" class="toolbar-button">
              <span>Welcome</span></a>
             <a href="friends_tools.html" class="toolbar-button">
-             <span>Frend's Tools</span></a>
+             <span>Friend's Tools</span></a>
             <a href="my_tools.html" class="toolbar-button">
              <span>My Tools</span></a>
             <a href="about_us.html" class="toolbar-button">
@@ -112,6 +112,67 @@
       <p>We have your current location set as: 
         <input type="text" size="5" maxlength="20" name="city" value="<%= @city %>">, 
         <input type="text" size="1" maxlength="2" name="state" value="<%= @state %>">
+        <select name="state">
+          <option <% if @type=="Alabama" %> selected="selected" <% end %> value="Alabama">Alabama</option>
+          <option <% if @type=="Alaska" %> selected="selected" <% end %> value="Alaska">Alaska</option>
+          <option <% if @type=="Arizona" %> selected="selected" <% end %> value="Arizona">Arizona</option>
+          <option <% if @type=="Arkansas" %> selected="selected" <% end %> value="Arkansas">Arkansas</option>
+          <option <% if @type=="California" %> selected="selected" <% end %> value="California">California</option>
+          <option <% if @type=="Colorado" %> selected="selected" <% end %> value="Colorado">Colorado</option>
+          <option <% if @type=="Connecticut" %> selected="selected" <% end %> value="Connecticut">Connecticut</option>
+          <option <% if @type=="Delaware" %> selected="selected" <% end %> value="Delaware">Delaware</option>
+          <option <% if @type=="Florida" %> selected="selected" <% end %> value="Florida">Florida</option>
+          <option <% if @type=="Georgia" %> selected="selected" <% end %> value="Georgia">Georgia</option>
+          <option <% if @type=="Hawaii" %> selected="selected" <% end %> value="Hawaii">Hawaii</option>
+          <option <% if @type=="Idaho" %> selected="selected" <% end %> value="Idaho">Idaho</option>
+          <option <% if @type=="Illinois" %> selected="selected" <% end %> value="Illinois">Illinois</option>
+          <option <% if @type=="Indiana" %> selected="selected" <% end %> value="Indiana">Indiana</option>
+          <option <% if @type=="Iowa" %> selected="selected" <% end %> value="Iowa">Iowa</option>
+          <option <% if @type=="Kansas" %> selected="selected" <% end %> value="Kansas">Kansas</option>
+          <option <% if @type=="Kentucky" %> selected="selected" <% end %> value="Kentucky">Kentucky</option>
+          <option <% if @type=="Louisiana" %> selected="selected" <% end %> value="Louisiana">Louisiana</option>
+          <option <% if @type=="Maine" %> selected="selected" <% end %> value="Maine">Maine</option>
+          <option <% if @type=="Maryland" %> selected="selected" <% end %> value="Maryland">Maryland</option>
+          <option <% if @type=="Massachusetts" %> selected="selected" <% end %> value="Massachusetts">Massachusetts</option>
+          <option <% if @type=="Michigan" %> selected="selected" <% end %> value="Michigan">Michigan</option>
+          <option <% if @type=="Minnesota" %> selected="selected" <% end %> value="Minnesota">Minnesota</option>
+          <option <% if @type=="Misssissippi" %> selected="selected" <% end %> value="Misssissippi">Misssissippi</option>
+          <option <% if @type=="Missouri" %> selected="selected" <% end %> value="Missouri">Missouri</option>
+          <option <% if @type=="Montana" %> selected="selected" <% end %> value="Montana">Montana</option>
+          <option <% if @type=="Nebraska" %> selected="selected" <% end %> value="Nebraska">Nebraska</option>
+          <option <% if @type=="Nevada" %> selected="selected" <% end %> value="Nevada">Nevada</option>
+          <option <% if @type=="New Hampshire" %> selected="selected" <% end %> value="New Hampshire">New Hampshire</option>
+          <option <% if @type=="New Jersey" %> selected="selected" <% end %> value="New Jersey">New Jersey</option>
+          <option <% if @type=="New Mexico" %> selected="selected" <% end %> value="New Mexico">New Mexico</option>
+          <option <% if @type=="New York" %> selected="selected" <% end %> value="New York">New York</option>
+          <option <% if @type=="North Carolina" %> selected="selected" <% end %> value="North Carolina">North Carolina</option>
+          <option <% if @type=="North Dakota" %> selected="selected" <% end %> value="North Dakota">North Dakota</option>
+          <option <% if @type=="Ohio" %> selected="selected" <% end %> value="Ohio">Ohio</option>
+          <option <% if @type=="Oklahoma" %> selected="selected" <% end %> value="Oklahoma">Oklahoma</option>
+          <option <% if @type=="Oregon" %> selected="selected" <% end %> value="Oregon">Oregon</option>
+          <option <% if @type=="Pennsylvania" %> selected="selected" <% end %> value="Pennsylvania">Pennsylvania</option>
+          <option <% if @type=="Rhode Island" %> selected="selected" <% end %> value="Rhode Island">Rhode Island</option>
+          <option <% if @type=="South Carolina" %> selected="selected" <% end %> value="South Carolina">South Carolina</option>
+          <option <% if @type=="South Dakota" %> selected="selected" <% end %> value="South Dakota">South Dakota</option>
+          <option <% if @type=="Tennessee" %> selected="selected" <% end %> value="Tennessee">Tennessee</option>
+          <option <% if @type=="Texas" %> selected="selected" <% end %> value="Texas">Texas</option>
+          <option <% if @type=="Utah" %> selected="selected" <% end %> value="Utah">Utah</option>
+          <option <% if @type=="Vermont" %> selected="selected" <% end %> value="Vermont">Vermont</option>
+          <option <% if @type=="Virginia" %> selected="selected" <% end %> value="Virginia">Virginia</option>
+          <option <% if @type=="Washington" %> selected="selected" <% end %> value="Washington">Washington</option>
+          <option <% if @type=="West Virginia" %> selected="selected" <% end %> value="West Virginia">West Virginia</option>
+          <option <% if @type=="Wisconsin" %> selected="selected" <% end %> value="Wisconsin">Wisconsin</option>
+          <option <% if @type=="Wyoming" %> selected="selected" <% end %> value="Wyoming">Wyoming</option>
+
+
+        </select>
+
+
+
+          <% if @type=="carpentry" %> selected="selected" <% end %>
+
+
+
       </p>
       <br/>
       <br/>
