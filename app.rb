@@ -82,11 +82,11 @@ get "/friends_tools.html" do
   @list=Array.new(@l)
   @names=Array.new(@l)
   @m = Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644')
-  @all = @m.query("SELECT * FROM OR_TEST3 WHERE fid = '#{@user['id']}'").fetch_row
+  @all = @m.query("SELECT * FROM Final_uni WHERE fid = '#{@user['id']}'").fetch_row
   @state_user = @all.at(3)
   @fr_app.each do |friend_result|
     @friend=@fr_app.at(@fr_count)
-    @lend=@m.query("SELECT * FROM OR_TEST3 WHERE fid = '#{@friend['uid']}'").fetch_row
+    @lend=@m.query("SELECT * FROM Final_uni WHERE fid = '#{@friend['uid']}'").fetch_row
     if @lend != nil
       @list[@fr_w_count] = @lend.compact
       @names[@fr_w_count] = @friend['name']
@@ -173,11 +173,11 @@ get "/my_tools.html" do
   if session[:access_token]
     @user    = @graph.get_object("me")
     @m = Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644')
-    @all = @m.query("SELECT * FROM OR_TEST3 WHERE fid = '#{@user['id']}'").fetch_row
+    @all = @m.query("SELECT * FROM Final_uni WHERE fid = '#{@user['id']}'").fetch_row
     if @all
     else
-      @m.query "INSERT INTO OR_TEST3 (fid,city,state,count) VALUES('#{@user['id']}','Eugene','OR','0')"
-      @all = @m.query("SELECT * FROM OR_TEST3 WHERE fid = '#{@user['id']}'").fetch_row
+      @m.query "INSERT INTO Final_uni (fid,city,state,count) VALUES('#{@user['id']}','Eugene','OR','0')"
+      @all = @m.query("SELECT * FROM Final_uni WHERE fid = '#{@user['id']}'").fetch_row
     end
     @m.close
     @city = @all.at(2)
@@ -198,7 +198,7 @@ post "/my_tools.html" do
   end
 
   @new=Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644')
-  @all = @new.query("SELECT * FROM OR_TEST3 WHERE fid = '#{@user['id']}'").fetch_row
+  @all = @new.query("SELECT * FROM Final_uni WHERE fid = '#{@user['id']}'").fetch_row
 
   @count = @all.at(4)
   @count = @count.to_i
@@ -231,8 +231,8 @@ post "/my_tools.html" do
   @city = params[:city]
   @state = params[:state]
 
-  @new.query "DELETE FROM OR_TEST3 WHERE fid = '#{@user['id']}'"
-  @new.query "INSERT INTO OR_TEST3 (fid,city,state,count,#{@labels}) VALUES('#{@user['id']}','#{@city}','#{@state}','#{@adds}',#{@news})"
+  @new.query "DELETE FROM Final_uni WHERE fid = '#{@user['id']}'"
+  @new.query "INSERT INTO Final_uni (fid,city,state,count,#{@labels}) VALUES('#{@user['id']}','#{@city}','#{@state}','#{@adds}',#{@news})"
 
   @new.close
   redirect "/my_tools.html"
