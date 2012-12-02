@@ -203,7 +203,7 @@
       <% @html_states +=1 %>  
     <% end %>
     <br/>
-    <%= @list %>
+    <%= @state_list %>
 
     <li>
       <a href="#" id="sendToFriends" data-url="<%= url %>">
