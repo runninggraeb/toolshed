@@ -163,13 +163,6 @@
           <option <% if @state=="Wisconsin" %> selected="selected" <% end %> value="Wisconsin">Wisconsin</option>
           <option <% if @state=="Wyoming" %> selected="selected" <% end %> value="Wyoming">Wyoming</option>
         </select>
-
-
-
-          <% if @type=="carpentry" %> selected="selected" <% end %>
-
-
-
       </p>
       <br/>
       <br/>
