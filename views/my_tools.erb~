@@ -197,8 +197,6 @@
       <% end %>
       <input type="submit" value="Update">
     </form>
-    <br/>
-    <p>My Current Tools: <%= @user %> </p>
 
     <br/>
     </section>
