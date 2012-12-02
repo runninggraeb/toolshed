@@ -107,8 +107,9 @@ get "/friends_tools.html" do
 
 
   if @all !=nil
-    @state_list[0]=@state
-    instance_variable_set(:@state, Array.new(@template))
+    @state_user = @all.at(3)
+    @state_list[0]=@state_user
+    instance_variable_set(:@state_user, Array.new(@template))
     @state_count +=1
   end
 
