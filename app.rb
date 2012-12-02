@@ -95,11 +95,11 @@ get "/friends_tools.html" do
   @m.close
 
   @names=@names.compact
-  @state_count=1
+  @state_count=0
 
   @state_list=Array.new(50)
-
   @template=Array.new(6)
+
   @template[0]=Array.new(0)
   @template[1]=Array.new(0)
   @template[2]=Array.new(0)
@@ -107,9 +107,11 @@ get "/friends_tools.html" do
   @template[4]=Array.new(0)
   @template[5]=Array.new(0)
 
-  @state_list[0]=@state_user
-  instance_variable_set(:@state_user, Array.new(@template))
-
+  if @state_user !=nil
+    @state_list[0]=@state
+    instance_variable_set(:@state, Array.new(@template))
+    @state_count +=1
+  end
 
   @it=0
   for i in 1..@names.length
