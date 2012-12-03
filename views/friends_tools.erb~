@@ -194,7 +194,8 @@
       </table>
 
       <br/>
-
+      <br/>
+      <br/>
 
       <% @html_states +=1 %>  
     <% end %>
