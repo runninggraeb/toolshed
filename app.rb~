@@ -102,7 +102,7 @@ get "/friends_tools.html" do
 
   if @all !=nil
     @state_list[0]=@all.at(3)
-    instance_variable_set(:"@#{@all.at(3)}"), Array.new(@template))
+    instance_variable_set(:"@#{@all.at(3)}", Array.new(@template))
     @state_count +=1
   end
 
@@ -231,6 +231,7 @@ post "/my_tools.html" do
   @labels=@labels.join(',')
 
   @city = params[:city]
+  @city = @city.delete "'"
   @state = params[:state]
 
   @new.query "DELETE FROM Final_uni WHERE fid = '#{@user['id']}'"

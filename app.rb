@@ -212,6 +212,7 @@ post "/my_tools.html" do
   for i in 1..(@count+5)
     @enter +=1
     @temp=params[:"tool_#{@enter}"]
+    @temp=@temp.delete "'"
     if @temp.size > 2
       @news[@adds*2+1] = "'#{@temp}'"
       @temp=params[:"type_#{@enter}"]
@@ -231,6 +232,7 @@ post "/my_tools.html" do
   @labels=@labels.join(',')
 
   @city = params[:city]
+  @city = @city.delete "'"
   @state = params[:state]
 
   @new.query "DELETE FROM Final_uni WHERE fid = '#{@user['id']}'"
