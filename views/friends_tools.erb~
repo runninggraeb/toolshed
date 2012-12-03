@@ -135,7 +135,7 @@
 
     <% @html_states=0 %>
     <% for i in 1..@state_number %>
-      <p><font size="4"<%= @state_list.at(@html_states) %></font></p><hr>
+      <p><font size="4"><%= @state_list.at(@html_states) %></font></p><hr>
       <% @html_state_temp=instance_variable_get("@#{@state_list.at(@html_states)}") %>
 
       <table style="width:60%;">
