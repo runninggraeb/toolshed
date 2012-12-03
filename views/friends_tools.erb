@@ -135,7 +135,7 @@
 
     <% @html_states=0 %>
     <% for i in 1..@state_number %>
-      <h4><%= @state_list.at(@html_states) %></h4>
+      <p><font size="4"<%= @state_list.at(@html_states) %></font></p><hr>
       <% @html_state_temp=instance_variable_get("@#{@state_list.at(@html_states)}") %>
 
       <table style="width:60%;">
@@ -145,17 +145,15 @@
         <% @html_type_temp.each do|n| %>
           <tr><td><%= n.at(0) %></td><td><%= n.at(1) %></td><td><%= n.at(2) %></td></tr>
         <% end %>
-        <br/>
       <% end %>
 
       <% @html_type_temp = @html_state_temp.at(1) %>
       <% if @html_type_temp.at(0) !=nil %>
-        <tr><td colspan="3">&nbsp;</td></tr>
+        <tr><td>&nbsp;</td></tr>
         <tr style="background-color:#E8E8E8;"><td colspan="3">Plumbing</td></tr>
         <% @html_type_temp.each do|n| %>
           <tr><td><%= n.at(0) %></td><td><%= n.at(1) %></td><td><%= n.at(2) %></td></tr>
         <% end %>
-        <br/>
       <% end %>
 
       <% @html_type_temp = @html_state_temp.at(2) %>
@@ -165,27 +163,24 @@
         <% @html_type_temp.each do|n| %>
           <tr><td><%= n.at(0) %></td><td><%= n.at(1) %></td><td><%= n.at(2) %></td></tr>
         <% end %>
-        <br/>
       <% end %>
 
       <% @html_type_temp = @html_state_temp.at(3) %>
       <% if @html_type_temp.at(0) !=nil %>
-        <tr><td colspan="3">&nbsp;</td></tr>
+        <tr><td>&nbsp;</td></tr>
         <tr style="background-color:#E8E8E8;"><td colspan="3">Yard Work</td></tr>
         <% @html_type_temp.each do|n| %>
           <tr><td><%= n.at(0) %></td><td><%= n.at(1) %></td><td><%= n.at(2) %></td></tr>
         <% end %>
-        <br/>
       <% end %>
 
       <% @html_type_temp = @html_state_temp.at(4) %>
       <% if @html_type_temp.at(0) !=nil %>
-        <tr><td colspan="3">&nbsp;</td></tr>
+        <tr><td>&nbsp;</td></tr>
         <tr style="background-color:#E8E8E8;"><td colspan="3">Painting</td></tr>
         <% @html_type_temp.each do|n| %>
           <tr><td><%= n.at(0) %></td><td><%= n.at(1) %></td><td><%= n.at(2) %></td></tr>
         <% end %>
-        <br/>
       <% end %>
 
       <% @html_type_temp = @html_state_temp.at(5) %>
@@ -195,12 +190,12 @@
         <% @html_type_temp.each do|n| %>
           <tr><td><%= n.at(0) %></td><td><%= n.at(1) %></td><td><%= n.at(2) %></td></tr>
         <% end %>
-        <br/>
       <% end %>
       </table>
 
       <br/>
-
+      <br/>
+      <br/>
 
       <% @html_states +=1 %>  
     <% end %>
