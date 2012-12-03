@@ -23,23 +23,18 @@ helpers do
   def host
     request.env['HTTP_HOST']
   end
-
   def scheme
     request.scheme
   end
-
   def url_no_scheme(path = '')
     "//#{host}#{path}"
   end
-
   def url(path = '')
     "#{scheme}://#{host}#{path}"
   end
-
   def authenticator
     @authenticator ||= Koala::Facebook::OAuth.new(ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_SECRET"], url("/auth/facebook/callback"))
   end
-
 end
 
 # the facebook session expired! reset ours and restart the process
@@ -105,15 +100,11 @@ get "/friends_tools.html" do
   @template[4]=Array.new(0)
   @template[5]=Array.new(0)
 
-
   if @all !=nil
-    @state_user = @all.at(3)
-    @state_list[0]=@state_user
-    instance_variable_set(:@state_user, Array.new(@template))
+    @state_list[0]=@all.at(3)
+    instance_variable_set(:"@#{@all.at(3)}"), Array.new(@template))
     @state_count +=1
   end
-
-
 
   @it=0
   for i in 1..@names.length
