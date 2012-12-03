@@ -138,7 +138,7 @@
       <p><font size="5"><%= @state_list.at(@html_states) %></font></p>
       <% @html_state_temp=instance_variable_get("@#{@state_list.at(@html_states)}") %>
 
-      <table style="width:60%"">
+      <table style="width:60%;background-color:yellow;"">
       <% @html_type_temp = @html_state_temp.at(0) %>
       <% if @html_type_temp.at(0).at(0) !=nil %>
         <tr><td colspan="3">Carpentry</td></tr>
