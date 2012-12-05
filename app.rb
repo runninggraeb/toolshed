@@ -173,6 +173,7 @@ get "/my_tools.html" do
       @state = @all.at(3)
       @count = @all.at(4)
       @count = @count.to_i
+=begin
     elsif @user['location']
       @location=@user['location'].rpartition(", ")
       @city = @location.first
@@ -183,8 +184,8 @@ get "/my_tools.html" do
       @city = @location.first
       @state = @location.last
       @count = 0
+=end
     else
-      @m.query "INSERT INTO Final_uni (fid,city,state,count) VALUES('#{@user['id']}',' ',' ','0')"
       @city = " "
       @state = " "
       @count = 0
