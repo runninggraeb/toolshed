@@ -186,7 +186,6 @@ get "/my_tools.html" do
       @count = 0
 =end
     else
-      @m.query "INSERT INTO Final_uni (fid,city,state,count) VALUES('#{@user['id']}',' ',' ','0')"
       @city = " "
       @state = " "
       @count = 0
