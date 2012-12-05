@@ -174,14 +174,14 @@ get "/my_tools.html" do
       @count = @all.at(4)
       @count = @count.to_i
     elsif @user['location']
-      @location=@user['location'].rpartition(", ")
-      @location=@location['name']
+      @location=@user['location']
+      @location=@location['name'].rpartition(", ")
       @city = @location.first
       @state = @location.last
       @count = 0
     elsif @user['hometown']
-      @location=@user['hometown'].rpartition(", ")
-      @location=@location['name']
+      @location=@user['hometown']
+      @location=@location['name'].rpartition(", ")
       @city = @location.first
       @state = @location.last
       @count = 0
