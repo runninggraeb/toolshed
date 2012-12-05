@@ -206,7 +206,8 @@ post "/my_tools.html" do
   @all = @new.query("SELECT * FROM Final_uni WHERE fid = '#{@user['id']}'").fetch_row
 
   if @all == nil
-    @all=Arrar.new(5,0)
+    @new.query "INSERT INTO Final_uni (fid,city,state,count) VALUES('#{@user['id']}','0','0','0')"
+    @all = @new.query("SELECT * FROM Final_uni WHERE fid = '#{@user['id']}'").fetch_row
   end
 
   @count = @all.at(4)
@@ -215,7 +216,7 @@ post "/my_tools.html" do
   @enter=0
   @adds=0
   @news=Array.new(@count*2+11)
-  @labels=Array.new(@count*2+11)
+  @labels=@news
   for i in 1..(@count+5)
     @enter +=1
     @temp=params[:"tool_#{@enter}"]
@@ -241,6 +242,7 @@ post "/my_tools.html" do
   @city = params[:city]
   @city = @city.delete "'"
   @state = params[:state]
+
 
   @new.query "DELETE FROM Final_uni WHERE fid = '#{@user['id']}'"
   @new.query "INSERT INTO Final_uni (fid,city,state,count,#{@labels}) VALUES('#{@user['id']}','#{@city}','#{@state}','#{@adds}',#{@news})"
