@@ -168,16 +168,15 @@ get "/my_tools.html" do
   end
 
   @m = Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644')
-  @m.query "INSERT INTO Final_uni (fid,city,state,count) VALUES('#{@user['id']}','temp','temp','0')"
+  @m.query("INSERT INTO Final_uni (fid,city,state,count) VALUES('#{@user['id']}','temp','temp','0')")
   @all = @m.query("SELECT * FROM Final_uni WHERE fid = '#{@user['id']}'").fetch_row
 
-  if @all
+  if @all != nil
   else
     @city = " "
     @state = " "
     @count = 0
-    @new.query "INSERT INTO Final_uni (fid,city,state,count) VALUES('#{@user['id']}','#{@city}','#{@state}','#{@count}')"
-    @all = @m.query("SELECT * FROM Final_uni WHERE fid = '#{@user['id']}'").fetch_row
+    @all = Array.new(100)
   end
   @m.close
   @city = @all.at(2)
