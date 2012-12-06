@@ -179,16 +179,19 @@ get "/my_tools.html" do
       @city = @location.first
       @state = @location.last
       @count = 0
+      @new.query "INSERT INTO Final_uni (fid,city,state,count) VALUES('#{@user['id']}','@city','@state','0')"
     elsif @user['hometown']
       @location=@user['hometown']
       @location=@location['name'].rpartition(", ")
       @city = @location.first
       @state = @location.last
       @count = 0
+      @new.query "INSERT INTO Final_uni (fid,city,state,count) VALUES('#{@user['id']}','@city','@state','0')"
     else
       @city = " "
       @state = " "
       @count = 0
+      @new.query "INSERT INTO Final_uni (fid,city,state,count) VALUES('#{@user['id']}','@city','@state','0')"
     end
   end
   erb :my_tools
@@ -204,11 +207,6 @@ post "/my_tools.html" do
 
   @new=Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644')
   @all = @new.query("SELECT * FROM Final_uni WHERE fid = '#{@user['id']}'").fetch_row
-
-  if @all == nil
-    @new.query "INSERT INTO Final_uni (fid,city,state,count) VALUES('#{@user['id']}','0','0','0')"
-    @all = @new.query("SELECT * FROM Final_uni WHERE fid = '#{@user['id']}'").fetch_row
-  end
 
   @count = @all.at(4)
   @count = @count.to_i
