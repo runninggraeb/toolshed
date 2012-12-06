@@ -175,6 +175,7 @@ get "/my_tools.html" do
     @state = @all.at(3)
     @count = @all.at(4)
     @count = @count.to_i
+=begin
   elsif @user['location']
     @location_t=@user['location']
     @location=@location_t['name'].rpartition(", ")
@@ -187,6 +188,7 @@ get "/my_tools.html" do
     @city = @location.first
     @state = @location.last
     @count = 0
+=end
   else
     @city = " "
     @state = " "
