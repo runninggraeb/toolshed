@@ -165,32 +165,34 @@ get "/my_tools.html" do
 
   if session[:access_token]
     @user    = @graph.get_object("me")
-    @m = Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644')
-    @all = @m.query("SELECT * FROM Final_uni WHERE fid = '#{@user['id']}'").fetch_row
-    @m.close
-    if @all
-      @city = @all.at(2)
-      @state = @all.at(3)
-      @count = @all.at(4)
-      @count = @count.to_i
-    elsif @user['location']
-      @location_t=@user['location']
-      @location=@location_t['name'].rpartition(", ")
-      @city = @location.first
-      @state = @all.last
-      @count = 0
-    elsif @user['hometown']
-      @location_t=@user['hometown']
-      @location=@location_t['name'].rpartition(", ")
-      @city = @location.first
-      @state = @all.last
-      @count = 0
-    else
-      @city = " "
-      @state = " "
-      @count = 0
-    end
   end
+
+  @m = Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644')
+  @all = @m.query("SELECT * FROM Final_uni WHERE fid = '#{@user['id']}'").fetch_row
+  @m.close
+  if @all
+    @city = @all.at(2)
+    @state = @all.at(3)
+    @count = @all.at(4)
+    @count = @count.to_i
+  elsif @user['location']
+    @location_t=@user['location']
+    @location=@location_t['name'].rpartition(", ")
+    @city = @location.first
+    @state = @location.last
+    @count = 0
+  elsif @user['hometown']
+    @location_t=@user['hometown']
+    @location=@location_t['name'].rpartition(", ")
+    @city = @location.first
+    @state = @location.last
+    @count = 0
+  else
+    @city = " "
+    @state = " "
+    @count = 0
+  end
+
   erb :my_tools
 end
 

@@ -177,19 +177,20 @@ get "/my_tools.html" do
       @location_t=@user['location']
       @location=@location_t['name'].rpartition(", ")
       @city = @location.first
-      @state = @all.last
+      @state = @location.last
       @count = 0
     elsif @user['hometown']
       @location_t=@user['hometown']
       @location=@location_t['name'].rpartition(", ")
       @city = @location.first
-      @state = @all.last
+      @state = @location.last
       @count = 0
     else
       @city = " "
       @state = " "
       @count = 0
     end
+
   end
   erb :my_tools
 end
