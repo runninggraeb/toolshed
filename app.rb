@@ -167,32 +167,28 @@ get "/my_tools.html" do
     @user    = @graph.get_object("me")
     @m = Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644')
     @all = @m.query("SELECT * FROM Final_uni WHERE fid = '#{@user['id']}'").fetch_row
-    @m.close
     if @all
-      @city = @all.at(2)
-      @state = @all.at(3)
-      @count = @all.at(4)
-      @count = @count.to_i
     elsif @user['location']
-      @location=@user['location']
-      @location=@location['name'].rpartition(", ")
-      @city = @location.first
-      @state = @location.last
-      @count = 0
-      @new.query "INSERT INTO Final_uni (fid,city,state,count) VALUES('#{@user['id']}','@city','@state','0')"
+      @location_t=@user['location']
+      @location=@location_t['name'].rpartition(", ")
+      @m.query "INSERT INTO Final_uni (fid,city,state,count) VALUES('#{@user['id']}','#{@location.first}','#{@location.last}','0')"
+      @all = @m.query("SELECT * FROM Final_uni WHERE fid = '#{@user['id']}'").fetch_row
     elsif @user['hometown']
-      @location=@user['hometown']
-      @location=@location['name'].rpartition(", ")
-      @city = @location.first
-      @state = @location.last
-      @count = 0
-      @new.query "INSERT INTO Final_uni (fid,city,state,count) VALUES('#{@user['id']}','@city','@state','0')"
+      @location_t=@user['location']
+      @location=@location_t['name'].rpartition(", ")
+      @m.query "INSERT INTO Final_uni (fid,city,state,count) VALUES('#{@user['id']}','#{@location.first}','#{@location.last}','0')"
+      @all = @m.query("SELECT * FROM Final_uni WHERE fid = '#{@user['id']}'").fetch_row
     else
-      @city = " "
-      @state = " "
-      @count = 0
-      @new.query "INSERT INTO Final_uni (fid,city,state,count) VALUES('#{@user['id']}','@city','@state','0')"
+      @m.query "INSERT INTO Final_uni (fid,city,state,count) VALUES('#{@user['id']}',' ',' ','0')"
+      @all = @m.query("SELECT * FROM Final_uni WHERE fid = '#{@user['id']}'").fetch_row
     end
+    @m.close
+    @city = @all.at(2)
+    @state = @all.at(3)
+    @count = @all.at(4)
+    @count = @count.to_i
+
+
   end
   erb :my_tools
 end
@@ -214,7 +210,7 @@ post "/my_tools.html" do
   @enter=0
   @adds=0
   @news=Array.new(@count*2+11)
-  @labels=@news
+  @labels=Array.new(@count*2+11)
   for i in 1..(@count+5)
     @enter +=1
     @temp=params[:"tool_#{@enter}"]
@@ -240,7 +236,6 @@ post "/my_tools.html" do
   @city = params[:city]
   @city = @city.delete "'"
   @state = params[:state]
-
 
   @new.query "DELETE FROM Final_uni WHERE fid = '#{@user['id']}'"
   @new.query "INSERT INTO Final_uni (fid,city,state,count,#{@labels}) VALUES('#{@user['id']}','#{@city}','#{@state}','#{@adds}',#{@news})"

@@ -163,7 +163,6 @@
           <option <% if @state=="West Virginia" %> selected="selected" <% end %> value="West Virginia">West Virginia</option>
           <option <% if @state=="Wisconsin" %> selected="selected" <% end %> value="Wisconsin">Wisconsin</option>
           <option <% if @state=="Wyoming" %> selected="selected" <% end %> value="Wyoming">Wyoming</option>
-          <option <% if @state==" " %> selected="selected" <% end %> value=" "></option>
         </select>
       <br/>
       <br/>
