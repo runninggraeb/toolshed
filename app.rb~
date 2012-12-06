@@ -172,21 +172,21 @@ get "/my_tools.html" do
   @m.close
   if @all
   elsif @user['location']
-    @all=Array.new(5)
+    @all=Array.new(10)
     @location_t=@user['location']
     @location=@location_t['name'].rpartition(", ")
     @all[2] = @location.first
     @all[3] = @location.last
     @all[4] = "0"
   elsif @user['hometown']
-    @all=Array.new(5)
+    @all=Array.new(10)
     @location_t=@user['hometown']
     @location=@location_t['name'].rpartition(", ")
     @all[2] = @location.first
     @all[3] = @location.last
     @all[4] = "0"
   else
-    @all=Array.new(5)
+    @all=Array.new(10)
     @all[2] = " "
     @all[3] = " "
     @all[4] = "0"
