@@ -206,7 +206,7 @@ post "/my_tools.html" do
   @all = @new.query("SELECT * FROM Final_uni WHERE fid = '#{@user['id']}'").fetch_row
 
   if @all == nil
-    @new.query "INSERT INTO Final_uni (fid,city,state,count) VALUES('#{@user['id']}','0','0','0')"
+    @new.query "INSERT INTO Final_uni (fid,city,state,count) VALUES('#{@user['id']}',' ',' ','0')"
     @all = @new.query("SELECT * FROM Final_uni WHERE fid = '#{@user['id']}'").fetch_row
   end
 
