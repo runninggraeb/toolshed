@@ -169,32 +169,33 @@ get "/my_tools.html" do
 
   @m = Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644')
   @all = @m.query("SELECT * FROM Final_uni WHERE fid = '#{@user['id']}'").fetch_row
+  @m.close
   if @all
-    @city = @all.at(2)
-    @state = @all.at(3)
-    @count = @all.at(4)
-    @count = @count.to_i
-  else @user['location']
+  elsif @user['location']
+    @all=Array.new(5)
     @location_t=@user['location']
     @location=@location_t['name'].rpartition(", ")
-    @city = @location.first
-    @state = @location.last
-    @count = 0
-  end
-=begin
+    @all[2] = @location.first
+    @all[3] = @location.last
+    @all[4] = "0"
   elsif @user['hometown']
+    @all=Array.new(5)
     @location_t=@user['hometown']
     @location=@location_t['name'].rpartition(", ")
-    @city = @location.first
-    @state = @location.last
-    @count = 0
+    @all[2] = @location.first
+    @all[3] = @location.last
+    @all[4] = "0"
   else
-    @city = " "
-    @state = " "
-    @count = 0
+    @all=Array.new(5)
+    @all[2] = " "
+    @all[3] = " "
+    @all[4] = "0"
   end
-=end
-  @m.close
+
+  @city = @all.at(2)
+  @state = @all.at(3)
+  @count = @all.at(4)
+  @count = @count.to_i
 
   erb :my_tools
 end
