@@ -222,6 +222,7 @@ post "/my_tools.html" do
   for i in 1..(@count+5)
     @enter +=1
     @temp=params[:"tool_#{@enter}"]
+    @temp=@temp.delete "\\"
     @temp=@temp.delete "'"
     if @temp.size > 2
       @news[@adds*2+1] = "'#{@temp}'"

@@ -198,7 +198,7 @@ get "/my_tools.html" do
   @count = @all.at(4)
   @count = @count.to_i
 
-  erb :my_tools.erb
+  erb :my_tools
 end
 
 post "/my_tools.html" do
