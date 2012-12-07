@@ -293,7 +293,7 @@ post "/comments.html" do
   @new.query "INSERT INTO Comments (fid,name,date,comment) VALUES('#{@user['id']}','#{@user['name']}','#{@time}','#{@comment}')"
   @new.close
 
-#re-direct somewhere els- maybe a thank-you page.
+#re-direct somewhere else maybe a thank-you page.
   redirect "/comment_thanks.html"
 end
 

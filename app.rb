@@ -100,7 +100,7 @@ get "/friends_tools.html" do
   @template[4]=Array.new(0)
   @template[5]=Array.new(0)
 
-  if @all !=nil
+  if @all !=""
     @state_list[0]=@all.at(3)
     instance_variable_set(:"@#{@all.at(3)}", Array.new(@template))
     @state_count +=1
