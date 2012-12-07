@@ -135,10 +135,9 @@
 
     <% @html_states=0 %>
     <% for i in 1..@state_number %>
-     <% if @state_list.at(@html_states) %>
-      <p><font size="4"><%= @state_list.at(@html_states) %></font></p><hr>
-      <% @html_state_temp=instance_variable_get("@#{@state_list.at(@html_states)}") %>
-
+     <p><font size="4"><%= @state_list.at(@html_states) %></font></p><hr>
+     <% @html_state_temp=instance_variable_get("@#{@state_list.at(@html_states)}") %>
+     <% if @html_state_temp[0] %>
       <table style="width:60%;">
       <% @html_type_temp = @html_state_temp.at(0) %>
       <% if @html_type_temp.at(0).at(0) !=nil %>

@@ -135,6 +135,7 @@
 
     <% @html_states=0 %>
     <% for i in 1..@state_number %>
+     <% if @state_list.at(@html_states) %>
       <p><font size="4"><%= @state_list.at(@html_states) %></font></p><hr>
       <% @html_state_temp=instance_variable_get("@#{@state_list.at(@html_states)}") %>
 
@@ -190,6 +191,7 @@
         <% @html_type_temp.each do|n| %>
           <tr><td><%= n.at(0) %></td><td><%= n.at(1) %></td><td><%= n.at(2) %></td></tr>
         <% end %>
+       <% end %>
       <% end %>
       </table>
 
