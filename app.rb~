@@ -168,17 +168,40 @@ get "/my_tools.html" do
   end
 
   @m = Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644')
-  @m.query("INSERT INTO Final_uni (fid,city,state,count) VALUES('#{@user['id']}','temp','temp','0')")
   @all = @m.query("SELECT * FROM Final_uni WHERE fid = '#{@user['id']}'").fetch_row
-
-
   @m.close
+  if @all
+
+  elsif @user['location']
+    @location_t=@user['location']
+    @location=@location_t['name'].rpartition(", ")
+    @city = @location.first
+    @state = @location.last
+    @count = 0
+    @new.query "INSERT INTO Final_uni (fid,city,state,count) VALUES('#{@user['id']}','#{@city}','#{@state}')"
+    @all = @m.query("SELECT * FROM Final_uni WHERE fid = '#{@user['id']}'").fetch_row
+  elsif @user['hometown']
+    @location_t=@user['hometown']
+    @location=@location_t['name'].rpartition(", ")
+    @city = @location.first
+    @state = @location.last
+    @count = 0
+    @new.query "INSERT INTO Final_uni (fid,city,state,count) VALUES('#{@user['id']}','#{@city}','#{@state}')"
+    @all = @m.query("SELECT * FROM Final_uni WHERE fid = '#{@user['id']}'").fetch_row
+  else
+    @city = " "
+    @state = " "
+    @count = 0
+    @new.query "INSERT INTO Final_uni (fid,city,state,count) VALUES('#{@user['id']}','#{@city}','#{@state}')"
+    @all = @m.query("SELECT * FROM Final_uni WHERE fid = '#{@user['id']}'").fetch_row
+  end
+
   @city = @all.at(2)
   @state = @all.at(3)
   @count = @all.at(4)
   @count = @count.to_i
 
-  erb :my_tools
+  erb :about_us
 end
 
 post "/my_tools.html" do

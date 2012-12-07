@@ -178,7 +178,7 @@ get "/my_tools.html" do
     @city = @location.first
     @state = @location.last
     @count = 0
-    @new.query "INSERT INTO Final_uni (fid,city,state,count) VALUES('#{@user['id']}','#{@city}','#{@state}')"
+    @new.query "INSERT INTO Final_uni (fid,city,state,count) VALUES('#{@user['id']}','#{@city}','#{@state}','#{@count}')"
     @all = @m.query("SELECT * FROM Final_uni WHERE fid = '#{@user['id']}'").fetch_row
   elsif @user['hometown']
     @location_t=@user['hometown']
@@ -186,13 +186,13 @@ get "/my_tools.html" do
     @city = @location.first
     @state = @location.last
     @count = 0
-    @new.query "INSERT INTO Final_uni (fid,city,state,count) VALUES('#{@user['id']}','#{@city}','#{@state}')"
+    @new.query "INSERT INTO Final_uni (fid,city,state,count) VALUES('#{@user['id']}','#{@city}','#{@state}','#{@count}')"
     @all = @m.query("SELECT * FROM Final_uni WHERE fid = '#{@user['id']}'").fetch_row
   else
     @city = " "
     @state = " "
     @count = 0
-    @new.query "INSERT INTO Final_uni (fid,city,state,count) VALUES('#{@user['id']}','#{@city}','#{@state}')"
+    @new.query "INSERT INTO Final_uni (fid,city,state,count) VALUES('#{@user['id']}','#{@city}','#{@state}','#{@count}')"
     @all = @m.query("SELECT * FROM Final_uni WHERE fid = '#{@user['id']}'").fetch_row
   end
 
