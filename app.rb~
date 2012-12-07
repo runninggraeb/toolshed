@@ -177,22 +177,19 @@ get "/my_tools.html" do
     @location=@location_t['name'].rpartition(", ")
     @city = @location.first
     @state = @location.last
-    @count = 0
-    @new.query "INSERT INTO Final_uni (fid,city,state,count) VALUES('#{@user['id']}','#{@city}','#{@state}','#{@count}')"
+    @new.query "INSERT INTO Final_uni (fid,city,state,count) VALUES('#{@user['id']}','#{@city}','#{@state}','0')"
     @all = @m.query("SELECT * FROM Final_uni WHERE fid = '#{@user['id']}'").fetch_row
   elsif @user['hometown']
     @location_t=@user['hometown']
     @location=@location_t['name'].rpartition(", ")
     @city = @location.first
     @state = @location.last
-    @count = 0
-    @new.query "INSERT INTO Final_uni (fid,city,state,count) VALUES('#{@user['id']}','#{@city}','#{@state}','#{@count}')"
+    @new.query "INSERT INTO Final_uni (fid,city,state,count) VALUES('#{@user['id']}','#{@city}','#{@state}','0')"
     @all = @m.query("SELECT * FROM Final_uni WHERE fid = '#{@user['id']}'").fetch_row
   else
     @city = " "
     @state = " "
-    @count = 0
-    @new.query "INSERT INTO Final_uni (fid,city,state,count) VALUES('#{@user['id']}','#{@city}','#{@state}','#{@count}')"
+    @new.query "INSERT INTO Final_uni (fid,city,state,count) VALUES('#{@user['id']}','#{@city}','#{@state}','0')"
     @all = @m.query("SELECT * FROM Final_uni WHERE fid = '#{@user['id']}'").fetch_row
   end
 
