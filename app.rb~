@@ -171,13 +171,7 @@ get "/my_tools.html" do
   @m.query("INSERT INTO Final_uni (fid,city,state,count) VALUES('#{@user['id']}','temp','temp','0')")
   @all = @m.query("SELECT * FROM Final_uni WHERE fid = '#{@user['id']}'").fetch_row
 
-  if @all != nil
-  else
-    @city = " "
-    @state = " "
-    @count = 0
-    @all = Array.new(100)
-  end
+
   @m.close
   @city = @all.at(2)
   @state = @all.at(3)
