@@ -6,4 +6,4 @@ gem "json"
 gem "httparty"
 gem "thin"
 gem "mysql"
-
+gem "newrelic_rpm"
