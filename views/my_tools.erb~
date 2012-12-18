@@ -199,7 +199,6 @@
       <input align="center" type="submit" value="Update">
     </form>
     <br/>
-    <p><%= @user %><%= @user['location'] %></p>
     </section>
   <% end %>
   </body>

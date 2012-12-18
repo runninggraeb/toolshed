@@ -194,7 +194,7 @@
       </table>
       <br/>
      <% else %>
-       <p>It looks like you don't have any friends that have posted inventories in <% @state_list.at(@html_states) %>.  Invite some, and start sharing!</p>
+       <p>It looks like you don't have any friends that have posted inventories in <%= @state_list.at(@html_states) %>.  Invite some, and start sharing!</p>
      <% end %>
      <br/>
      <br/>
