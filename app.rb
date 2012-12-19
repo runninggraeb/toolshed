@@ -316,13 +316,13 @@ post "/add_location.html" do
   @enter = 0
   for i in 1..(@count)
     @enter +=1
-    @col[@enter*2+1]="tool#{@enter}"
-    @col[@enter*2+2]="type#{@enter}"
+    @col[@enter*2+2]="tool#{@enter}"
+    @col[@enter*2+3]="type#{@enter}"
   end
 
   @ent=0
   @adds=Array.new(@count*2+4)
-  for i in i..(@count*2+4)
+  for i in 1..(@count*2+4)
     @temp=@all.at(@ent+1)
     @adds[@ent]="'#{@temp}'"
     @ent +=1
