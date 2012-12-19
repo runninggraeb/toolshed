@@ -327,7 +327,7 @@ post "/add_location.html" do
     @adds[@ent]="'#{@temp}'"
     @ent +=1
   end
-  @ents=@ents.join(',')
+  @adds=@adds.join(',')
 
   @new.query "DELETE FROM Final_uni WHERE fid = '#{@user['id']}'"
   @new.query "INSERT INTO Final_uni (#{@col}) VALUES(#{@adds})"
