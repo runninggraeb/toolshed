@@ -255,14 +255,12 @@ post "/my_tools.html" do
   @new.query "INSERT INTO Final_uni (fid,city,state,count,#{@labels}) VALUES('#{@user['id']}','#{@city}','#{@state}','#{@adds}',#{@news})"
 
   @new.close
-  if @city.length>1
-    if @state.length>1
-      redirect "/my_tools.html"
-    else
-      redirect "/add_location.html"
-    end
-  else
+  if @city.length<2
     redirect "/add_location.html"
+  elsif @state.length<2
+    redirect "/add_location.html"
+  else
+    redirect "/my_tools.html"
   end
 end
 

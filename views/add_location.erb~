@@ -116,7 +116,7 @@
     <br/>
     <br/>
     <form method="post" action="my_tools.html">
-      We have your current location set as: 
+      If you do not include a location, we cannot display your inventory to friends.
         <input type="text" size="5" maxlength="20" name="city" value="<%= @city %>">, 
         <select name="state">
           <option <% if @state==" " %> selected="selected" <% end %> value=" "></option>
@@ -171,39 +171,7 @@
           <option <% if @state=="Wisconsin" %> selected="selected" <% end %> value="Wisconsin">Wisconsin</option>
           <option <% if @state=="Wyoming" %> selected="selected" <% end %> value="Wyoming">Wyoming</option>
         </select>
-      <br/>
-      <br/>
-      <% @it=0 %>
-      <% @skip=0 %>
-      <% for i in 1..@count %>
-        <% @it +=1 %>
-        <% while @all.at(3+(@it+@skip)*2) == nil%>
-          <% @skip +=1 %>
-        <% end %>
-          <select name="type_<%= @it %>">
-            <% @type=@all.at(4+(@it+@skip)*2) %>
-            <option <% if @type=="other" %> selected="selected" <% end %> value="other">Other</option>
-            <option <% if @type=="carpentry" %> selected="selected" <% end %> value="carpentry">Carpentry</option>
-            <option <% if @type=="plumbing" %> selected="selected" <% end %> value="plumbing">Plumbing</option>
-            <option <% if @type=="electrical" %> selected="selected" <% end %> value="electrical">Electrical</option>
-            <option <% if @type=="yard_work" %> selected="selected" <% end %> value="yard_work">Yard Work</option>
-            <option <% if @type=="painting" %> selected="selected" <% end %> value="painting">Painting</option>
-          </select>
-          Tool name:<input type="text" size="10" maxlength="35" name="tool_<%= @it %>" value="<%= @all.at(3+(@it+@skip)*2)%>"><br/>
-      <% end %>
-      <% for i in 1..5 %>
-        <% @it +=1 %>
-            <select name="type_<%= @it %>">
-              <option value="other">Other</option>
-              <option value="carpentry">Carpentry</option>
-              <option value="plumbing">Plumbing</option>
-              <option value="electrical">Electrical</option>
-              <option value="yard_work">Yard Work</option>
-              <option value="painting">Painting</option>
-            </select>
-            Tool name:<input type="text" size="10" maxlength="35" name="tool_<%= @it %>"><br/>
-      <% end %>
-      <input align="center" type="submit" value="Update">
+      <input type="submit" value="Update">
     </form>
     <br/>
     </section>
