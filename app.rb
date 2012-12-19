@@ -228,6 +228,7 @@ post "/my_tools.html" do
     @temp=params[:"tool_#{@enter}"]
     @temp=@temp.delete "\\"
     @temp=@temp.delete "'"
+    @temp=@temp.strip
     if @temp.size > 2
       @news[@adds*2+1] = "'#{@temp}'"
       @temp=params[:"type_#{@enter}"]
@@ -249,6 +250,7 @@ post "/my_tools.html" do
   @city = params[:city]
   @city = @city.delete "'"
   @city = @city.delete "\\"
+  @city = @city.strip
   @state = params[:state]
 
   @new.query "DELETE FROM Final_uni WHERE fid = '#{@user['id']}'"
@@ -297,6 +299,7 @@ post "/add_location.html" do
   @city = params[:city]
   @city = @city.delete "'"
   @city = @city.delete "\\"
+  @city = @city.strip
   @state = params[:state]
 
 
