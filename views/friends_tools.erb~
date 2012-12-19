@@ -127,7 +127,7 @@
             <a href="comments.html" class="toolbar-button">
              <span>Comments</span></a>
             <a href="#" class="toolbar-button apprequests" id="sendRequest" data-message="<%= @user['name'] %> is on Toolshed, and wants you to join, too!  Start now to get access to your friends tools, and share your tools with others!" id="invite-style">
-             <span>Invite Friends- You Can Be Proud of This App!</span></a>
+             <span>Be Proud of This App- Invite Friends!</span></a>
       </div>
     </section>
     <section>
