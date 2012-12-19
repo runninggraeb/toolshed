@@ -266,6 +266,85 @@ post "/my_tools.html" do
   end
 end
 
+get "/add_location.html" do
+
+  @graph  = Koala::Facebook::API.new(session[:access_token])
+
+  @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
+
+  if session[:access_token]
+    @user    = @graph.get_object("me")
+  end
+
+  @m = Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644')
+  @all = @m.query("SELECT * FROM Final_uni WHERE fid = '#{@user['id']}'").fetch_row
+  @m.close
+
+  @city=@all.at(2)
+  @state=@all.at(3)
+
+  erb :add_location
+end
+
+post "/add_location.html" do
+
+  @graph  = Koala::Facebook::API.new(session[:access_token])
+
+  @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
+
+  if session[:access_token]
+    @user    = @graph.get_object("me")
+  end
+
+  @city = params[:city]
+  @city = @city.delete "'"
+  @city = @city.delete "\\"
+  @state = params[:state]
+
+
+  @new=Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644')
+  @all = @new.query("SELECT * FROM Final_uni WHERE fid = '#{@user['id']}'").fetch_row
+  @all[2] = @city
+  @all[3] = @state
+  @count = @all.at(4).to_i
+
+  @col=Array.new(@count*2+4)
+  @col[0]="fid"
+  @col[0]="city"
+  @col[0]="state"
+  @col[0]="count"
+  @enter = 0
+  for i in 1..(@count)
+    @enter +=1
+    @labels[@col*2+1]="tool#{@enter}"
+    @labels[@adds*2+2]="type#{@enter}"
+  end
+
+  @ent=0
+  @adds=Array.new(@all.length-1)
+  for i in i..(@all.length-1)
+    @temp=@all.at(@ent+1)
+    @adds[@ent]="'#{@temp}'"
+    @ent +=1
+  end
+
+  @new.query "DELETE FROM Final_uni WHERE fid = '#{@user['id']}'"
+  @new.query "INSERT INTO Final_uni (#{@col}) VALUES('#{@user['id']}','#{@city}','#{@state}','#{@adds}',#{@news})"
+  @new.close
+
+
+  if @city.length>1
+    if @state.length>1
+      redirect "/my_tools.html"
+    else
+      redirect "/comment_thanks.html"
+    end
+  else
+    redirect "/comment_thanks.html"
+  end
+end
+
+
 get "/about_us.html" do
 
   @graph  = Koala::Facebook::API.new(session[:access_token])
