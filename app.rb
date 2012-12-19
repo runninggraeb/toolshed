@@ -248,7 +248,12 @@ post "/my_tools.html" do
 
   @city = params[:city]
   @city = @city.delete "'"
+  @city = @city.delete "\\"
   @state = params[:state]
+
+  if @city.length<2
+    redirect "/comment_thanks.html"
+  end
 
   @new.query "DELETE FROM Final_uni WHERE fid = '#{@user['id']}'"
   @new.query "INSERT INTO Final_uni (fid,city,state,count,#{@labels}) VALUES('#{@user['id']}','#{@city}','#{@state}','#{@adds}',#{@news})"
