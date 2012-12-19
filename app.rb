@@ -321,15 +321,15 @@ post "/add_location.html" do
   end
 
   @ent=0
-  @adds=Array.new(@all.length-1)
-  for i in i..(@all.length-1)
+  @adds=Array.new(@count*2+4)
+  for i in i..(@count*2+4)
     @temp=@all.at(@ent+1)
     @adds[@ent]="'#{@temp}'"
     @ent +=1
   end
 
   @new.query "DELETE FROM Final_uni WHERE fid = '#{@user['id']}'"
-  @new.query "INSERT INTO Final_uni (#{@col}) VALUES('#{@user['id']}','#{@city}','#{@state}','#{@adds}',#{@news})"
+  @new.query "INSERT INTO Final_uni (#{@col}) VALUES(#{@adds})"
   @new.close
 
 
