@@ -319,7 +319,7 @@ post "/add_location.html" do
     @col[@enter*2+2]="tool#{@enter}"
     @col[@enter*2+3]="type#{@enter}"
   end
-
+  @col=@col.join(',')
   @ent=0
   @adds=Array.new(@count*2+4)
   for i in 1..(@count*2+4)
