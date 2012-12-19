@@ -259,10 +259,10 @@ post "/my_tools.html" do
     if @state.length>1
       redirect "/my_tools.html"
     else
-      redirect "/comment_thanks.html"
+      redirect "/add_location.html"
     end
   else
-    redirect "/comment_thanks.html"
+    redirect "/add_location.html"
   end
 end
 
@@ -337,10 +337,10 @@ post "/add_location.html" do
     if @state.length>1
       redirect "/my_tools.html"
     else
-      redirect "/comment_thanks.html"
+      redirect "/add_location.html"
     end
   else
-    redirect "/comment_thanks.html"
+    redirect "/add_location.html"
   end
 end
 
