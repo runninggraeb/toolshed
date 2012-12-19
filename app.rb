@@ -80,9 +80,11 @@ get "/friends_tools.html" do
   @fr_app.each do |friend_result|
     @lend=@m.query("SELECT * FROM Final_uni WHERE fid = '#{friend_result['uid']}'").fetch_row
     if @lend != nil
-      @list[@fr_w_count] = @lend.compact
-      @names[@fr_w_count] = friend_result['name']
-      @fr_w_count +=1
+      if @lend.at(2).length>1
+        @list[@fr_w_count] = @lend.compact
+        @names[@fr_w_count] = friend_result['name']
+        @fr_w_count +=1
+      end
     end
   end
   @m.close
