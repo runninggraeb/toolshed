@@ -103,9 +103,11 @@ get "/friends_tools.html" do
   @template[5]=Array.new(0)
 
   if @all !=nil
-    @state_list[0]=@all.at(3)
-    instance_variable_set(:"@#{@all.at(3)}", Array.new(@template))
-    @state_count +=1
+    if @all.at(2).length>1
+      @state_list[0]=@all.at(3)
+      instance_variable_set(:"@#{@all.at(3)}", Array.new(@template))
+      @state_count +=1
+    end
   end
 
   @it=0
