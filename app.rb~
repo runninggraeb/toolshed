@@ -424,8 +424,8 @@ get "/ie.html" do
   erb :ie
 end
 
-post "/comment_thanks.html" do
-  redirect "/comment_thanks.html"
+post "/ie.html" do
+  redirect "/ie.html"
 end
 
 
