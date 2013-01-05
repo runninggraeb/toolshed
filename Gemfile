@@ -7,5 +7,3 @@ gem "httparty"
 gem "thin"
 gem "mysql"
 gem "newrelic_rpm"
-
-gem "ie_iframe_cookies"
