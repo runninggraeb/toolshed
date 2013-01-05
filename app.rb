@@ -12,9 +12,6 @@ unless ENV["FACEBOOK_APP_ID"] && ENV["FACEBOOK_SECRET"]
   abort("missing env vars: please set FACEBOOK_APP_ID and FACEBOOK_SECRET with your app credentials")
 end
 
-if IE
-  puts "Toolshed is not yet compatible with Internet Explorer.  Please use another web browser"
-end
 
 before do
   # HTTPS redirect
@@ -49,6 +46,11 @@ end
 
 
 get "/" do
+
+  if IE
+    redirect "ie.html"
+  end
+
   @graph  = Koala::Facebook::API.new(session[:access_token])
 
   @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
@@ -408,6 +410,27 @@ end
 post "/comment_thanks.html" do
   redirect "/comment_thanks.html"
 end
+
+
+get "/ie.html" do
+
+  @graph  = Koala::Facebook::API.new(session[:access_token])
+
+  @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
+
+  if session[:access_token]
+    @user    = @graph.get_object("me")
+  end
+  erb :ie
+end
+
+post "/ie.html" do
+  redirect "/ie.html"
+end
+
+
+
+
 
 
 # used to close the browser window opened to post to wall/send to friends
