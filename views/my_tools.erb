@@ -191,7 +191,14 @@
           </select>
           Tool name:<input type="text" size="10" maxlength="35" name="tool_<%= @it %>" value="<%= @all.at(3+(@it+@skip)*2)%>"><br/>
       <% end %>
-      <% for i in 1..5 %>
+
+      <% if @count > 95 %>
+        <% @extras=@count-95 %>
+      <% else %>
+        <% @extras=5 %>
+      <% end %>
+
+      <% for i in 1..@extras %>
         <% @it +=1 %>
             <select name="type_<%= @it %>">
               <option value="other">Other</option>
