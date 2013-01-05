@@ -12,6 +12,10 @@ unless ENV["FACEBOOK_APP_ID"] && ENV["FACEBOOK_SECRET"]
   abort("missing env vars: please set FACEBOOK_APP_ID and FACEBOOK_SECRET with your app credentials")
 end
 
+if IE
+  puts "Toolshed is not yet compatible with Internet Explorer.  Please use another web browser"
+end
+
 before do
   # HTTPS redirect
   if settings.environment == :production && request.scheme != 'https'

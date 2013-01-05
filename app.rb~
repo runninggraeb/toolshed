@@ -12,8 +12,6 @@ unless ENV["FACEBOOK_APP_ID"] && ENV["FACEBOOK_SECRET"]
   abort("missing env vars: please set FACEBOOK_APP_ID and FACEBOOK_SECRET with your app credentials")
 end
 
-before_filter :normal_cookies_for_ie_in_iframes! # :only => [:foo, :bar]
-
 before do
   # HTTPS redirect
   if settings.environment == :production && request.scheme != 'https'
