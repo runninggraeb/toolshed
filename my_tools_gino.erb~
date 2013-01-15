@@ -115,7 +115,7 @@
     </section>
     <section>
     <br/>
-    <text class="news">These tools have successfully added to your file.</text>
+    <p class="news">These tools have successfully added to your file.</p>
     <br/>
     <form method="post" action="my_tools.html">
       We have your current location set as: 

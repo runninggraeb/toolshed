@@ -31,7 +31,7 @@ h1 {
 }
 
 p.news {
-  color: #656565
+  color: #D00000;
   display: block;
   margin-left:auto;
   margin-right:auto;
