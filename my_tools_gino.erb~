@@ -115,7 +115,7 @@
     </section>
     <section>
     <br/>
-    <h2>These tools have successfully added to your file.</h2>
+    <span style="color:#E00000;text-align:center">These tools have successfully added to your file.</span>
     <br/>
     <form method="post" action="my_tools.html">
       We have your current location set as: 
