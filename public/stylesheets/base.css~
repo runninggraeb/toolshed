@@ -30,12 +30,11 @@ h1 {
   font-weight: normal;
 }
 
-h2.news {
+h2 {
   font: 14px/1.5em "Lucida Grande", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   color: #D00000;
-  margin-left:auto;
-  margin-right:auto;
+  text-align:center;
 }
 
 textarea.centered {

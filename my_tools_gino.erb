@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html xmlns:fb="http://ogp.me/ns/fb#" lang="en">
+  <head>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes" />
+    <title><%= @app['name'] %></title>
+    <link rel="stylesheet" href="stylesheets/screen.css" media="Screen" type="text/css" />
+    <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-width: 480px), only screen and (max-device-width: 480px)" type="text/css" />
+
+    <!--[if IEMobile]>
+    <link rel="stylesheet" href="mobile.css" media="screen" type="text/css"  />
+    <![endif]-->
+
+    <meta property="og:title" content="<%= @app['name'] %>" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="<%= url %>" />
+    <meta property="og:image" content="<%= url('/logo.png') %>" />
+    <meta property="og:site_name" content="<%= @app['name'] %>" />
+    <meta property="og:description" content="My First App" />
+    <meta property="fb:app_id" content="<%= @app['name'] %>" />
+    <script type="text/javascript" src="/javascripts/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript">
+      function logResponse(response) {
+        if (console && console.log) {
+          console.log('The response was', response);
+        }
+      }
+      $(function(){
+        $('#sendRequest').click(function() {
+          FB.ui(
+            {
+              method  : 'apprequests',
+              message : $(this).attr('data-message')
+            },
+            function (response) {
+              if (response != null) {
+                logResponse(response);
+              }
+            }
+          );
+        });
+      });
+    </script>
+    <!--[if IE]>
+      <script type="text/javascript">
+        var tags = ['header', 'section'];
+        while(tags.length)
+          document.createElement(tags.pop());
+      </script>
+    <![endif]-->
+  </head>
+  <body>
+    <div id="fb-root"></div>
+    <script type="text/javascript">
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : "<%= @app['id'] %>",
+          channelUrl : "<%= url_no_scheme('/channel.html') %>",
+          status     : true,
+          cookie     : true,
+          xfbml      : true
+        });
+        FB.Event.subscribe('auth.login', function(response) {
+          window.location = window.location;
+        });
+        FB.Canvas.setAutoGrow();
+      };
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <% if @user %>
+      <header class="clearfix">
+          <img class="logo" src="/images/header.jpg" height="60" width="200"/>
+          <p id="picture" style="background-image: url(https://graph.facebook.com/<%= @user['id'] %>/picture?type=normal)"></p>
+          <div>
+            <h1>Welcome, <strong><%= @user['name'] %></strong></h1>
+            <p class="tagline">
+              Share tools & start projects on
+              <a href="<%= @app['@app'] %>"><%= @app['name'] %></a>
+            </p>
+          </div>
+      </header>
+    <% else redirect "/auth/facebook" %>
+      <header class="no-user">
+        <div>
+          <h1>Welcome</h1>
+            <a href='/auth/facebook' class="fb_button fb_button_medium">
+              <span class="fb_button_text">Log In</span>
+            </a>
+        </div>
+      </header>
+    <% end %>
+    <% if @user %>
+    <section class="clearfix">
+      <div>
+            <a href="/" class="toolbar-button">
+             <span>Welcome</span></a>
+            <a href="friends_tools.html" class="toolbar-button">
+             <span>Friend's Tools</span></a>
+            <a href="my_tools.html" class="toolbar-button">
+             <span>My Tools</span></a>
+            <a href="about_us.html" class="toolbar-button">
+             <span>About Us</span></a>
+            <a href="comments.html" class="toolbar-button">
+             <span>Comments</span></a>
+            <a href="#" class="toolbar-button apprequests" id="sendRequest" data-message="<%= @user['name'] %> is on Toolshed, and wants you to join, too!  Start now to get access to your friends tools, and share your tools with others!" id="invite-style">
+             <span>Be Proud of This App- Invite Friends!</span></a>
+      </div>
+    </section>
+    <section>
+    <br/>
+    <p style="color:blue;text-align:center">Mark Your Calendars: The official launch date for Toolshed will be March 7, 2013!</p>
+    <br/>
+    <form method="post" action="my_tools.html">
+      We have your current location set as: 
+        <input type="text" size="5" maxlength="20" name="city" value="<%= @city %>">, 
+        <select name="state">
+          <option <% if @state==" " %> selected="selected" <% end %> value=" "></option>
+          <option <% if @state=="Alabama" %> selected="selected" <% end %> value="Alabama">Alabama</option>
+          <option <% if @state=="Alaska" %> selected="selected" <% end %> value="Alaska">Alaska</option>
+          <option <% if @state=="Arizona" %> selected="selected" <% end %> value="Arizona">Arizona</option>
+          <option <% if @state=="Arkansas" %> selected="selected" <% end %> value="Arkansas">Arkansas</option>
+          <option <% if @state=="California" %> selected="selected" <% end %> value="California">California</option>
+          <option <% if @state=="Colorado" %> selected="selected" <% end %> value="Colorado">Colorado</option>
+          <option <% if @state=="Connecticut" %> selected="selected" <% end %> value="Connecticut">Connecticut</option>
+          <option <% if @state=="Delaware" %> selected="selected" <% end %> value="Delaware">Delaware</option>
+          <option <% if @state=="Florida" %> selected="selected" <% end %> value="Florida">Florida</option>
+          <option <% if @state=="Georgia" %> selected="selected" <% end %> value="Georgia">Georgia</option>
+          <option <% if @state=="Hawaii" %> selected="selected" <% end %> value="Hawaii">Hawaii</option>
+          <option <% if @state=="Idaho" %> selected="selected" <% end %> value="Idaho">Idaho</option>
+          <option <% if @state=="Illinois" %> selected="selected" <% end %> value="Illinois">Illinois</option>
+          <option <% if @state=="Indiana" %> selected="selected" <% end %> value="Indiana">Indiana</option>
+          <option <% if @state=="Iowa" %> selected="selected" <% end %> value="Iowa">Iowa</option>
+          <option <% if @state=="Kansas" %> selected="selected" <% end %> value="Kansas">Kansas</option>
+          <option <% if @state=="Kentucky" %> selected="selected" <% end %> value="Kentucky">Kentucky</option>
+          <option <% if @state=="Louisiana" %> selected="selected" <% end %> value="Louisiana">Louisiana</option>
+          <option <% if @state=="Maine" %> selected="selected" <% end %> value="Maine">Maine</option>
+          <option <% if @state=="Maryland" %> selected="selected" <% end %> value="Maryland">Maryland</option>
+          <option <% if @state=="Massachusetts" %> selected="selected" <% end %> value="Massachusetts">Massachusetts</option>
+          <option <% if @state=="Michigan" %> selected="selected" <% end %> value="Michigan">Michigan</option>
+          <option <% if @state=="Minnesota" %> selected="selected" <% end %> value="Minnesota">Minnesota</option>
+          <option <% if @state=="Misssissippi" %> selected="selected" <% end %> value="Misssissippi">Misssissippi</option>
+          <option <% if @state=="Missouri" %> selected="selected" <% end %> value="Missouri">Missouri</option>
+          <option <% if @state=="Montana" %> selected="selected" <% end %> value="Montana">Montana</option>
+          <option <% if @state=="Nebraska" %> selected="selected" <% end %> value="Nebraska">Nebraska</option>
+          <option <% if @state=="Nevada" %> selected="selected" <% end %> value="Nevada">Nevada</option>
+          <option <% if @state=="New Hampshire" %> selected="selected" <% end %> value="New Hampshire">New Hampshire</option>
+          <option <% if @state=="New Jersey" %> selected="selected" <% end %> value="New Jersey">New Jersey</option>
+          <option <% if @state=="New Mexico" %> selected="selected" <% end %> value="New Mexico">New Mexico</option>
+          <option <% if @state=="New York" %> selected="selected" <% end %> value="New York">New York</option>
+          <option <% if @state=="North Carolina" %> selected="selected" <% end %> value="North Carolina">North Carolina</option>
+          <option <% if @state=="North Dakota" %> selected="selected" <% end %> value="North Dakota">North Dakota</option>
+          <option <% if @state=="Ohio" %> selected="selected" <% end %> value="Ohio">Ohio</option>
+          <option <% if @state=="Oklahoma" %> selected="selected" <% end %> value="Oklahoma">Oklahoma</option>
+          <option <% if @state=="Oregon" %> selected="selected" <% end %> value="Oregon">Oregon</option>
+          <option <% if @state=="Pennsylvania" %> selected="selected" <% end %> value="Pennsylvania">Pennsylvania</option>
+          <option <% if @state=="Rhode Island" %> selected="selected" <% end %> value="Rhode Island">Rhode Island</option>
+          <option <% if @state=="South Carolina" %> selected="selected" <% end %> value="South Carolina">South Carolina</option>
+          <option <% if @state=="South Dakota" %> selected="selected" <% end %> value="South Dakota">South Dakota</option>
+          <option <% if @state=="Tennessee" %> selected="selected" <% end %> value="Tennessee">Tennessee</option>
+          <option <% if @state=="Texas" %> selected="selected" <% end %> value="Texas">Texas</option>
+          <option <% if @state=="Utah" %> selected="selected" <% end %> value="Utah">Utah</option>
+          <option <% if @state=="Vermont" %> selected="selected" <% end %> value="Vermont">Vermont</option>
+          <option <% if @state=="Virginia" %> selected="selected" <% end %> value="Virginia">Virginia</option>
+          <option <% if @state=="Washington" %> selected="selected" <% end %> value="Washington">Washington</option>
+          <option <% if @state=="West Virginia" %> selected="selected" <% end %> value="West Virginia">West Virginia</option>
+          <option <% if @state=="Wisconsin" %> selected="selected" <% end %> value="Wisconsin">Wisconsin</option>
+          <option <% if @state=="Wyoming" %> selected="selected" <% end %> value="Wyoming">Wyoming</option>
+        </select>
+      <br/>
+      <br/>
+      <% @it=0 %>
+      <% @skip=0 %>
+      <% for i in 1..@count %>
+        <% @it +=1 %>
+        <% while @all.at(3+(@it+@skip)*2) == nil%>
+          <% @skip +=1 %>
+        <% end %>
+          <select name="type_<%= @it %>">
+            <% @type=@all.at(4+(@it+@skip)*2) %>
+            <option <% if @type=="other" %> selected="selected" <% end %> value="other">Other</option>
+            <option <% if @type=="carpentry" %> selected="selected" <% end %> value="carpentry">Carpentry</option>
+            <option <% if @type=="plumbing" %> selected="selected" <% end %> value="plumbing">Plumbing</option>
+            <option <% if @type=="electrical" %> selected="selected" <% end %> value="electrical">Electrical</option>
+            <option <% if @type=="yard_work" %> selected="selected" <% end %> value="yard_work">Yard Work</option>
+            <option <% if @type=="painting" %> selected="selected" <% end %> value="painting">Painting</option>
+            <option <% if @type=="food_processing" %> selected="selected" <% end %> value="food_processing">Food Processing</option>
+          </select>
+          Tool name:<input type="text" size="10" maxlength="35" name="tool_<%= @it %>" value="<%= @all.at(3+(@it+@skip)*2)%>"><br/>
+      <% end %>
+
+      <% if @count > 94 %>
+        <% @extras=@count-94 %>
+      <% else %>
+        <% @extras=5 %>
+      <% end %>
+
+      <% for i in 1..@extras %>
+        <% @it +=1 %>
+            <select name="type_<%= @it %>">
+              <option value="other">Other</option>
+              <option value="carpentry">Carpentry</option>
+              <option value="plumbing">Plumbing</option>
+              <option value="electrical">Electrical</option>
+              <option value="yard_work">Yard Work</option>
+              <option value="painting">Painting</option>
+              <option value="food_processing">Food Processing</option>
+            </select>
+            Tool name:<input type="text" size="10" maxlength="35" name="tool_<%= @it %>"><br/>
+      <% end %>
+      <input align="center" type="submit" value="Update">
+    </form>
+    <br/>
+    </section>
+  <% end %>
+  </body>
+</html>
