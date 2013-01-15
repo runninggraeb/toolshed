@@ -30,7 +30,7 @@ h1 {
   font-weight: normal;
 }
 
-p.news {
+p.centered {
   color: #D00000;
   display: block;
   margin-left:auto;
