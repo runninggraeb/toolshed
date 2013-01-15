@@ -103,6 +103,7 @@ get "/friends_tools.html" do
   @template[3]=Array.new(0)
   @template[4]=Array.new(0)
   @template[5]=Array.new(0)
+  @template[6]=Array.new(0)
 
   if @all !=nil
     if @all.at(2).length>1
@@ -140,8 +141,11 @@ get "/friends_tools.html" do
       if @temp_inv.at(@c) == "painting"
         @temp_type=4
       end
-      if @temp_inv.at(@c) == "other"
+      if @temp_inv.at(@c) == "food_processing"
         @temp_type=5
+      end
+      if @temp_inv.at(@c) == "other"
+        @temp_type=6
       end
       instance_variable_get("@#{@temp_inv.at(3)}")[@temp_type] +=[[@temp_inv.at(@c-1),@temp_fr,@temp_inv.at(2)]]
       @c +=2

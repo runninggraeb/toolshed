@@ -45,6 +45,9 @@ error(Koala::Facebook::APIError) do
 end
 
 
+
+
+
 get "/" do
 
   @graph  = Koala::Facebook::API.new(session[:access_token])
@@ -60,6 +63,11 @@ end
 post "/" do
   redirect "/"
 end
+
+
+
+
+
 
 get "/friends_tools.html" do
   @graph  = Koala::Facebook::API.new(session[:access_token])
@@ -268,9 +276,122 @@ post "/my_tools.html" do
   elsif @state.length<2
     redirect "/add_location.html"
   else
-    redirect "/my_tools.html"
+    redirect "/my_tools_g.html"
   end
 end
+
+
+
+
+
+get "/my_tools_g.html" do
+  @graph  = Koala::Facebook::API.new(session[:access_token])
+
+  @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
+
+  if session[:access_token]
+    @user    = @graph.get_object("me")
+  end
+
+  @m = Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644')
+  @all = @m.query("SELECT * FROM Final_uni WHERE fid = '#{@user['id']}'").fetch_row
+
+  if @all
+  elsif @user['location']
+    @location_t=@user['location']
+    @location=@location_t['name'].rpartition(", ")
+    @city = @location.first
+    @state = @location.last
+    @m.query "INSERT INTO Final_uni (fid,city,state,count) VALUES('#{@user['id']}','#{@city}','#{@state}','0')"
+    @all = @m.query("SELECT * FROM Final_uni WHERE fid = '#{@user['id']}'").fetch_row
+  elsif @user['hometown']
+    @location_t=@user['hometown']
+    @location=@location_t['name'].rpartition(", ")
+    @city = @location.first
+    @state = @location.last
+    @m.query "INSERT INTO Final_uni (fid,city,state,count) VALUES('#{@user['id']}','#{@city}','#{@state}','0')"
+    @all = @m.query("SELECT * FROM Final_uni WHERE fid = '#{@user['id']}'").fetch_row
+  else
+    @city = " "
+    @state = " "
+    @m.query "INSERT INTO Final_uni (fid,city,state,count) VALUES('#{@user['id']}','#{@city}','#{@state}','0')"
+    @all = @m.query("SELECT * FROM Final_uni WHERE fid = '#{@user['id']}'").fetch_row
+  end
+  @m.close
+
+  @city = @all.at(2)
+  @state = @all.at(3)
+  @count = @all.at(4)
+  @count = @count.to_i
+
+  erb :my_tools_gino
+end
+
+post "/my_tools_g.html" do
+
+  @graph  = Koala::Facebook::API.new(session[:access_token])
+  @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
+  if session[:access_token]
+    @user    = @graph.get_object("me")
+  end
+
+  @new=Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644')
+  @all = @new.query("SELECT * FROM Final_uni WHERE fid = '#{@user['id']}'").fetch_row
+
+  @count = @all.at(4)
+  @count = @count.to_i
+ 
+  @enter=0
+  @adds=0
+  @news=Array.new(@count*2+11)
+  @labels=Array.new(@count*2+11)
+  for i in 1..(@count+5)
+    @enter +=1
+    @temp=params[:"tool_#{@enter}"]
+    @temp=@temp.delete "\\"
+    @temp=@temp.delete "'"
+    @temp=@temp.strip
+    if @temp.size > 2
+      @news[@adds*2+1] = "'#{@temp}'"
+      @temp=params[:"type_#{@enter}"]
+      @news[@adds*2+2] = "'#{@temp}'"
+      @labels[@adds*2+1]="tool#{@enter}"
+      @labels[@adds*2+2]="type#{@enter}"
+      @adds +=1
+    end
+  end
+
+ #Try route matching
+
+  @news=@news[1..(@adds*2)]
+  @labels=@labels[1..(@adds*2)]
+
+  @news=@news.join(',')
+  @labels=@labels.join(',')
+
+  @city = params[:city]
+  @city = @city.delete "'"
+  @city = @city.delete "\\"
+  @city = @city.strip
+  @state = params[:state]
+
+  @new.query "DELETE FROM Final_uni WHERE fid = '#{@user['id']}'"
+  @new.query "INSERT INTO Final_uni (fid,city,state,count,#{@labels}) VALUES('#{@user['id']}','#{@city}','#{@state}','#{@adds}',#{@news})"
+
+  @new.close
+  if @city.length<2
+    redirect "/add_location.html"
+  elsif @state.length<2
+    redirect "/add_location.html"
+  else
+    redirect "/my_tools_g.html"
+  end
+end
+
+
+
+
+
 
 get "/add_location.html" do
 
@@ -351,6 +472,9 @@ post "/add_location.html" do
 end
 
 
+
+
+
 get "/about_us.html" do
 
   @graph  = Koala::Facebook::API.new(session[:access_token])
@@ -366,6 +490,11 @@ end
 post "/about_us.html" do
   redirect "/about_us.html"
 end
+
+
+
+
+
 
 get "/comments.html" do
   @graph  = Koala::Facebook::API.new(session[:access_token])
@@ -395,6 +524,12 @@ post "/comments.html" do
   redirect "/comment_thanks.html"
 end
 
+
+
+
+
+
+
 get "/comment_thanks.html" do
 
   @graph  = Koala::Facebook::API.new(session[:access_token])
@@ -410,6 +545,11 @@ end
 post "/comment_thanks.html" do
   redirect "/comment_thanks.html"
 end
+
+
+
+
+
 
 # used to close the browser window opened to post to wall/send to friends
 get "/close" do
