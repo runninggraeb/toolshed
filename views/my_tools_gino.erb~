@@ -115,7 +115,7 @@
     </section>
     <section>
     <br/>
-    <p style="color:blue;text-align:center">Mark Your Calendars: The official launch date for Toolshed will be March 7, 2013!</p>
+    <p class="centered" color="red">Your tools have been successfully added to your file.</p>
     <br/>
     <form method="post" action="my_tools.html">
       We have your current location set as: 
