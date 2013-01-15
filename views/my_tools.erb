@@ -189,6 +189,7 @@
             <option <% if @type=="electrical" %> selected="selected" <% end %> value="electrical">Electrical</option>
             <option <% if @type=="yard_work" %> selected="selected" <% end %> value="yard_work">Yard Work</option>
             <option <% if @type=="painting" %> selected="selected" <% end %> value="painting">Painting</option>
+            <option <% if @type=="rood_processing" %> selected="selected" <% end %> value="painting">Food Processing</option>
           </select>
           Tool name:<input type="text" size="10" maxlength="35" name="tool_<%= @it %>" value="<%= @all.at(3+(@it+@skip)*2)%>"><br/>
       <% end %>
@@ -208,6 +209,7 @@
               <option value="electrical">Electrical</option>
               <option value="yard_work">Yard Work</option>
               <option value="painting">Painting</option>
+              <option value="food_processing">Food Processing</option>
             </select>
             Tool name:<input type="text" size="10" maxlength="35" name="tool_<%= @it %>"><br/>
       <% end %>

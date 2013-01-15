@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:fb="http://ogp.me/ns/fb#" lang="en">
   <head>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes" />
     <title><%= @app['name'] %></title>
@@ -113,6 +114,8 @@
       </div>
     </section>
     <section>
+    <br/>
+    <p>New: The official launch date for Toolshed will be March 7, 2013!</p>
     <br/>
     <p>Welcome to Toolshed!  Here, you can catalogue your vast (or not so vast) inventory of tools, then share those tools with friends, and borrow the tools they decided to share.  The point of this application: to get you started on <i>your</i> project, away from this computer.  Deciding what kind of project is completely up to your imagination.</p><br/>
 
