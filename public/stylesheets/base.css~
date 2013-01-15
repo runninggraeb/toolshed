@@ -30,7 +30,7 @@ h1 {
   font-weight: normal;
 }
 
-text.centered {
+p.centered {
   color: #D00000;
   margin-left:auto;
   margin-right:auto;
