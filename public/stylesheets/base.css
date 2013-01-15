@@ -30,6 +30,12 @@ h1 {
   font-weight: normal;
 }
 
+textarea.news {
+  color: "red"
+  margin-left:auto;
+  margin-right:auto;
+}
+
 textarea.centered {
   display: block;
   margin-left:auto;
