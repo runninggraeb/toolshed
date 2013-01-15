@@ -210,7 +210,6 @@
               <option value="yard_work">Yard Work</option>
               <option value="painting">Painting</option>
               <option value="food_processing">Food Processing</option>
-
             </select>
             Tool name:<input type="text" size="10" maxlength="35" name="tool_<%= @it %>"><br/>
       <% end %>
