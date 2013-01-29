@@ -12,7 +12,6 @@ unless ENV["FACEBOOK_APP_ID"] && ENV["FACEBOOK_SECRET"]
   abort("missing env vars: please set FACEBOOK_APP_ID and FACEBOOK_SECRET with your app credentials")
 end
 
-
 before do
   # HTTPS redirect
   if settings.environment == :production && request.scheme != 'https'
@@ -43,9 +42,6 @@ error(Koala::Facebook::APIError) do
   session[:access_token] = nil
   redirect "/auth/facebook"
 end
-
-
-
 
 
 get "/" do
