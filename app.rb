@@ -253,21 +253,26 @@ post "/my_tools.html" do
 
  #Try route matching
 
-  @news=@news[1..(@adds*2)]
-  @labels=@labels[1..(@adds*2)]
+  if @adds > 0
+    @news=@news[1..(@adds*2)]
+    @labels=@labels[1..(@adds*2)]
 
-  @news=@news.join(',')
-  @labels=@labels.join(',')
+    @news=@news.join(',')
+    @labels=@labels.join(',')
 
-  @city = params[:city]
-  @city = @city.delete "'"
-  @city = @city.delete "\\"
-  @city = @city.strip
-  @state = params[:state]
+    @city = params[:city]
+    @city = @city.delete "'"
+    @city = @city.delete "\\"
+    @city = @city.strip
+    @state = params[:state]
 
-  @new.query "DELETE FROM Final_uni WHERE fid = '#{@user['id']}'"
-  @new.query "INSERT INTO Final_uni (fid,city,state,count,#{@labels}) VALUES('#{@user['id']}','#{@city}','#{@state}','#{@adds}',#{@news})"
-
+    @new.query "DELETE FROM Final_uni WHERE fid = '#{@user['id']}'"
+    @new.query "INSERT INTO Final_uni (fid,city,state,count,#{@labels}) VALUES('#{@user['id']}','#{@city}','#{@state}','#{@adds}',#{@news})"
+  else
+    @new.query "DELETE FROM Final_uni WHERE fid = '#{@user['id']}'"
+    @new.query "INSERT INTO Final_uni (fid,city,state,count) VALUES('#{@user['id']}','#{@city}','#{@state}','#{@adds}')"
+  end
+    
   @new.close
   if @city.length<2
     redirect "/add_location.html"
