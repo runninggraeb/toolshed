@@ -343,17 +343,19 @@ post "/my_tools_g.html" do
   @labels=Array.new(@count*2+11)
   for i in 1..(@count+5)
     @enter +=1
-    @temp=params[:"tool_#{@enter}"]
-    @temp=@temp.delete "\\"
-    @temp=@temp.delete "'"
-    @temp=@temp.strip
-    if @temp.size > 2
-      @news[@adds*2+1] = "'#{@temp}'"
-      @temp=params[:"type_#{@enter}"]
-      @news[@adds*2+2] = "'#{@temp}'"
-      @labels[@adds*2+1]="tool#{@enter}"
-      @labels[@adds*2+2]="type#{@enter}"
-      @adds +=1
+    if params[:"tool_#{@enter}"]
+      @temp=params[:"tool_#{@enter}"]
+      @temp=@temp.delete "\\"
+      @temp=@temp.delete "'"
+      @temp=@temp.strip
+      if @temp.size > 2
+        @news[@adds*2+1] = "'#{@temp}'"
+        @temp=params[:"type_#{@enter}"]
+        @news[@adds*2+2] = "'#{@temp}'"
+        @labels[@adds*2+1]="tool#{@enter}"
+        @labels[@adds*2+2]="type#{@enter}"
+        @adds +=1
+      end
     end
   end
 
