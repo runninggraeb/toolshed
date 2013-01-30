@@ -100,7 +100,7 @@ get "/friends_tools.html" do
 
   @state_list=Array.new(50)
 
-  @template=Array.new(6)
+  @template=Array.new(7)
   @template[0]=Array.new(0)
   @template[1]=Array.new(0)
   @template[2]=Array.new(0)
