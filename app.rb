@@ -253,18 +253,18 @@ post "/my_tools.html" do
 
  #Try route matching
 
+  @city = params[:city]
+  @city = @city.delete "'"
+  @city = @city.delete "\\"
+  @city = @city.strip
+  @state = params[:state]
+
   if @adds > 0
     @news=@news[1..(@adds*2)]
     @labels=@labels[1..(@adds*2)]
 
     @news=@news.join(',')
     @labels=@labels.join(',')
-
-    @city = params[:city]
-    @city = @city.delete "'"
-    @city = @city.delete "\\"
-    @city = @city.strip
-    @state = params[:state]
 
     @new.query "DELETE FROM Final_uni WHERE fid = '#{@user['id']}'"
     @new.query "INSERT INTO Final_uni (fid,city,state,count,#{@labels}) VALUES('#{@user['id']}','#{@city}','#{@state}','#{@adds}',#{@news})"
@@ -368,21 +368,26 @@ post "/my_tools_g.html" do
 
  #Try route matching
 
-  @news=@news[1..(@adds*2)]
-  @labels=@labels[1..(@adds*2)]
-
-  @news=@news.join(',')
-  @labels=@labels.join(',')
-
   @city = params[:city]
   @city = @city.delete "'"
   @city = @city.delete "\\"
   @city = @city.strip
   @state = params[:state]
 
-  @new.query "DELETE FROM Final_uni WHERE fid = '#{@user['id']}'"
-  @new.query "INSERT INTO Final_uni (fid,city,state,count,#{@labels}) VALUES('#{@user['id']}','#{@city}','#{@state}','#{@adds}',#{@news})"
+  if @adds > 0
+    @news=@news[1..(@adds*2)]
+    @labels=@labels[1..(@adds*2)]
 
+    @news=@news.join(',')
+    @labels=@labels.join(',')
+
+    @new.query "DELETE FROM Final_uni WHERE fid = '#{@user['id']}'"
+    @new.query "INSERT INTO Final_uni (fid,city,state,count,#{@labels}) VALUES('#{@user['id']}','#{@city}','#{@state}','#{@adds}',#{@news})"
+  else
+    @new.query "DELETE FROM Final_uni WHERE fid = '#{@user['id']}'"
+    @new.query "INSERT INTO Final_uni (fid,city,state,count) VALUES('#{@user['id']}','#{@city}','#{@state}','#{@adds}')"
+  end
+  
   @new.close
   if @city.length<2
     redirect "/add_location.html"
