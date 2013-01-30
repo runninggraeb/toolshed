@@ -122,7 +122,7 @@ get "/friends_tools.html" do
     @temp_fr=@names.at(@it)
     @temp_inv=@list.at(@it)
     if instance_variable_get("@#{@temp_inv.at(3)}") == nil
-      if @temp_inv.length >4
+      if @temp_inv.length >5
         instance_variable_set(:"@#{@temp_inv.at(3)}", Array.new(@template))
         @state_list[@state_count]=@temp_inv.at(3)
         @state_count +=1
