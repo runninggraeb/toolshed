@@ -109,7 +109,7 @@ get "/friends_tools.html" do
   @template[5]=Array.new(0)
   @template[6]=Array.new(0)
 
-  if @all !=nil
+  if @all != nil
     if @all.at(2).length>1
       @state_list[0]=@all.at(3)
       instance_variable_set(:"@#{@all.at(3)}", Array.new(@template))
@@ -122,9 +122,11 @@ get "/friends_tools.html" do
     @temp_fr=@names.at(@it)
     @temp_inv=@list.at(@it)
     if instance_variable_get("@#{@temp_inv.at(3)}") == nil
-      instance_variable_set(:"@#{@temp_inv.at(3)}", Array.new(@template))
-      @state_list[@state_count]=@temp_inv.at(3)
-      @state_count +=1
+      if @temp_inv.length >4
+        instance_variable_set(:"@#{@temp_inv.at(3)}", Array.new(@template))
+        @state_list[@state_count]=@temp_inv.at(3)
+        @state_count +=1
+      end
     end
     @c=6
     @inv_size=@temp_inv.at(4)
