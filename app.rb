@@ -35,6 +35,9 @@ helpers do
   def authenticator
     @authenticator ||= Koala::Facebook::OAuth.new(ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_SECRET"], url("/auth/facebook/callback"))
   end
+  def h(text)
+    Rack::Utils.escape_html(text)
+  end
 end
 
 # the facebook session expired! reset ours and restart the process
@@ -239,12 +242,14 @@ post "/my_tools.html" do
     @enter +=1
     if params[:"tool_#{@enter}"]
       @temp=params[:"tool_#{@enter}"]
+      @temp=h(@temp)
       @temp=@temp.delete "\\"
       @temp=@temp.delete "'"
       @temp=@temp.strip
       if @temp.size > 2
         @news[@adds*2+1] = "'#{@temp}'"
         @temp=params[:"type_#{@enter}"]
+        @temp=h(@temp)
         @news[@adds*2+2] = "'#{@temp}'"
         @labels[@adds*2+1]="tool#{@enter}"
         @labels[@adds*2+2]="type#{@enter}"
