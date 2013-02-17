@@ -243,8 +243,6 @@ post "/my_tools.html" do
     if params[:"tool_#{@enter}"]
       @temp=params[:"tool_#{@enter}"]
       @temp=h(@temp)
-      @temp=@temp.delete "\\"
-      @temp=@temp.delete "'"
       @temp=@temp.strip
       if @temp.size > 2
         @news[@adds*2+1] = "'#{@temp}'"
@@ -261,10 +259,10 @@ post "/my_tools.html" do
  #Try route matching
 
   @city = params[:city]
-  @city = @city.delete "'"
-  @city = @city.delete "\\"
+  @city = h(@city)
   @city = @city.strip
   @state = params[:state]
+  @state = h(@state)
 
   if @adds > 0
     @news=@news[1..(@adds*2)]
@@ -359,12 +357,12 @@ post "/my_tools_g.html" do
     @enter +=1
     if params[:"tool_#{@enter}"]
       @temp=params[:"tool_#{@enter}"]
-      @temp=@temp.delete "\\"
-      @temp=@temp.delete "'"
+      @temp=h(@temp)
       @temp=@temp.strip
       if @temp.size > 2
         @news[@adds*2+1] = "'#{@temp}'"
         @temp=params[:"type_#{@enter}"]
+        @temp=h(@temp)
         @news[@adds*2+2] = "'#{@temp}'"
         @labels[@adds*2+1]="tool#{@enter}"
         @labels[@adds*2+2]="type#{@enter}"
@@ -376,10 +374,10 @@ post "/my_tools_g.html" do
  #Try route matching
 
   @city = params[:city]
-  @city = @city.delete "'"
-  @city = @city.delete "\\"
+  @city = h(@city)
   @city = @city.strip
   @state = params[:state]
+  @state = h(@state)
 
   if @adds > 0
     @news=@news[1..(@adds*2)]
@@ -441,10 +439,10 @@ post "/add_location.html" do
   end
 
   @city = params[:city]
-  @city = @city.delete "'"
-  @city = @city.delete "\\"
+  @city = h(@city)
   @city = @city.strip
   @state = params[:state]
+  @state = h(@state)
 
 
   @new=Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644')
@@ -533,6 +531,7 @@ post "/comments.html" do
   @t=Time.now
   @time="#{@t.day}-#{@t.month}-#{@t.year}"
   @comment=params[:comment]
+  @comment=h(@comment)
   @new=Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644')
   @new.query "INSERT INTO Comments (fid,name,date,comment) VALUES('#{@user['id']}','#{@user['name']}','#{@time}','#{@comment}')"
   @new.close
