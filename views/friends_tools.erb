@@ -140,9 +140,13 @@
      <% @html_state_temp=instance_variable_get("@#{@state_list.at(@html_states)}") %>
      <% if @html_state_temp.join != "" %>
       <table style="width:60%;">
+
+
+
       <% @html_type_temp = @html_state_temp.at(0) %>
       <% if @html_type_temp.at(0) !=nil %>
         <tr style="background-color:#E8E8E8;"><td colspan="3">Carpentry</td></tr>
+        <% @html_type_temp = @html_type_temp.sort! { |a,b| a[2].downcase <=> b[2].downcase } %>
         <% @html_type_temp.each do|n| %>
           <tr><td><%= n.at(0) %></td><td><%= n.at(1) %></td><td><%= n.at(2) %></td></tr>
         <% end %>
@@ -152,6 +156,7 @@
       <% if @html_type_temp.at(0) !=nil %>
         <tr><td>&nbsp;</td></tr>
         <tr style="background-color:#E8E8E8;"><td colspan="3">Plumbing</td></tr>
+        <% @html_type_temp = @html_type_temp.sort! { |a,b| a[2].downcase <=> b[2].downcase } %>
         <% @html_type_temp.each do|n| %>
           <tr><td><%= n.at(0) %></td><td><%= n.at(1) %></td><td><%= n.at(2) %></td></tr>
         <% end %>
@@ -161,6 +166,7 @@
       <% if @html_type_temp.at(0) !=nil %>
         <tr><td colspan="3">&nbsp;</td></tr>
         <tr style="background-color:#E8E8E8;"><td colspan="3">Electrical</td></tr>
+        <% @html_type_temp = @html_type_temp.sort! { |a,b| a[2].downcase <=> b[2].downcase } %>
         <% @html_type_temp.each do|n| %>
           <tr><td><%= n.at(0) %></td><td><%= n.at(1) %></td><td><%= n.at(2) %></td></tr>
         <% end %>
@@ -170,6 +176,7 @@
       <% if @html_type_temp.at(0) !=nil %>
         <tr><td>&nbsp;</td></tr>
         <tr style="background-color:#E8E8E8;"><td colspan="3">Yard Work</td></tr>
+        <% @html_type_temp = @html_type_temp.sort! { |a,b| a[2].downcase <=> b[2].downcase } %>
         <% @html_type_temp.each do|n| %>
           <tr><td><%= n.at(0) %></td><td><%= n.at(1) %></td><td><%= n.at(2) %></td></tr>
         <% end %>
@@ -179,6 +186,7 @@
       <% if @html_type_temp.at(0) !=nil %>
         <tr><td>&nbsp;</td></tr>
         <tr style="background-color:#E8E8E8;"><td colspan="3">Painting</td></tr>
+        <% @html_type_temp = @html_type_temp.sort! { |a,b| a[2].downcase <=> b[2].downcase } %>
         <% @html_type_temp.each do|n| %>
           <tr><td><%= n.at(0) %></td><td><%= n.at(1) %></td><td><%= n.at(2) %></td></tr>
         <% end %>
@@ -188,6 +196,7 @@
       <% if @html_type_temp.at(0) !=nil %>
         <tr><td>&nbsp;</td></tr>
         <tr style="background-color:#E8E8E8;"><td colspan="3">Food Processing</td></tr>
+        <% @html_type_temp = @html_type_temp.sort! { |a,b| a[2].downcase <=> b[2].downcase } %>
         <% @html_type_temp.each do|n| %>
           <tr><td><%= n.at(0) %></td><td><%= n.at(1) %></td><td><%= n.at(2) %></td></tr>
         <% end %>
@@ -197,6 +206,7 @@
       <% if @html_type_temp.at(0) !=nil %>
         <tr><td>&nbsp;</td></tr>
         <tr style="background-color:#E8E8E8;"><td colspan="3">Other</td></tr>
+        <% @html_type_temp = @html_type_temp.sort! { |a,b| a[2].downcase <=> b[2].downcase } %>
         <% @html_type_temp.each do|n| %>
           <tr><td><%= n.at(0) %></td><td><%= n.at(1) %></td><td><%= n.at(2) %></td></tr>
         <% end %>
