@@ -508,9 +508,6 @@ end
 
 
 
-
-
-
 get "/comments.html" do
   @graph  = Koala::Facebook::API.new(session[:access_token])
 
@@ -536,15 +533,8 @@ post "/comments.html" do
   @new.query "INSERT INTO Comments (fid,name,date,comment) VALUES('#{@user['id']}','#{@user['name']}','#{@time}','#{@comment}')"
   @new.close
 
-#re-direct somewhere else maybe a thank-you page.
   redirect "/comment_thanks.html"
 end
-
-
-
-
-
-
 
 get "/comment_thanks.html" do
 
@@ -561,6 +551,54 @@ end
 post "/comment_thanks.html" do
   redirect "/comment_thanks.html"
 end
+
+
+get "/ad.html" do
+  @graph  = Koala::Facebook::API.new(session[:access_token])
+
+  @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
+
+  if session[:access_token]
+    @user    = @graph.get_object("me")
+  end
+  erb :ad
+end
+
+post "/ad.html" do
+  @graph  = Koala::Facebook::API.new(session[:access_token])
+  @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
+  if session[:access_token]
+    @user    = @graph.get_object("me")
+  end
+  @t=Time.now
+  @time="#{@t.day}-#{@t.month}-#{@t.year}"
+  @comment=params[:comment]
+  @comment=h(@comment)
+  @new=Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644')
+  @new.query "INSERT INTO Ad (fid,name,date,comment) VALUES('#{@user['id']}','#{@user['name']}','#{@time}','#{@comment}')"
+  @new.close
+  redirect "/ad_thanks.html"
+end
+
+get "/ad_thanks.html" do
+
+  @graph  = Koala::Facebook::API.new(session[:access_token])
+
+  @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
+
+  if session[:access_token]
+    @user    = @graph.get_object("me")
+  end
+  erb :ad_thanks
+end
+
+post "/ad_thanks.html" do
+  redirect "/ad_thanks.html"
+end
+
+
+
+
 
 
 
