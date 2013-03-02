@@ -553,7 +553,7 @@ post "/comment_thanks.html" do
 end
 
 
-get "/ad.html" do
+get "/ad_page.html" do
   @graph  = Koala::Facebook::API.new(session[:access_token])
 
   @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
@@ -561,10 +561,10 @@ get "/ad.html" do
   if session[:access_token]
     @user    = @graph.get_object("me")
   end
-  erb :ad
+  erb :ad_page
 end
 
-post "/ad.html" do
+post "/ad_page.html" do
   @graph  = Koala::Facebook::API.new(session[:access_token])
   @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
   if session[:access_token]
