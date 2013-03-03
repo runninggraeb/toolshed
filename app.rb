@@ -1,6 +1,7 @@
 require "sinatra"
 require "koala"
 require "mysql"
+require "newrelic_rpm"
 
 enable :sessions
 set :raise_errors, false
@@ -38,6 +39,7 @@ helpers do
   def h(text)
     Rack::Utils.escape_html(text)
   end
+
 end
 
 # the facebook session expired! reset ours and restart the process
