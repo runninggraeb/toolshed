@@ -574,10 +574,12 @@ post "/ad_page.html" do
   end
   @t=Time.now
   @time="#{@t.day}-#{@t.month}-#{@t.year}"
-  @comment=params[:comment]
-  @comment=h(@comment)
+  @slogan=params[:slogan]
+  @slogan=h(@slogan)
+  @slogan_info=params[:slogan_info]
+  @slogan_info=h(@slogan_info)
   @new=Mysql.new('us-cdbr-east-03.cleardb.com','b5cfa774c8e05b','b31600cc','heroku_b8938d7fd4dcc72')
-  @new.query "INSERT INTO Ad (fid,name,date,comment) VALUES('#{@user['id']}','#{@user['name']}','#{@time}','#{@comment}')"
+  @new.query "INSERT INTO Ad (fid,name,date,slogan,slogan_info) VALUES('#{@user['id']}','#{@user['name']}','#{@time}','#{@slogan}','#{@slogan_info}')"
   @new.close
   redirect "/ad_thanks.html"
 end
