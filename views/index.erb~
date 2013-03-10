@@ -76,7 +76,7 @@
     </script>
     <% if @user %>
       <header class="clearfix">
-          <img class="logo" src="/images/header.jpg" height="60" width="200"/>
+          <img class="logo" src="/images/header.jpg" height="80" width="250"/>
           <p id="picture" style="background-image: url(https://graph.facebook.com/<%= @user['id'] %>/picture?type=normal)"></p>
           <div>
             <h1>Welcome, <strong><%= @user['name'] %></strong></h1>
@@ -110,30 +110,33 @@
             <a href="comments.html" class="toolbar-button">
              <span>Comments</span></a>
             <a href="#" class="toolbar-button apprequests" id="sendRequest" data-message="<%= @user['name'] %> is on Toolshed, and wants you to join, too!  Start now to get access to your friends tools, and share your tools with others!" id="invite-style">
-             <span>Be Proud of This App- Invite Friends!</span></a>
+             <span>Invite Friends</span></a>
+            <a href="ad_page.html" class="toolbar-button">
+             <span>Enter Slogan Contest</span></a>
       </div>
     </section>
     <section>
     <br/>
-    <p style="color:#E00000;text-align:center">New: The official launch date for Toolshed will be March 7, 2013!</p>
+    <p style="color:blue;text-align:center">We're sorry, Toolshed is sxperiencing issues.  Fell free to look around- I'll try to get it back up ASAP.</p>
     <br/>
-    <p>Welcome to Toolshed!  Here, you can catalogue your vast (or not so vast) inventory of tools, then share those tools with friends, and borrow the tools they decided to share.  The point of this application: to get you started on <i>your</i> project, away from this computer.  Deciding what kind of project is completely up to your imagination.</p><br/>
+    <h2 style="font-weight:bold">Welcome to Toolshed!</h2>
+    <p>Here, you can catalogue your vast (or not so vast) inventory of tools, then share those tools with friends, and borrow the tools they decided to share.  The point of this application: to get you started on your project- away from this computer.  Deciding what kind of project is completely up to your imagination.</p><br/>
 
 
 
-    <h4><b>Before you we get started, some quick suggestions for lenders</b></h4>
+    <h2 style="font-weight:bold">Before you we get started, some quick suggestions for lenders...</h2>
     <p>1.  Always make sure that the tools you are lending follow basic safety standards.<br/>
-2.  Do not post that you are willing to lend tools if you are unwilling to do so.  The major exception to this is if you don't feel it is safe to use a tool.  Here, it is better to be rude than to be responsible for creating a dangerous situation.<br/>
-3.  If you have the time, offer to help with the project.  This gets you outside, and you could learn something new.</p><br/>
+2.  Do not post that you are willing to lend tools if you are unwilling to do so.  The major exception to this is if you don't feel it is safe to use a tool.  Here, it's better to be rude than to be responsible for creating a dangerous situation.<br/>
+3.  If you have the time, offer to help with the project.  This gets you outside. Maybe you could learn something new!</p><br/>
 
-<h4><b>...and for borrowers</b></h4>
+<h2 style="font-weight:bold">...and for borrowers...</h2>
 <p>1.  ALWAYS make sure you know how to use a tool safely and correctly.  Exceeding your abilities could quickly lead to an injury.<br/>
 2.  Return tools in the same condition they were in when you borrowed them.  If a tool breaks, don't attempt to fix it yourself, as an incorrect repair job could be dangerous to its owner later on.<br/>
-3.  If something breaks, goes missing, or is stolen while in your possession, replace it.  On a related note, if you couldn't replace something, maybe you should think twice about borrowing it in the first place.<br/>
+3.  If something breaks, goes missing, or is stolen while in your possession, replace it.  On a related note, if you can't replace something, maybe you should think twice about borrowing it in the first place.<br/>
 4.  Be polite.  Somebody else is letting you use THEIR stuff.</p><br/>
 
-<h4><b>Disclaimer</b></h4>
-<p>Neither Toolshed or any of its owners or employees are liable for injuries or damage caused by tools borrowed on this site, or for any missing, stolen, or damaged tools.  Also, Toolshed is still in a developement phase, and Toolshed will not take responsibiliy for information that has been lost or compromised.  Toolshed reserves the right to deny access to any user at any time. The use of Toolshed for any illegal purposes is forbiden, and will result in the users being banned from the system.</p>
+<h2 style="font-weight:bold">Term of Use</h2>
+<p>Neither Toolshed or any of its owners or employees are liable for injuries or damage caused by tools borrowed on this site, or for any missing, stolen, or damaged tools.  Toolshed has no responsibility to keep the users information, or to prevent it from been seen by a third party.  Toolshed reserves the right to deny access to any user at any time. The use of Toolshed for any illegal purposes is forbiden. No weapons can be posted on Toolshed. Toolshed reserves the right to deny service to any user at any time, and violation of the terms of use can result in the offending user being banned from the system.</p>
 
 
     <br/>

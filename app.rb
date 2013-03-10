@@ -9,8 +9,8 @@ set :show_exceptions, false
 
 FACEBOOK_SCOPE = 'user_likes,user_photos,user_photo_video_tags'
 
-unless ENV["FACEBOOK_APP_ID"] && ENV["FACEBOOK_SECRET"]
-  abort("missing env vars: please set FACEBOOK_APP_ID and FACEBOOK_SECRET with your app credentials")
+unless ENV["210145549028171"] && ENV["3295f57c60f2d8c8ac78bdf184c50aae"]
+  abort("missing env vars: please set  and  with your app credentials")
 end
 
 before do
@@ -34,7 +34,7 @@ helpers do
     "#{scheme}://#{host}#{path}"
   end
   def authenticator
-    @authenticator ||= Koala::Facebook::OAuth.new(ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_SECRET"], url("/auth/facebook/callback"))
+    @authenticator ||= Koala::Facebook::OAuth.new(ENV["210145549028171"], ENV["3295f57c60f2d8c8ac78bdf184c50aae"], url("/auth/facebook/callback"))
   end
   def h(text)
     Rack::Utils.escape_html(text)
@@ -53,7 +53,7 @@ get "/" do
 
   @graph  = Koala::Facebook::API.new(session[:access_token])
 
-  @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
+  @app  =  @graph.get_object(ENV["210145549028171"])
 
   if session[:access_token]
     @user    = @graph.get_object("me")
@@ -73,7 +73,7 @@ end
 get "/friends_tools.html" do
   @graph  = Koala::Facebook::API.new(session[:access_token])
 
-  @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
+  @app  =  @graph.get_object(ENV["210145549028171"])
 
   if session[:access_token]
     @user    = @graph.get_object("me")
@@ -182,7 +182,7 @@ end
 get "/my_tools.html" do
   @graph  = Koala::Facebook::API.new(session[:access_token])
 
-  @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
+  @app  =  @graph.get_object(ENV["210145549028171"])
 
   if session[:access_token]
     @user    = @graph.get_object("me")
@@ -225,7 +225,7 @@ end
 post "/my_tools.html" do
 
   @graph  = Koala::Facebook::API.new(session[:access_token])
-  @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
+  @app  =  @graph.get_object(ENV["210145549028171"])
   if session[:access_token]
     @user    = @graph.get_object("me")
   end
@@ -297,7 +297,7 @@ end
 get "/my_tools_g.html" do
   @graph  = Koala::Facebook::API.new(session[:access_token])
 
-  @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
+  @app  =  @graph.get_object(ENV["210145549028171"])
 
   if session[:access_token]
     @user    = @graph.get_object("me")
@@ -340,7 +340,7 @@ end
 post "/my_tools_g.html" do
 
   @graph  = Koala::Facebook::API.new(session[:access_token])
-  @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
+  @app  =  @graph.get_object(ENV["210145549028171"])
   if session[:access_token]
     @user    = @graph.get_object("me")
   end
@@ -414,7 +414,7 @@ get "/add_location.html" do
 
   @graph  = Koala::Facebook::API.new(session[:access_token])
 
-  @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
+  @app  =  @graph.get_object(ENV["210145549028171"])
 
   if session[:access_token]
     @user    = @graph.get_object("me")
@@ -434,7 +434,7 @@ post "/add_location.html" do
 
   @graph  = Koala::Facebook::API.new(session[:access_token])
 
-  @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
+  @app  =  @graph.get_object(ENV["210145549028171"])
 
   if session[:access_token]
     @user    = @graph.get_object("me")
@@ -496,7 +496,7 @@ get "/about_us.html" do
 
   @graph  = Koala::Facebook::API.new(session[:access_token])
 
-  @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
+  @app  =  @graph.get_object(ENV["210145549028171"])
 
   if session[:access_token]
     @user    = @graph.get_object("me")
@@ -513,7 +513,7 @@ end
 get "/comments.html" do
   @graph  = Koala::Facebook::API.new(session[:access_token])
 
-  @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
+  @app  =  @graph.get_object(ENV["210145549028171"])
 
   if session[:access_token]
     @user    = @graph.get_object("me")
@@ -523,7 +523,7 @@ end
 
 post "/comments.html" do
   @graph  = Koala::Facebook::API.new(session[:access_token])
-  @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
+  @app  =  @graph.get_object(ENV["210145549028171"])
   if session[:access_token]
     @user    = @graph.get_object("me")
   end
@@ -542,7 +542,7 @@ get "/comment_thanks.html" do
 
   @graph  = Koala::Facebook::API.new(session[:access_token])
 
-  @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
+  @app  =  @graph.get_object(ENV["210145549028171"])
 
   if session[:access_token]
     @user    = @graph.get_object("me")
@@ -558,7 +558,7 @@ end
 get "/ad_page.html" do
   @graph  = Koala::Facebook::API.new(session[:access_token])
 
-  @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
+  @app  =  @graph.get_object(ENV["210145549028171"])
 
   if session[:access_token]
     @user    = @graph.get_object("me")
@@ -568,7 +568,7 @@ end
 
 post "/ad_page.html" do
   @graph  = Koala::Facebook::API.new(session[:access_token])
-  @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
+  @app  =  @graph.get_object(ENV["210145549028171"])
   if session[:access_token]
     @user    = @graph.get_object("me")
   end
@@ -588,7 +588,7 @@ get "/ad_thanks.html" do
 
   @graph  = Koala::Facebook::API.new(session[:access_token])
 
-  @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
+  @app  =  @graph.get_object(ENV["210145549028171"])
 
   if session[:access_token]
     @user    = @graph.get_object("me")
