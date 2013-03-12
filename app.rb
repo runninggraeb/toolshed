@@ -43,6 +43,8 @@ helpers do
 
   def access_token_from_cookie
     authenticator.get_user_info_from_cookies(request.cookies)['access_token']
+  rescue => err
+    warn err.message
   end
 
   def access_token
