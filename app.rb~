@@ -7,6 +7,8 @@ enable :sessions
 set :raise_errors, false
 set :show_exceptions, false
 
+FACEBOOK_SCOPE = ''
+
 unless ENV["FACEBOOK_APP_ID"] && ENV["FACEBOOK_SECRET"]
   abort("missing env vars: please set  and  with your app credentials")
 end
