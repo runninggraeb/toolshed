@@ -59,7 +59,7 @@ end
 # the facebook session expired! reset ours and restart the process
 error(Koala::Facebook::APIError) do
   session[:access_token] = nil
-  redirect "/login"
+#  redirect "/auth/facebook"
 end
 
 
@@ -71,6 +71,8 @@ get "/" do
 
   if session[:access_token]
     @user    = @graph.get_object("me")
+  else
+    redirect "/auth/facebook"
   end
   erb :index
 end
@@ -78,14 +80,6 @@ end
 post "/" do
   redirect "/"
 end
-
-
-get '/login' do
-  # redirect to facebook to get your code
-  redirect authentication.url_for_oauth_code()
-end
-
-
 
 get "/friends_tools.html" do
   @graph  = Koala::Facebook::API.new(session[:access_token])
