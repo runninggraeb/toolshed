@@ -56,23 +56,19 @@ helpers do
 
 end
 
-# the facebook session expired! reset ours and restart the process
-error(Koala::Facebook::APIError) do
-  session[:access_token] = nil
-  redirect "/auth/facebook"
-end
+
 
 
 get "/" do
-
-  @graph  = Koala::Facebook::API.new(session[:access_token])
-
-  @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
-
   if session[:access_token]
+    @graph  = Koala::Facebook::API.new(session[:access_token])
+    @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
     @user    = @graph.get_object("me")
+    erb :index
+  else
+    redirect '/login'
   end
-  erb :index
+
 end
 
 post "/" do
@@ -80,7 +76,10 @@ post "/" do
 end
 
 
-
+get '/login' do
+  # redirect to facebook to get your code
+  authenticator.url_for_oauth_code()
+end
 
 
 
@@ -635,11 +634,24 @@ end
 
 get "/auth/facebook" do
   session[:access_token] = nil
-  @authenticator = Koala::Facebook::OAuth.new(ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_SECRET"], url("/auth/facebook/callback"))
-  redirect @authenticator.url_for_oauth_code
+  redirect authenticator.url_for_oauth_code
 end
 
 get '/auth/facebook/callback' do
-	session[:access_token] = authenticator.get_access_token(params[:code])
-	redirect '/'
+  session[:access_token] = authenticator.get_access_token(params[:code])
+  redirect '/'
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
