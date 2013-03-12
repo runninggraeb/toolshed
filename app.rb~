@@ -1,15 +1,14 @@
 require "sinatra"
 require "koala"
 require "mysql"
+require "newrelic_rpm"
 
 enable :sessions
 set :raise_errors, false
 set :show_exceptions, false
 
-FACEBOOK_SCOPE = 'user_likes,user_photos,user_photo_video_tags'
-
 unless ENV["FACEBOOK_APP_ID"] && ENV["FACEBOOK_SECRET"]
-  abort("missing env vars: please set FACEBOOK_APP_ID and FACEBOOK_SECRET with your app credentials")
+  abort("missing env vars: please set  and  with your app credentials")
 end
 
 before do
@@ -38,6 +37,7 @@ helpers do
   def h(text)
     Rack::Utils.escape_html(text)
   end
+
 end
 
 # the facebook session expired! reset ours and restart the process
@@ -84,7 +84,7 @@ get "/friends_tools.html" do
   @l=@fr_app.length
   @list=Array.new(@l)
   @names=Array.new(@l)
-  @m = Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644')
+  @m = Mysql.new('us-cdbr-east-03.cleardb.com','b5cfa774c8e05b','b31600cc','heroku_b8938d7fd4dcc72')
   @all = @m.query("SELECT * FROM Final_uni WHERE fid = '#{@user['id']}'").fetch_row
   @fr_app.each do |friend_result|
     @lend=@m.query("SELECT * FROM Final_uni WHERE fid = '#{friend_result['uid']}'").fetch_row
@@ -186,7 +186,7 @@ get "/my_tools.html" do
     @user    = @graph.get_object("me")
   end
 
-  @m = Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644')
+  @m = Mysql.new('us-cdbr-east-03.cleardb.com','b5cfa774c8e05b','b31600cc','heroku_b8938d7fd4dcc72')
   @all = @m.query("SELECT * FROM Final_uni WHERE fid = '#{@user['id']}'").fetch_row
 
   if @all
@@ -228,7 +228,7 @@ post "/my_tools.html" do
     @user    = @graph.get_object("me")
   end
 
-  @new=Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644')
+  @new=Mysql.new('us-cdbr-east-03.cleardb.com','b5cfa774c8e05b','b31600cc','heroku_b8938d7fd4dcc72')
   @all = @new.query("SELECT * FROM Final_uni WHERE fid = '#{@user['id']}'").fetch_row
 
   @count = @all.at(4)
@@ -242,12 +242,12 @@ post "/my_tools.html" do
     @enter +=1
     if params[:"tool_#{@enter}"]
       @temp=params[:"tool_#{@enter}"]
-      @temp=@temp.delete "\\"
-      @temp=@temp.delete "'"
+      @temp=h(@temp)
       @temp=@temp.strip
       if @temp.size > 2
         @news[@adds*2+1] = "'#{@temp}'"
         @temp=params[:"type_#{@enter}"]
+        @temp=h(@temp)
         @news[@adds*2+2] = "'#{@temp}'"
         @labels[@adds*2+1]="tool#{@enter}"
         @labels[@adds*2+2]="type#{@enter}"
@@ -259,10 +259,10 @@ post "/my_tools.html" do
  #Try route matching
 
   @city = params[:city]
-  @city = @city.delete "'"
-  @city = @city.delete "\\"
+  @city = h(@city)
   @city = @city.strip
   @state = params[:state]
+  @state = h(@state)
 
   if @adds > 0
     @news=@news[1..(@adds*2)]
@@ -301,7 +301,7 @@ get "/my_tools_g.html" do
     @user    = @graph.get_object("me")
   end
 
-  @m = Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644')
+  @m = Mysql.new('us-cdbr-east-03.cleardb.com','b5cfa774c8e05b','b31600cc','heroku_b8938d7fd4dcc72')
   @all = @m.query("SELECT * FROM Final_uni WHERE fid = '#{@user['id']}'").fetch_row
 
   if @all
@@ -343,7 +343,7 @@ post "/my_tools_g.html" do
     @user    = @graph.get_object("me")
   end
 
-  @new=Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644')
+  @new=Mysql.new('us-cdbr-east-03.cleardb.com','b5cfa774c8e05b','b31600cc','heroku_b8938d7fd4dcc72')
   @all = @new.query("SELECT * FROM Final_uni WHERE fid = '#{@user['id']}'").fetch_row
 
   @count = @all.at(4)
@@ -357,12 +357,12 @@ post "/my_tools_g.html" do
     @enter +=1
     if params[:"tool_#{@enter}"]
       @temp=params[:"tool_#{@enter}"]
-      @temp=@temp.delete "\\"
-      @temp=@temp.delete "'"
+      @temp=h(@temp)
       @temp=@temp.strip
       if @temp.size > 2
         @news[@adds*2+1] = "'#{@temp}'"
         @temp=params[:"type_#{@enter}"]
+        @temp=h(@temp)
         @news[@adds*2+2] = "'#{@temp}'"
         @labels[@adds*2+1]="tool#{@enter}"
         @labels[@adds*2+2]="type#{@enter}"
@@ -374,10 +374,10 @@ post "/my_tools_g.html" do
  #Try route matching
 
   @city = params[:city]
-  @city = @city.delete "'"
-  @city = @city.delete "\\"
+  @city = h(@city)
   @city = @city.strip
   @state = params[:state]
+  @state = h(@state)
 
   if @adds > 0
     @news=@news[1..(@adds*2)]
@@ -418,7 +418,7 @@ get "/add_location.html" do
     @user    = @graph.get_object("me")
   end
 
-  @m = Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644')
+  @m = Mysql.new('us-cdbr-east-03.cleardb.com','b5cfa774c8e05b','b31600cc','heroku_b8938d7fd4dcc72')
   @all = @m.query("SELECT * FROM Final_uni WHERE fid = '#{@user['id']}'").fetch_row
   @m.close
 
@@ -439,13 +439,13 @@ post "/add_location.html" do
   end
 
   @city = params[:city]
-  @city = @city.delete "'"
-  @city = @city.delete "\\"
+  @city = h(@city)
   @city = @city.strip
   @state = params[:state]
+  @state = h(@state)
 
 
-  @new=Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644')
+  @new=Mysql.new('us-cdbr-east-03.cleardb.com','b5cfa774c8e05b','b31600cc','heroku_b8938d7fd4dcc72')
   @all = @new.query("SELECT * FROM Final_uni WHERE fid = '#{@user['id']}'").fetch_row
   @all[2] = @city
   @all[3] = @state
@@ -508,9 +508,6 @@ end
 
 
 
-
-
-
 get "/comments.html" do
   @graph  = Koala::Facebook::API.new(session[:access_token])
 
@@ -531,19 +528,13 @@ post "/comments.html" do
   @t=Time.now
   @time="#{@t.day}-#{@t.month}-#{@t.year}"
   @comment=params[:comment]
-  @new=Mysql.new('us-cdbr-east.cleardb.com','a20b915a9b09e5','3dbe3bcc','heroku_6d2c5db5bc2c644')
+  @comment=h(@comment)
+  @new=Mysql.new('us-cdbr-east-03.cleardb.com','b5cfa774c8e05b','b31600cc','heroku_b8938d7fd4dcc72')
   @new.query "INSERT INTO Comments (fid,name,date,comment) VALUES('#{@user['id']}','#{@user['name']}','#{@time}','#{@comment}')"
   @new.close
 
-#re-direct somewhere else maybe a thank-you page.
   redirect "/comment_thanks.html"
 end
-
-
-
-
-
-
 
 get "/comment_thanks.html" do
 
@@ -560,6 +551,56 @@ end
 post "/comment_thanks.html" do
   redirect "/comment_thanks.html"
 end
+
+
+get "/ad_page.html" do
+  @graph  = Koala::Facebook::API.new(session[:access_token])
+
+  @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
+
+  if session[:access_token]
+    @user    = @graph.get_object("me")
+  end
+  erb :ad_page
+end
+
+post "/ad_page.html" do
+  @graph  = Koala::Facebook::API.new(session[:access_token])
+  @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
+  if session[:access_token]
+    @user    = @graph.get_object("me")
+  end
+  @t=Time.now
+  @time="#{@t.day}-#{@t.month}-#{@t.year}"
+  @slogan=params[:slogan]
+  @slogan=h(@slogan)
+  @slogan_info=params[:slogan_info]
+  @slogan_info=h(@slogan_info)
+  @new=Mysql.new('us-cdbr-east-03.cleardb.com','b5cfa774c8e05b','b31600cc','heroku_b8938d7fd4dcc72')
+  @new.query "INSERT INTO Ad (fid,name,date,slogan,slogan_info) VALUES('#{@user['id']}','#{@user['name']}','#{@time}','#{@slogan}','#{@slogan_info}')"
+  @new.close
+  redirect "/ad_thanks.html"
+end
+
+get "/ad_thanks.html" do
+
+  @graph  = Koala::Facebook::API.new(session[:access_token])
+
+  @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
+
+  if session[:access_token]
+    @user    = @graph.get_object("me")
+  end
+  erb :ad_thanks
+end
+
+post "/ad_thanks.html" do
+  redirect "/ad_thanks.html"
+end
+
+
+
+
 
 
 

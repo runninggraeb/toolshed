@@ -7,8 +7,6 @@ enable :sessions
 set :raise_errors, false
 set :show_exceptions, false
 
-FACEBOOK_SCOPE = 'user_likes,user_photos,user_photo_video_tags'
-
 unless ENV["FACEBOOK_APP_ID"] && ENV["FACEBOOK_SECRET"]
   abort("missing env vars: please set  and  with your app credentials")
 end
