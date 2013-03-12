@@ -59,7 +59,7 @@ end
 # the facebook session expired! reset ours and restart the process
 error(Koala::Facebook::APIError) do
   session[:access_token] = nil
-  redirect "/permission"
+  redirect "/auth/facebook"
 end
 
 
@@ -633,10 +633,13 @@ get "/sign_out" do
   redirect '/'
 end
 
-get "/permission" do
+get "/auth/facebook" do
   session[:access_token] = nil
   erb :permission
+  redirect authenticator.url_for_oauth_code
 end
+
+
 
 get '/auth/facebook/callback' do
   session[:access_token] = authenticator.get_access_token(params[:code])
