@@ -1,0 +1,8 @@
+
+  <script>
+  var oauth_url = 'https://www.facebook.com/dialog/oauth/';
+  oauth_url += '?client_id=210145549028171';
+  oauth_url += '&redirect_uri=' + encodeURIComponent('https://apps.facebook.com/toolshed/');
+
+  window.top.location = oauth_url;
+  </script>
