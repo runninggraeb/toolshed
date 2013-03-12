@@ -1,10 +1,6 @@
 <!DOCTYPE html >
 <html xmlns:fb="http://ogp.me/ns/fb#" lang="en">
   <script>
-  var oauth_url = 'https://www.facebook.com/dialog/oauth/';
-  oauth_url += '?client_id=210145549028171';
-  oauth_url += '&redirect_uri=' + encodeURIComponent('https://apps.facebook.com/toolshed/auth/facebook/callback');
-
-  window.top.location = oauth_url;
+  window.top.location = <%= authenticator.url_for_oauth_code %>
   </script>
 </html>
