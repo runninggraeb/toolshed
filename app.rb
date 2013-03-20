@@ -635,7 +635,7 @@ end
 
 get "/auth/facebook" do
   session[:access_token] = nil
-  redirect authenticator.url_for_oauth_code()
+  erb :permission
 end
 
 
