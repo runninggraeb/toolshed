@@ -6,7 +6,7 @@ require "newrelic_rpm"
 enable :sessions
 set :raise_errors, false
 set :show_exceptions, false
-FACEBOOK_SCOPE = ''
+FACEBOOK_SCOPE = 'user_likes'
 
 unless ENV["FACEBOOK_APP_ID"] && ENV["FACEBOOK_SECRET"]
   abort("missing env vars: please set  and  with your app credentials")
@@ -69,9 +69,9 @@ get "/" do
 
   @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
 
-  if session[:access_token]
-    @user    = @graph.get_object("me")
-  end
+  @user="filler"
+  @user    = @graph.get_object("me")
+
   erb :index
 end
 
@@ -630,8 +630,6 @@ get "/auth/facebook" do
   session[:access_token] = nil
   redirect authenticator.url_for_oauth_code(:permissions => FACEBOOK_SCOPE)
 end
-
-
 
 get '/auth/facebook/callback' do
   session[:access_token] = authenticator.get_access_token(params[:code])
