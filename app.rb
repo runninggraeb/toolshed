@@ -72,6 +72,7 @@ get "/" do
   if session[:access_token]
     @user    = @graph.get_object("me")
   end
+  
   erb :index
 end
 
