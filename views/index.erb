@@ -88,14 +88,10 @@
           </div>
       </header>
     <% else redirect "/auth/facebook" %>
-      <header class="no-user">
-        <div>
-          <h1>Welcome</h1>
-            <a href='/auth/facebook' class="fb_button fb_button_medium">
-              <span class="fb_button_text">Log In</span>
-            </a>
-        </div>
-      </header>
+
+/* Correct redirect*/
+
+
     <% end %>
     <% if @user %>
     <section class="clearfix">
