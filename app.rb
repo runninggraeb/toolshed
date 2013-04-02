@@ -6,7 +6,7 @@ require "newrelic_rpm"
 enable :sessions
 set :raise_errors, false
 set :show_exceptions, false
-
+FACEBOOK_SCOPE = ''
 
 unless ENV["FACEBOOK_APP_ID"] && ENV["FACEBOOK_SECRET"]
   abort("missing env vars: please set  and  with your app credentials")
@@ -616,13 +616,6 @@ end
 
 
 
-
-
-
-
-
-
-
 # used to close the browser window opened to post to wall/send to friends
 get "/close" do
   "<body onload='window.close();'/>"
@@ -635,7 +628,7 @@ end
 
 get "/auth/facebook" do
   session[:access_token] = nil
-  redirect authenticator.url_for_oauth_code()
+  redirect authenticator.url_for_oauth_code(:permissions => FACEBOOK_SCOPE)
 end
 
 
