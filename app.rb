@@ -69,9 +69,9 @@ get "/" do
 
   @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
 
-  @user="filler"
-  @user    = @graph.get_object("me")
-
+  if session[:access_token]
+    @user    = @graph.get_object("me")
+  end
   erb :index
 end
 
