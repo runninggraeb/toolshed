@@ -87,12 +87,15 @@
             </p>
           </div>
       </header>
-    <% else %>
+    <% else redirect "/auth/facebook" %>
+      <header class="no-user">
         <div>
           <h1>Welcome</h1>
-          <div class="fb-login-button" data-scope="<%= FACEBOOK_SCOPE %>">Log In</div>
-
+            <a href='/auth/facebook' class="fb_button fb_button_medium">
+              <span class="fb_button_text">Log In</span>
+            </a>
         </div>
+      </header>
     <% end %>
     <% if @user %>
     <section class="clearfix">
