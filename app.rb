@@ -75,7 +75,7 @@ end
 
 get "/" do
 
-  @graph  = Koala::Facebook::API.new(session[:access_token])
+  @graph  = Koala::Facebook::API.new(access_token)
 
   @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
 
