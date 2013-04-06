@@ -645,6 +645,6 @@ end
 
 get '/auth/facebook/callback' do
   session[:access_token] = authenticator.get_access_token(params[:code])
-  redirect 'http://apps.facebook.com/toolshed/'
+  redirect 'https://apps.facebook.com/toolshed/'
 end
 
