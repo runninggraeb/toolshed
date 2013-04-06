@@ -20,12 +20,12 @@ unless ENV["FACEBOOK_APP_ID"] && ENV["FACEBOOK_SECRET"]
   abort("missing env vars: please set FACEBOOK_APP_ID and FACEBOOK_SECRET with your app credentials")
 end
 
-#before do
-#  # HTTPS redirect
-#  if settings.environment == :production && request.scheme != 'https'
-#    redirect "https://#{request.env['HTTP_HOST']}"
-#  end
-#end
+before do
+  # HTTPS redirect
+  if settings.environment == :production && request.scheme != 'https'
+    redirect "https://#{request.env['HTTP_HOST']}"
+  end
+end
 
 helpers do
   def host
@@ -645,6 +645,6 @@ end
 
 get '/auth/facebook/callback' do
   session[:access_token] = authenticator.get_access_token(params[:code])
-  redirect '/'
+  redirect 'http://apps.facebook.com/toolshed/'
 end
 
