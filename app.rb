@@ -640,7 +640,7 @@ end
 # Allows for direct oauth authentication
 get "/auth/facebook" do
   session[:access_token] = nil
-  redirect authenticator.url_for_oauth_code(:permissions => FACEBOOK_SCOPE)
+  redirect '/'
 end
 
 get '/auth/facebook/callback' do
