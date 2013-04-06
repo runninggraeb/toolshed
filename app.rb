@@ -6,10 +6,18 @@ require "newrelic_rpm"
 enable :sessions
 set :raise_errors, false
 set :show_exceptions, false
-FACEBOOK_SCOPE = 'user_likes'
+
+# Scope defines what permissions that we are asking the user to grant.
+# In this example, we are asking for the ability to publish stories
+# about using the app, access to what the user likes, and to be able
+# to use their pictures. You should rewrite this scope with whatever
+# permissions your app needs.
+# See https://developers.facebook.com/docs/reference/api/permissions/
+# for a full list of permissions
+FACEBOOK_SCOPE = 'user_likes,user_photos'
 
 unless ENV["FACEBOOK_APP_ID"] && ENV["FACEBOOK_SECRET"]
-  abort("missing env vars: please set  and  with your app credentials")
+  abort("missing env vars: please set FACEBOOK_APP_ID and FACEBOOK_SECRET with your app credentials")
 end
 
 before do
@@ -40,6 +48,7 @@ helpers do
     @authenticator ||= Koala::Facebook::OAuth.new(ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_SECRET"], url("/auth/facebook/callback"))
   end
 
+  # allow for javascript authentication
   def access_token_from_cookie
     authenticator.get_user_info_from_cookies(request.cookies)['access_token']
   rescue => err
@@ -63,6 +72,7 @@ error(Koala::Facebook::APIError) do
 end
 
 
+
 get "/" do
 
   @graph  = Koala::Facebook::API.new(session[:access_token])
@@ -79,9 +89,6 @@ end
 post "/" do
   redirect "/"
 end
-
-
-
 
 
 
@@ -622,11 +629,15 @@ get "/close" do
   "<body onload='window.close();'/>"
 end
 
-get "/sign_out" do
+# Doesn't actually sign out permanently, but good for testing
+get "/preview/logged_out" do
   session[:access_token] = nil
+  request.cookies.keys.each { |key, value| response.set_cookie(key, '') }
   redirect '/'
 end
 
+
+# Allows for direct oauth authentication
 get "/auth/facebook" do
   session[:access_token] = nil
   redirect authenticator.url_for_oauth_code(:permissions => FACEBOOK_SCOPE)
@@ -636,17 +647,4 @@ get '/auth/facebook/callback' do
   session[:access_token] = authenticator.get_access_token(params[:code])
   redirect '/'
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
 
