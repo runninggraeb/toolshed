@@ -66,10 +66,10 @@ helpers do
 end
 
 # the facebook session expired! reset ours and restart the process
-#error(Koala::Facebook::APIError) do
-#  session[:access_token] = nil
-#  redirect "/auth/facebook"
-#end
+error(Koala::Facebook::APIError) do
+  session[:access_token] = nil
+  redirect "/auth/facebook"
+end
 
 
 
