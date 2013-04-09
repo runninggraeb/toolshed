@@ -645,6 +645,9 @@ end
 
 get '/auth/facebook/callback' do
   session[:access_token] = authenticator.get_access_token(params[:code])
+  @new=Mysql.new('us-cdbr-east-03.cleardb.com','b5cfa774c8e05b','b31600cc','heroku_b8938d7fd4dcc72')
+  @new.query "INSERT INTO Token (fid,Token) VALUES('#{@user['id']}','#{session[:access_token]}')"
+  @new.close
   redirect 'https://apps.facebook.com/toolshed/'
 end
 
