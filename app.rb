@@ -108,6 +108,7 @@ get "/friends_tools.html" do
   @l=@fr_app.length
   @list=Array.new(@l)
   @names=Array.new(@l)
+  @id=Array.new(@l)
   @m = Mysql.new('us-cdbr-east-03.cleardb.com','b5cfa774c8e05b','b31600cc','heroku_b8938d7fd4dcc72')
   @all = @m.query("SELECT * FROM Final_uni WHERE fid = '#{@user['id']}'").fetch_row
   @fr_app.each do |friend_result|
@@ -116,6 +117,7 @@ get "/friends_tools.html" do
       if @lend.at(2).length>1
         @list[@fr_w_count] = @lend.compact
         @names[@fr_w_count] = friend_result['name']
+        @id[@fr_w_count] =friend_result['id']
         @fr_w_count +=1
       end
     end
@@ -123,6 +125,7 @@ get "/friends_tools.html" do
   @m.close
 
   @names=@names.compact
+  @id=@id.compact
   @state_count=0
 
   @state_list=Array.new(50)
@@ -148,6 +151,7 @@ get "/friends_tools.html" do
   for i in 1..@names.length
     @temp_fr=@names.at(@it)
     @temp_inv=@list.at(@it)
+    @temp_id=@id.at(@it)
     if instance_variable_get("@#{@temp_inv.at(3)}") == nil
       if @temp_inv.length >5
         instance_variable_set(:"@#{@temp_inv.at(3)}", Array.new(@template))
@@ -180,7 +184,7 @@ get "/friends_tools.html" do
       if @temp_inv.at(@c) == "other"
         @temp_type=6
       end
-      instance_variable_get("@#{@temp_inv.at(3)}")[@temp_type] +=[[@temp_inv.at(@c-1),@temp_fr,@temp_inv.at(2)]]
+      instance_variable_get("@#{@temp_inv.at(3)}")[@temp_type] +=[[@temp_inv.at(@c-1),@temp_fr,@temp_inv.at(2),temp_id]]
       @c +=2
     end
     @it +=1
