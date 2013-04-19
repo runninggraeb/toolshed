@@ -34,6 +34,12 @@
               method : 'send',
               link   : 'https://apps.facebook.com/toolshed/',
               to     : $(this).attr('data-to')
+            },
+            function (response) {
+              // If response is null the user canceled the dialog
+              if (response != null) {
+                logResponse(response);
+              }
             }
           );
         });
