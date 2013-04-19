@@ -34,12 +34,6 @@
               method : 'send',
               link   : 'https://apps.facebook.com/toolshed/',
               to     : $(this).attr('data-to')
-            },
-            function (response) {
-              // If response is null the user canceled the dialog
-              if (response != null) {
-                logResponse(response);
-              }
             }
           );
         });
@@ -161,7 +155,7 @@
         <tr style="background-color:#E8E8E8;"><td colspan="3">Plumbing</td></tr>
         <% @html_type_temp = @html_type_temp.sort! { |a,b| a[2].downcase <=> b[2].downcase } %>
         <% @html_type_temp.each do|n| %>
-          <tr><td style="width:25%;"><%= n.at(0) %></td><td style="width:25%;"><%= n.at(2) %></td><td style="width:25%;"><a href="#" class="friend-button speech-bubble" id="sendToFriends" data-url="<%= url %>" data-to="<%= n.at(3) %>"><%= n.at(1) %></a></td></tr>
+          <tr><td><%= n.at(0) %></td><td><%= n.at(2) %></td><td><a href="#" class="friend-button speech-bubble" id="sendToFriends" data-url="<%= url %>" data-to="<%= n.at(3) %>"><%= n.at(1) %></a></td></tr>
         <% end %>
       <% end %>
 
