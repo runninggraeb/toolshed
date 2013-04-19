@@ -32,8 +32,8 @@
           FB.ui(
             {
               method : 'send',
-              link : 'https://apps.facebook.com/toolshed/',
-              to : to
+              link : 'https://apps.facebook.com/toolshed/'
+              to : $(this).attr('data-message')
             },
             function (response) {
               // If response is null the user canceled the dialog
@@ -227,7 +227,7 @@
     <% end %>
     <br/>
     <p>
-      <a href="#" class="friend-button speech-bubble" id="sendToFriends" data-url="<%= url %>" to='700630645'>
+      <a href="#" class="friend-button speech-bubble" id="sendToFriends" data-url="<%= url %>" to="700630645">
         <span >Send Message</span>
       </a>
     </p>
