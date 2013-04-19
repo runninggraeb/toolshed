@@ -143,11 +143,10 @@ img.logo {
 /* ------------------------------------------ */
 
 .friend-button:link, .friend-button:visited {
-  color: #0000FF;
+  color: #000066;
 }
 
 .friend-button .speech-bubble {
-  background-position: 6px 3px;
 }
 
 
