@@ -117,7 +117,7 @@ get "/friends_tools.html" do
       if @lend.at(2).length>1
         @list[@fr_w_count] = @lend.compact
         @names[@fr_w_count] = friend_result['name']
-        @id[@fr_w_count] =friend_result['id']
+        @id[@fr_w_count] =friend_result['uid']
         @fr_w_count +=1
       end
     end
