@@ -144,11 +144,6 @@ img.logo {
 
 .friend-button:link, .friend-button:visited {
   color: #4f4f4f;
-  font-family: 'Lucida Grande', Tahoma, Verdana, Arial, sans-serif;
-  font-size: 11px;
-  line-height: 20px;
-  margin: 0;
-  outline: none;
 }
 
 .friend-button .speech-bubble {
