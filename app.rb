@@ -184,7 +184,7 @@ get "/friends_tools.html" do
       if @temp_inv.at(@c) == "other"
         @temp_type=6
       end
-      instance_variable_get("@#{@temp_inv.at(3)}")[@temp_type] +=[[@temp_inv.at(@c-1),@temp_fr,@temp_inv.at(2),temp_id]]
+      instance_variable_get("@#{@temp_inv.at(3)}")[@temp_type] +=[[@temp_inv.at(@c-1),@temp_fr,@temp_inv.at(2),@temp_id]]
       @c +=2
     end
     @it +=1
