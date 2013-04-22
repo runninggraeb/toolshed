@@ -627,6 +627,25 @@ post "/ad_thanks.html" do
 end
 
 
+get "/permission.html" do
+
+  @graph  = Koala::Facebook::API.new(session[:access_token])
+
+  @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
+
+  if session[:access_token]
+    @user    = @graph.get_object("me")
+  end
+  erb :permission
+end
+
+post "/permission.html" do
+  redirect "/permission.html"
+end
+
+
+
+
 
 # used to close the browser window opened to post to wall/send to friends
 get "/close" do
@@ -644,7 +663,7 @@ end
 # Allows for direct oauth authentication
 get "/auth/facebook" do
   session[:access_token] = nil
-  redirect authenticator.url_for_oauth_code(:permissions => FACEBOOK_SCOPE)
+  redirect 'permission.html'
 end
 
 get '/auth/facebook/callback' do
