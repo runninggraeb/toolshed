@@ -110,7 +110,7 @@
     </header>
     <% else %>
       <script>
-        window.top.location = '<%= authenticator.url_for_oauth_code(:permissions => FACEBOOK_SCOPE) %>'
+        window.top.location = '<%= authenticator.url_for_oauth_code %>'
       </script>
     <% end %>
     <% if @user %>
