@@ -32,7 +32,8 @@
           FB.ui(
             {
               method : 'send',
-              link : 'https://apps.facebook.com/toolshed/'
+              link   : 'https://apps.facebook.com/toolshed/',
+              to     : $(this).attr('data-to')
             },
             function (response) {
               // If response is null the user canceled the dialog
@@ -94,7 +95,7 @@
     </script>
     <% if @user %>
       <header class="clearfix">
-          <img class="logo" src="/images/header.jpg" height="60" width="200"/>
+          <img class="logo" src="/images/header.jpg" height="80" width="250"/>
           <p id="picture" style="background-image: url(https://graph.facebook.com/<%= @user['id'] %>/picture?type=normal)"></p>
           <div>
             <h1>Welcome, <strong><%= @user['name'] %></strong></h1>
@@ -128,7 +129,9 @@
             <a href="comments.html" class="toolbar-button">
              <span>Comments</span></a>
             <a href="#" class="toolbar-button apprequests" id="sendRequest" data-message="<%= @user['name'] %> is on Toolshed, and wants you to join, too!  Start now to get access to your friends tools, and share your tools with others!" id="invite-style">
-             <span>Be Proud of This App- Invite Friends!</span></a>
+             <span>Invite Friends</span></a>
+            <a href="ad_page.html" class="toolbar-button">
+             <span>Enter Slogan Contest</span></a>
       </div>
     </section>
     <section>
@@ -139,12 +142,16 @@
      <p><font size="4"><%= @state_list.at(@html_states) %></font></p><hr>
      <% @html_state_temp=instance_variable_get("@#{@state_list.at(@html_states)}") %>
      <% if @html_state_temp.join != "" %>
-      <table style="width:60%;">
+      <table style="width:75%;">
+
+
+
       <% @html_type_temp = @html_state_temp.at(0) %>
-      <% if @html_type_temp.at(0).at(0) !=nil %>
+      <% if @html_type_temp.at(0) !=nil %>
         <tr style="background-color:#E8E8E8;"><td colspan="3">Carpentry</td></tr>
+        <% @html_type_temp = @html_type_temp.sort! { |a,b| a[2].downcase <=> b[2].downcase } %>
         <% @html_type_temp.each do|n| %>
-          <tr><td><%= n.at(0) %></td><td><%= n.at(1) %></td><td><%= n.at(2) %></td></tr>
+          <tr><td style="width:25%;"><%= n.at(0) %></td><td style="width:25%;"><%= n.at(2) %></td><td style="width:25%;"><a href="#" class="friend-button speech-bubble" id="sendToFriends" data-url="<%= url %>" data-to="<%= n.at(3) %>"><%= n.at(1) %></a></td></tr>
         <% end %>
       <% end %>
 
@@ -152,8 +159,9 @@
       <% if @html_type_temp.at(0) !=nil %>
         <tr><td>&nbsp;</td></tr>
         <tr style="background-color:#E8E8E8;"><td colspan="3">Plumbing</td></tr>
+        <% @html_type_temp = @html_type_temp.sort! { |a,b| a[2].downcase <=> b[2].downcase } %>
         <% @html_type_temp.each do|n| %>
-          <tr><td><%= n.at(0) %></td><td><%= n.at(1) %></td><td><%= n.at(2) %></td></tr>
+          <tr><td><%= n.at(0) %></td><td><%= n.at(2) %></td><td><a href="#" class="friend-button speech-bubble" id="sendToFriends" data-url="<%= url %>" data-to="<%= n.at(3) %>"><%= n.at(1) %></a></td></tr>
         <% end %>
       <% end %>
 
@@ -161,8 +169,9 @@
       <% if @html_type_temp.at(0) !=nil %>
         <tr><td colspan="3">&nbsp;</td></tr>
         <tr style="background-color:#E8E8E8;"><td colspan="3">Electrical</td></tr>
+        <% @html_type_temp = @html_type_temp.sort! { |a,b| a[2].downcase <=> b[2].downcase } %>
         <% @html_type_temp.each do|n| %>
-          <tr><td><%= n.at(0) %></td><td><%= n.at(1) %></td><td><%= n.at(2) %></td></tr>
+          <tr><td><%= n.at(0) %></td><td><%= n.at(2) %></td><td><a href="#" class="friend-button speech-bubble" id="sendToFriends" data-url="<%= url %>" data-to="<%= n.at(3) %>"><%= n.at(1) %></a></td></tr>
         <% end %>
       <% end %>
 
@@ -170,8 +179,9 @@
       <% if @html_type_temp.at(0) !=nil %>
         <tr><td>&nbsp;</td></tr>
         <tr style="background-color:#E8E8E8;"><td colspan="3">Yard Work</td></tr>
+        <% @html_type_temp = @html_type_temp.sort! { |a,b| a[2].downcase <=> b[2].downcase } %>
         <% @html_type_temp.each do|n| %>
-          <tr><td><%= n.at(0) %></td><td><%= n.at(1) %></td><td><%= n.at(2) %></td></tr>
+          <tr><td><%= n.at(0) %></td><td><%= n.at(2) %></td><td><a href="#" class="friend-button speech-bubble" id="sendToFriends" data-url="<%= url %>" data-to="<%= n.at(3) %>"><%= n.at(1) %></a></td></tr>
         <% end %>
       <% end %>
 
@@ -179,19 +189,32 @@
       <% if @html_type_temp.at(0) !=nil %>
         <tr><td>&nbsp;</td></tr>
         <tr style="background-color:#E8E8E8;"><td colspan="3">Painting</td></tr>
+        <% @html_type_temp = @html_type_temp.sort! { |a,b| a[2].downcase <=> b[2].downcase } %>
         <% @html_type_temp.each do|n| %>
-          <tr><td><%= n.at(0) %></td><td><%= n.at(1) %></td><td><%= n.at(2) %></td></tr>
+          <tr><td><%= n.at(0) %></td><td><%= n.at(2) %></td><td><a href="#" class="friend-button speech-bubble" id="sendToFriends" data-url="<%= url %>" data-to="<%= n.at(3) %>"><%= n.at(1) %></a></td></tr>
         <% end %>
       <% end %>
 
       <% @html_type_temp = @html_state_temp.at(5) %>
       <% if @html_type_temp.at(0) !=nil %>
         <tr><td>&nbsp;</td></tr>
-        <tr style="background-color:#E8E8E8;"><td colspan="3">Other</td></tr>
+        <tr style="background-color:#E8E8E8;"><td colspan="3">Food Processing</td></tr>
+        <% @html_type_temp = @html_type_temp.sort! { |a,b| a[2].downcase <=> b[2].downcase } %>
         <% @html_type_temp.each do|n| %>
-          <tr><td><%= n.at(0) %></td><td><%= n.at(1) %></td><td><%= n.at(2) %></td></tr>
+          <tr><td><%= n.at(0) %></td><td><%= n.at(2) %></td><td><a href="#" class="friend-button speech-bubble" id="sendToFriends" data-url="<%= url %>" data-to="<%= n.at(3) %>"><%= n.at(1) %></a></td></tr>
         <% end %>
       <% end %>
+
+      <% @html_type_temp = @html_state_temp.at(6) %>
+      <% if @html_type_temp.at(0) !=nil %>
+        <tr><td>&nbsp;</td></tr>
+        <tr style="background-color:#E8E8E8;"><td colspan="3">Other</td></tr>
+        <% @html_type_temp = @html_type_temp.sort! { |a,b| a[2].downcase <=> b[2].downcase } %>
+        <% @html_type_temp.each do|n| %>
+          <tr><td><%= n.at(0) %></td><td><%= n.at(2) %></td><td><a href="#" class="friend-button speech-bubble" id="sendToFriends" data-url="<%= url %>" data-to="<%= n.at(3) %>"><%= n.at(1) %></a></td></tr>
+        <% end %>
+      <% end %>
+
       </table>
       <br/>
      <% else %>
@@ -202,13 +225,6 @@
 
      <% @html_states +=1 %>  
     <% end %>
-    <br/>
-    <li>
-      <a href="#" class="toolbar-button speech-bubble" id="sendToFriends" data-url="<%= url %>">
-        <span >Send Message</span>
-      </a>
-    </li>
-
     </section>
   <% end %>
   </body>
