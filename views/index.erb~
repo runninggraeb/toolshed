@@ -107,12 +107,12 @@
               <a href="<%= @app['@app'] %>"><%= @app['name'] %></a>
             </p>
           </div>
-      </header>
-      <% else %>
-        <script>
-          window.top.location = '<%= authenticator.url_for_oauth_code %>'
-        </script>
-      <% end %>
+    </header>
+    <% else %>
+      <script>
+        window.top.location = '<%= authenticator.url_for_oauth_code %>'
+      </script>
+    <% end %>
     <% if @user %>
     <section class="clearfix">
       <div>
