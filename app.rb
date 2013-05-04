@@ -626,6 +626,22 @@ post "/ad_thanks.html" do
   redirect "/ad_thanks.html"
 end
 
+get "/invite.html" do
+  @graph  = Koala::Facebook::API.new(session[:access_token])
+
+  @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
+
+  if session[:access_token]
+    @user    = @graph.get_object("me")
+  end
+  erb :invite
+end
+
+post "/invite.html" do
+  redirect "/invite.html"
+end
+
+
 
 
 # used to close the browser window opened to post to wall/send to friends
