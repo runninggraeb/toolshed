@@ -140,6 +140,49 @@ img.logo {
 }
 
 
+
+
+
+
+
+
+
+
+/* =toolbar
+--------------------------------------------- */
+.current-button:link, .current-button:visited {
+  background-color: #eee;
+  background-image: -moz-linear-gradient(top, #00CC66, #eaebeb);
+  background-image: -ms-linear-gradient(top, #00CC66, #eaebeb);
+  background-image: -o-linear-gradient(top, #00CC66, #eaebeb));
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#00CC66), to(#eaebeb));
+  background-image: -webkit-linear-gradient(top, #00CC66, #eaebeb);
+  background-image: linear-gradient(top, #00CC66, #eaebeb);
+  border: 1px solid #a9a9a9;
+  -moz-box-shadow: 0 1px 0 rgba(0, 0, 0, .1);
+  -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, .1);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, .1);
+  color: #3f3f3f;
+  display: -moz-inline-box;
+  display: inline-block;
+  font-family: 'Lucida Grande', Tahoma, Verdana, Arial, sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  line-height: 20px;
+  margin: 0;
+  outline: none;
+  text-decoration: none;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, .33);
+}
+
+.current-button span {
+  padding: 0 8px 0 8px;
+}
+
+.toolbar-button .speech-bubble {
+  background-position: 6px 3px;
+}
+
 /* ------------------------------------------ */
 
 .friend-button:link, .friend-button:visited {
