@@ -42,13 +42,6 @@ input.centered {
   margin-right:auto;
 }
 
-.tagline {
-  float: left;
-  color: #000000;
-  font-size: 12px;
-}
-
-
 /* ------------------------------------------ */
 
 /* =header
@@ -101,6 +94,11 @@ header #picture {
   overflow: hidden;
 }
 
+header .tagline {
+  float: left;
+  color: #000000;
+  font-size: 12px;
+}
 
 img.logo {
   float: right;
