@@ -94,7 +94,7 @@ header #picture {
   overflow: hidden;
 }
 
-header .tagline {
+p .tagline {
   float: left;
   color: #000000;
   font-size: 12px;
