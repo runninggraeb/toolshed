@@ -96,6 +96,8 @@ header #picture {
 
 header .tagline {
   float: left;
+  color: #333;
+  font-size: 12px;
 }
 
 img.logo {
