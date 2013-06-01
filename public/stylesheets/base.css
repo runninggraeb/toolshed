@@ -42,7 +42,7 @@ input.centered {
   margin-right:auto;
 }
 
-p.tagline {
+.tagline {
   float: left;
   color: #000000;
   font-size: 12px;
