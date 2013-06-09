@@ -48,8 +48,7 @@
         $('#sendRequest').click(function() {
           FB.ui(
             {
-              method : 'apprequests',
-              message : $(this).attr('data-message')
+              method : 'apprequests'
             },
             function (response) {
               // If response is null the user canceled the dialog
@@ -123,7 +122,7 @@
              <span>About Us</span></a>
             <a href="comments.html" class="toolbar-button">
              <span>Comments</span></a>
-            <a href="invite.html" class="toolbar-button">
+            <a class="facebook-button apprequests" id="sendRequest">
              <span>Invite Friends</span></a>
             <a href="ad_page.html" class="toolbar-button">
              <span>Enter Slogan Contest</span></a>
