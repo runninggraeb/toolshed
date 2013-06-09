@@ -48,7 +48,8 @@
         $('#sendRequest').click(function() {
           FB.ui(
             {
-              method : 'apprequests'
+              method : 'apprequests',
+              message : 'Select friends to invite to Toolshed:'
             },
             function (response) {
               // If response is null the user canceled the dialog
