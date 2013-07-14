@@ -688,7 +688,7 @@ end
 get '/auth/facebook/callback' do
   session[:access_token] = authenticator.get_access_token(params[:code])
   if IsItMobile.mobile?(ENV["HTTP_USER_AGENT"])
-    redirect '/'
+    redirect 'https://toolshed.herokuapp.com/'
   else
     redirect 'https://apps.facebook.com/toolshed/'
   end
