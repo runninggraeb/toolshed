@@ -31,7 +31,7 @@
           FB.ui(
             {
               method  : 'apprequests',
-              message : $(this).attr('data-message')
+              message :  'Select friends to invite to Toolshed:'
             },
             function (response) {
               if (response != null) {
@@ -76,13 +76,12 @@
     </script>
     <% if @user %>
       <header class="clearfix">
-          <img class="logo" src="/images/header.jpg" height="60" width="200"/>
+          <img class="logo" src="/images/header.jpg" height="80" width="250"/>
           <p id="picture" style="background-image: url(https://graph.facebook.com/<%= @user['id'] %>/picture?type=normal)"></p>
           <div>
             <h1>Welcome, <strong><%= @user['name'] %></strong></h1>
-            <p class="tagline">
-              Share tools & start projects on
-              <a href="<%= @app['@app'] %>"><%= @app['name'] %></a>
+            <p style="color: #000044;font-size: 12px;">
+              Share tools & start projects with friends on Toolshed!
             </p>
           </div>
       </header>
@@ -103,14 +102,16 @@
              <span>Welcome</span></a>
             <a href="friends_tools.html" class="toolbar-button">
              <span>Friend's Tools</span></a>
-            <a href="my_tools.html" class="toolbar-button">
+            <a href="my_tools.html" class="current-button">
              <span>My Tools</span></a>
             <a href="about_us.html" class="toolbar-button">
              <span>About Us</span></a>
             <a href="comments.html" class="toolbar-button">
              <span>Comments</span></a>
-            <a href="#" class="toolbar-button apprequests" id="sendRequest" data-message="<%= @user['name'] %> is on Toolshed, and wants you to join, too!  Start now to get access to your friends tools, and share your tools with others!" id="invite-style">
-             <span>Be Proud of This App- Invite Friends!</span></a>
+            <a href="#" id="sendRequest" class="toolbar-button apprequests">
+             <span>Invite Friends</span></a>
+            <a href="ad_page.html" class="toolbar-button">
+             <span>Enter Slogan Contest</span></a>
       </div>
     </section>
     <section>
@@ -173,7 +174,7 @@
           <option <% if @state=="Wyoming" %> selected="selected" <% end %> value="Wyoming">Wyoming</option>
         </select>
       <br/>
-      <br/>
+      <p>Enter Tools Below:</p>
       <% @it=0 %>
       <% @skip=0 %>
       <% for i in 1..@count %>
@@ -195,7 +196,7 @@
       <% end %>
 
       <% if @count > 94 %>
-        <% @extras=@count-94 %>
+        <% @extras=99-@count %>
       <% else %>
         <% @extras=5 %>
       <% end %>
@@ -216,6 +217,7 @@
       <input align="center" type="submit" value="Update">
     </form>
     <br/>
+    <p>Only your facebook friends will be able to see your inventory.</p>
     </section>
   <% end %>
   </body>

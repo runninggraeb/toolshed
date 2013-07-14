@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:fb="http://ogp.me/ns/fb#" lang="en">
   <head>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes" />
     <title><%= @app['name'] %></title>
@@ -30,7 +31,7 @@
           FB.ui(
             {
               method  : 'apprequests',
-              message : $(this).attr('data-message')
+              message :  'Select friends to invite to Toolshed:'
             },
             function (response) {
               if (response != null) {
@@ -76,13 +77,12 @@
     </script>
     <% if @user %>
       <header class="clearfix">
-          <img class="logo" src="/images/header.jpg" height="60" width="200"/>
+          <img class="logo" src="/images/header.jpg" height="80" width="250"/>
           <p id="picture" style="background-image: url(https://graph.facebook.com/<%= @user['id'] %>/picture?type=normal)"></p>
           <div>
             <h1>Welcome, <strong><%= @user['name'] %></strong></h1>
-            <p class="tagline">
-              Share tools & start projects on
-              <a href="<%= @app['@app'] %>"><%= @app['name'] %></a>
+            <p style="color: #000044;font-size: 12px;">
+              Share tools & start projects with friends on Toolshed!
             </p>
           </div>
       </header>
@@ -105,21 +105,31 @@
              <span>Friend's Tools</span></a>
             <a href="my_tools.html" class="toolbar-button">
              <span>My Tools</span></a>
-            <a href="about_us.html" class="toolbar-button">
+            <a href="about_us.html" class="current-button">
              <span>About Us</span></a>
             <a href="comments.html" class="toolbar-button">
              <span>Comments</span></a>
-            <a href="#" class="toolbar-button apprequests" id="sendRequest" data-message="<%= @user['name'] %> is on Toolshed, and wants you to join, too!  Start now to get access to your friends tools, and share your tools with others!" id="invite-style">
-             <span>Be Proud of This App- Invite Friends!</span></a>
+            <a href="#" id="sendRequest" class="toolbar-button apprequests">
+             <span>Invite Friends</span></a>
+            <a href="ad_page.html" class="toolbar-button">
+             <span>Enter Slogan Contest</span></a>
       </div>
     </section>
     <section>
     <br/>
     <p>Toolshed is web application developed by Ryan Graebner.  The current version of the program is still in its developement phase, but as it attracts more users, I will work on improving the application to better serve you.<br/><br/>
 
-Unlike many applications on Facebook, Toolshed is designed primarily to get users OFF their computers, and to encourage REAL interactions with others.  However, if the chance arises, Toolshed will take on advertisers in order to help pay for expenses like server space (for the time being, this is coming out of my pocket).  If this time comes, I will make all financial information (sources of income, expenses, etc.) available for anybody who's inerested.  Also, if Toolshed turns into one of the "successful" apps on Facebook, there are some similar apps I hope to launch.<br/><br/>
-<%= @all %>
+Unlike many applications on Facebook, Toolshed is designed primarily to get users OFF their computers, and to encourage REAL interactions with others.  If the chance arises, Toolshed will take on advertisers in order to help pay for expenses like server space (for the time being, this is coming out of my pocket).  If we do end up making a profit from advertizing, all profits will be donated to non-profit organizations.<br/><br/>
+
+The logo for Toolshed was designed by Chris Hedstrom.</p><br/><br/>
+
+<h2 style="font-weight:bold">Privacy Policy</h2> <p>We will never share your information with anybody except those you have listed as friends on Facebook.
+
 </p>
+
+
+<h2 style="font-weight:bold">Term of Use</h2>
+<p>Neither Toolshed or any of its owners or employees are liable for injuries or damage caused by tools borrowed on this site, or for any missing, stolen, or damaged tools.  Toolshed has no responsibility to keep the users information, or to prevent it from been seen by a third party.  Toolshed reserves the right to deny access to any user at any time. The use of Toolshed for any illegal purposes is forbiden. No weapons can be posted on Toolshed. Toolshed reserves the right to deny service to any user at any time, and violation of the terms of use can result in the offending user being banned from the system.</p>
     <br/>
     </section>
   <% end %>

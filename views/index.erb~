@@ -20,8 +20,6 @@
     <meta property="og:description" content="Share tools and start projects on Toolshed!" />
     <meta property="fb:app_id" content="<%= @app['name'] %>" />
     <script type="text/javascript" src="/javascripts/jquery-1.7.1.min.js"></script>
-    
-
     <script type="text/javascript">
       function logResponse(response) {
         if (console && console.log) {
@@ -51,7 +49,7 @@
           FB.ui(
             {
               method : 'apprequests',
-              message : $(this).attr('data-message')
+              message : 'Select friends to invite to Toolshed:'
             },
             function (response) {
               // If response is null the user canceled the dialog
@@ -102,21 +100,20 @@
           <p id="picture" style="background-image: url(https://graph.facebook.com/<%= @user['id'] %>/picture?type=normal)"></p>
           <div>
             <h1>Welcome, <strong><%= @user['name'] %></strong></h1>
-            <p class="tagline">
-              Share tools & start projects on
-              <a href="<%= @app['@app'] %>"><%= @app['name'] %></a>
+            <p style="color: #000044;font-size: 12px;">
+              Share tools & start projects with friends on Toolshed!
             </p>
           </div>
     </header>
     <% else %>
       <script>
-        window.top.location = '<%= authenticator.url_for_oauth_code %>'
+        window.top.location = '<%= authenticator.url_for_oauth_code(:permissions => FACEBOOK_SCOPE) %>'
       </script>
     <% end %>
     <% if @user %>
     <section class="clearfix">
       <div>
-            <a href="/" class="toolbar-button">
+            <a href="/" class="current-button">
              <span>Welcome</span></a>
             <a href="friends_tools.html" class="toolbar-button">
              <span>Friends' Tools</span></a>
@@ -126,7 +123,7 @@
              <span>About Us</span></a>
             <a href="comments.html" class="toolbar-button">
              <span>Comments</span></a>
-            <a href="#" class="toolbar-button apprequests" id="sendRequest" data-message="<%= @user['name'] %> is on Toolshed, and wants you to join, too!  Start now to get access to your friends tools, and share your tools with others!" id="invite-style">
+            <a href="#" id="sendRequest" class="toolbar-button apprequests">
              <span>Invite Friends</span></a>
             <a href="ad_page.html" class="toolbar-button">
              <span>Enter Slogan Contest</span></a>

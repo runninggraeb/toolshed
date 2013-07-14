@@ -48,7 +48,7 @@
           FB.ui(
             {
               method  : 'apprequests',
-              message : $(this).attr('data-message')
+              message :  'Select friends to invite to Toolshed:'
             },
             function (response) {
               if (response != null) {
@@ -99,9 +99,8 @@
           <p id="picture" style="background-image: url(https://graph.facebook.com/<%= @user['id'] %>/picture?type=normal)"></p>
           <div>
             <h1>Welcome, <strong><%= @user['name'] %></strong></h1>
-            <p class="tagline">
-              Share tools & start projects on
-              <a href="<%= @app['@app'] %>"><%= @app['name'] %></a>
+            <p style="color: #000044;font-size: 12px;">
+              Share tools & start projects with friends on Toolshed!
             </p>
           </div>
       </header>
@@ -120,7 +119,7 @@
       <div>
             <a href="/" class="toolbar-button">
              <span>Welcome</span></a>
-            <a href="friends_tools.html" class="toolbar-button">
+            <a href="friends_tools.html" class="current-button">
              <span>Friend's Tools</span></a>
             <a href="my_tools.html" class="toolbar-button">
              <span>My Tools</span></a>
@@ -128,7 +127,7 @@
              <span>About Us</span></a>
             <a href="comments.html" class="toolbar-button">
              <span>Comments</span></a>
-            <a href="#" class="toolbar-button apprequests" id="sendRequest" data-message="<%= @user['name'] %> is on Toolshed, and wants you to join, too!  Start now to get access to your friends tools, and share your tools with others!" id="invite-style">
+            <a href="#" id="sendRequest" class="toolbar-button apprequests">
              <span>Invite Friends</span></a>
             <a href="ad_page.html" class="toolbar-button">
              <span>Enter Slogan Contest</span></a>
@@ -142,7 +141,7 @@
      <p><font size="4"><%= @state_list.at(@html_states) %></font></p><hr>
      <% @html_state_temp=instance_variable_get("@#{@state_list.at(@html_states)}") %>
      <% if @html_state_temp.join != "" %>
-      <table style="width:75%;">
+      <table style="width:85%;">
 
 
 
@@ -151,7 +150,7 @@
         <tr style="background-color:#E8E8E8;"><td colspan="3">Carpentry</td></tr>
         <% @html_type_temp = @html_type_temp.sort! { |a,b| a[2].downcase <=> b[2].downcase } %>
         <% @html_type_temp.each do|n| %>
-          <tr><td style="width:25%;"><%= n.at(0) %></td><td style="width:25%;"><%= n.at(2) %></td><td style="width:25%;"><a href="#" class="friend-button speech-bubble sendToFriends" data-url="<%= url %>" data-to="<%= n.at(3) %>"><%= n.at(1) %></a></td></tr>
+          <tr><td style="width:35%;"><%= n.at(0) %></td><td style="width:25%;"><%= n.at(2) %></td><td style="width:25%;"><a href="#" class="friend-button speech-bubble sendToFriends" data-url="<%= url %>" data-to="<%= n.at(3) %>"><%= n.at(1) %></a></td></tr>
         <% end %>
       <% end %>
 

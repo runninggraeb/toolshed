@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:fb="http://ogp.me/ns/fb#" lang="en">
   <head>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes" />
     <title><%= @app['name'] %></title>
@@ -30,7 +31,7 @@
           FB.ui(
             {
               method  : 'apprequests',
-              message : $(this).attr('data-message')
+              message :  'Select friends to invite to Toolshed:'
             },
             function (response) {
               if (response != null) {
@@ -75,13 +76,12 @@
     </script>
     <% if @user %>
       <header class="clearfix">
-          <img class="logo" src="/images/header.jpg" height="60" width="200"/>
+          <img class="logo" src="/images/header.jpg" height="80" width="250"/>
           <p id="picture" style="background-image: url(https://graph.facebook.com/<%= @user['id'] %>/picture?type=normal)"></p>
           <div>
             <h1>Welcome, <strong><%= @user['name'] %></strong></h1>
-            <p class="tagline">
-              Share tools & start projects on
-              <a href="<%= @app['@app'] %>"><%= @app['name'] %></a>
+            <p style="color: #000044;font-size: 12px;">
+              Share tools & start projects with friends on Toolshed!
             </p>
           </div>
       </header>
@@ -102,21 +102,23 @@
              <span>Welcome</span></a>
             <a href="friends_tools.html" class="toolbar-button">
              <span>Friend's Tools</span></a>
-            <a href="my_tools.html" class="toolbar-button">
+            <a href="my_tools.html" class="current-button">
              <span>My Tools</span></a>
             <a href="about_us.html" class="toolbar-button">
              <span>About Us</span></a>
             <a href="comments.html" class="toolbar-button">
              <span>Comments</span></a>
-            <a href="#" class="toolbar-button apprequests" id="sendRequest" data-message="<%= @user['name'] %> is on Toolshed, and wants you to join, too!  Start now to get access to your friends tools, and share your tools with others!" id="invite-style">
-             <span>Be Proud of This App- Invite Friends!</span></a>
+            <a href="#" id="sendRequest" class="toolbar-button apprequests">
+             <span>Invite Friends</span></a>
+            <a href="ad_page.html" class="toolbar-button">
+             <span>Enter Slogan Contest</span></a>
       </div>
     </section>
     <section>
     <br/>
     <br/>
     <form method="post" action="add_location.html">
-      If you do not include a location, we cannot display your inventory to friends.
+      If you do not include a location, we cannot display your inventory to friends.  We will never share your location with anybody but the people you've added as friends on facebook.
         <input type="text" size="5" maxlength="20" name="city" value="<%= @city %>">, 
         <select name="state">
           <option <% if @state==" " %> selected="selected" <% end %> value=" "></option>
