@@ -2,6 +2,7 @@ require "sinatra"
 require "koala"
 require "mysql"
 require "newrelic_rpm"
+require "is_it_mobile"
 
 enable :sessions
 set :raise_errors, false
@@ -88,6 +89,27 @@ end
 
 post "/" do
   redirect "/"
+end
+
+
+
+
+
+get "/mobile.html" do
+
+  @graph  = Koala::Facebook::API.new(access_token)
+
+  @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
+
+  if session[:access_token]
+    @user    = @graph.get_object("me")
+  end
+  
+  erb :index
+end
+
+post "/mobile.html" do
+  redirect "/mobile.html"
 end
 
 
@@ -665,6 +687,10 @@ end
 
 get '/auth/facebook/callback' do
   session[:access_token] = authenticator.get_access_token(params[:code])
-  redirect 'https://apps.facebook.com/toolshed/'
+  if IsItMobile.mobile?(ENV["HTTP_USER_AGENT"]) = true
+    redirect '/'
+  else
+    redirect 'https://apps.facebook.com/toolshed/'
+  end
 end
 

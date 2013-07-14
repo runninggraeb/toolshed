@@ -2,14 +2,23 @@ require "sinatra"
 require "koala"
 require "mysql"
 require "newrelic_rpm"
+require "is_it_mobile"
 
 enable :sessions
 set :raise_errors, false
 set :show_exceptions, false
 
+# Scope defines what permissions that we are asking the user to grant.
+# In this example, we are asking for the ability to publish stories
+# about using the app, access to what the user likes, and to be able
+# to use their pictures. You should rewrite this scope with whatever
+# permissions your app needs.
+# See https://developers.facebook.com/docs/reference/api/permissions/
+# for a full list of permissions
+FACEBOOK_SCOPE = ''
 
 unless ENV["FACEBOOK_APP_ID"] && ENV["FACEBOOK_SECRET"]
-  abort("missing env vars: please set  and  with your app credentials")
+  abort("missing env vars: please set FACEBOOK_APP_ID and FACEBOOK_SECRET with your app credentials")
 end
 
 before do
@@ -40,6 +49,7 @@ helpers do
     @authenticator ||= Koala::Facebook::OAuth.new(ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_SECRET"], url("/auth/facebook/callback"))
   end
 
+  # allow for javascript authentication
   def access_token_from_cookie
     authenticator.get_user_info_from_cookies(request.cookies)['access_token']
   rescue => err
@@ -63,15 +73,17 @@ error(Koala::Facebook::APIError) do
 end
 
 
+
 get "/" do
 
-  @graph  = Koala::Facebook::API.new(session[:access_token])
+  @graph  = Koala::Facebook::API.new(access_token)
 
   @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
 
   if session[:access_token]
     @user    = @graph.get_object("me")
   end
+  
   erb :index
 end
 
@@ -81,6 +93,24 @@ end
 
 
 
+
+
+get "/mobile.html" do
+
+  @graph  = Koala::Facebook::API.new(access_token)
+
+  @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
+
+  if session[:access_token]
+    @user    = @graph.get_object("me")
+  end
+  
+  erb :index
+end
+
+post "/mobile.html" do
+  redirect "/mobile.html"
+end
 
 
 
@@ -100,6 +130,7 @@ get "/friends_tools.html" do
   @l=@fr_app.length
   @list=Array.new(@l)
   @names=Array.new(@l)
+  @id=Array.new(@l)
   @m = Mysql.new('us-cdbr-east-03.cleardb.com','b5cfa774c8e05b','b31600cc','heroku_b8938d7fd4dcc72')
   @all = @m.query("SELECT * FROM Final_uni WHERE fid = '#{@user['id']}'").fetch_row
   @fr_app.each do |friend_result|
@@ -108,6 +139,7 @@ get "/friends_tools.html" do
       if @lend.at(2).length>1
         @list[@fr_w_count] = @lend.compact
         @names[@fr_w_count] = friend_result['name']
+        @id[@fr_w_count] =friend_result['uid']
         @fr_w_count +=1
       end
     end
@@ -115,6 +147,7 @@ get "/friends_tools.html" do
   @m.close
 
   @names=@names.compact
+  @id=@id.compact
   @state_count=0
 
   @state_list=Array.new(50)
@@ -140,6 +173,7 @@ get "/friends_tools.html" do
   for i in 1..@names.length
     @temp_fr=@names.at(@it)
     @temp_inv=@list.at(@it)
+    @temp_id=@id.at(@it)
     if instance_variable_get("@#{@temp_inv.at(3)}") == nil
       if @temp_inv.length >5
         instance_variable_set(:"@#{@temp_inv.at(3)}", Array.new(@template))
@@ -172,7 +206,7 @@ get "/friends_tools.html" do
       if @temp_inv.at(@c) == "other"
         @temp_type=6
       end
-      instance_variable_get("@#{@temp_inv.at(3)}")[@temp_type] +=[[@temp_inv.at(@c-1),@temp_fr,@temp_inv.at(2)]]
+      instance_variable_get("@#{@temp_inv.at(3)}")[@temp_type] +=[[@temp_inv.at(@c-1),@temp_fr,@temp_inv.at(2),@temp_id]]
       @c +=2
     end
     @it +=1
@@ -614,11 +648,20 @@ post "/ad_thanks.html" do
   redirect "/ad_thanks.html"
 end
 
+get "/invite.html" do
+  @graph  = Koala::Facebook::API.new(session[:access_token])
 
+  @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
 
+  if session[:access_token]
+    @user    = @graph.get_object("me")
+  end
+  erb :invite
+end
 
-
-
+post "/invite.html" do
+  redirect "/invite.html"
+end
 
 
 
@@ -628,33 +671,26 @@ get "/close" do
   "<body onload='window.close();'/>"
 end
 
-get "/sign_out" do
+# Doesn't actually sign out permanently, but good for testing
+get "/preview/logged_out" do
   session[:access_token] = nil
+  request.cookies.keys.each { |key, value| response.set_cookie(key, '') }
   redirect '/'
 end
 
+
+# Allows for direct oauth authentication
 get "/auth/facebook" do
   session[:access_token] = nil
-  erb :permission
+  redirect authenticator.url_for_oauth_code(:permissions => FACEBOOK_SCOPE)
 end
-
-
 
 get '/auth/facebook/callback' do
   session[:access_token] = authenticator.get_access_token(params[:code])
-  redirect '/'
+  if is_it_mobile(ENV["HTTP_USER_AGENT"]) = TRUE
+    redirect '/'
+  else
+    redirect 'https://apps.facebook.com/toolshed/'
+  end
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
 
