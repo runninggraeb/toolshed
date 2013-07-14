@@ -7,4 +7,5 @@ gem "httparty"
 gem "thin"
 gem "mysql"
 gem "newrelic_rpm"
+gem "is_it_mobile"
 
