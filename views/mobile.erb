@@ -105,6 +105,10 @@
             </p>
           </div>
     </header>
+    <% else %>
+      <script>
+        window.top.location = '<%= authenticator.url_for_oauth_code(:permissions => FACEBOOK_SCOPE) %>'
+      </script>
     <% end %>
     <% if @user %>
     <section class="clearfix">
