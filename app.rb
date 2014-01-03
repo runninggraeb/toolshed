@@ -685,6 +685,9 @@ get "/auth/facebook" do
   redirect authenticator.url_for_oauth_code(:permissions => FACEBOOK_SCOPE)
 end
 
+
+#redirects mobile when returning to page, when adding app while logged into facebook
+#doesn't redirect mobile when not logged into facebook
 get '/auth/facebook/callback' do
   session[:access_token] = authenticator.get_access_token(params[:code])
   if IsItMobile.mobile?(ENV["HTTP_USER_AGENT"])
