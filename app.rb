@@ -39,7 +39,7 @@ helpers do
 
   def url_no_scheme(path = '')
     if IsItMobile.mobile?(ENV["HTTP_USER_AGENT"])
-      "//toolshed.herokuapps.com"
+      "//toolshed.herokuapps.com#{path}"
     else
       "//#{host}#{path}"
     end
@@ -47,7 +47,7 @@ helpers do
 
   def url(path = '')
     if IsItMobile.mobile?(ENV["HTTP_USER_AGENT"])
-      "{scheme}://toolshed.herokuapps.com"
+      "{scheme}://toolshed.herokuapps.com#{path}"
     else
       "#{scheme}://#{host}#{path}"
     end
