@@ -701,7 +701,7 @@ get '/auth/facebook/callback' do
   if IsItMobile.mobile?(ENV["HTTP_USER_AGENT"])
     redirect '/'
   else
-   redirect '/'
+   redirect 'https://apps.facebook.com/toolshed/'
  end
 end
 
