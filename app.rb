@@ -694,7 +694,7 @@ get "/auth/facebook" do
 end
 
 
-#redirects mobile when returning to page, when don't know
+#redirects mobile when returning to page, when don't know when
 #doesn't redirect mobile when 
 get '/auth/facebook/callback' do
   session[:access_token] = authenticator.get_access_token(params[:code])
