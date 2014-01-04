@@ -76,10 +76,6 @@ end
 
 get "/" do
 
-  if IsItMobile.mobile?(ENV["HTTP_USER_AGENT"])
-    redirect 'https://toolshed.herokuapp.com/'
-  else
-
   @graph  = Koala::Facebook::API.new(access_token)
 
   @app  =  @graph.get_object(ENV["FACEBOOK_APP_ID"])
