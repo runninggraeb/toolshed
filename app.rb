@@ -58,7 +58,7 @@ helpers do
   end
 
   def mobile.authenticator
-    @authenticator ||= Koala::Facebook::OAuth.new(ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_SECRET"], url("/auth/facebook/callback/mobile"))
+    @mobile.authenticator ||= Koala::Facebook::OAuth.new(ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_SECRET"], url("/auth/facebook/callback/mobile"))
   end
 
   # allow for javascript authentication
