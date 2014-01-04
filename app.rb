@@ -24,11 +24,11 @@ end
 before do
   # HTTPS redirect
   if settings.environment == :production && request.scheme != 'https'
-  #  if IsItMobile.mobile?(ENV["HTTP_USER_AGENT"])
-  #    redirect 'https://toolshed.herokuapp.com/'
-  #  else
+    if IsItMobile.mobile?(ENV["HTTP_USER_AGENT"])
+      redirect 'https://toolshed.herokuapp.com/'
+    else
       redirect "https://apps.facebook.com/toolshed/"
-  #  end
+    end
   end
 end
 
@@ -694,9 +694,9 @@ end
 #doesn't redirect mobile when not logged into facebook or app
 get '/auth/facebook/callback' do
   session[:access_token] = authenticator.get_access_token(params[:code])
-   # if IsItMobile.mobile?(ENV["HTTP_USER_AGENT"])
-   #   redirect 'https://toolshed.herokuapp.com/'
-   # else
+    if IsItMobile.mobile?(ENV["HTTP_USER_AGENT"])
+      redirect '/'
+    else
       redirect 'https://apps.facebook.com/toolshed/'
    # end
 end
