@@ -38,7 +38,11 @@ helpers do
   end
 
   def url_no_scheme(path = '')
-    "//#{host}#{path}"
+    if IsItMobile.mobile?(ENV["HTTP_USER_AGENT"])
+      "//toolshed.herokuapps.com"
+    else
+      "//#{host}#{path}"
+    end
   end
 
   def url(path = '')
