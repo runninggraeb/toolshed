@@ -24,11 +24,11 @@ end
 before do
   # HTTPS redirect
   if settings.environment == :production && request.scheme != 'https'
-    if IsItMobile.mobile?(ENV["HTTP_USER_AGENT"])
-      redirect 'https://toolshed.herokuapp.com/'
-    else
+  #  if IsItMobile.mobile?(ENV["HTTP_USER_AGENT"])
+  #    redirect 'https://toolshed.herokuapp.com/'
+  #  else
       redirect "https://apps.facebook.com/toolshed/"
-    end
+  #  end
   end
 end
 
