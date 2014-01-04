@@ -54,11 +54,11 @@ helpers do
   end
 
   def authenticator
-    @authenticator ||= Koala::Facebook::OAuth.new(ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_SECRET"], url("/auth/facebook/callback"))
-  end
-
-  def mobile.authenticator
-    @mobile.authenticator ||= Koala::Facebook::OAuth.new(ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_SECRET"], url("/auth/facebook/callback/mobile"))
+    if IsItMobile.mobile?(ENV["HTTP_USER_AGENT"])
+      @authenticator ||= Koala::Facebook::OAuth.new(ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_SECRET"], url("/auth/facebook/callback/mobile"))
+    else
+      @authenticator ||= Koala::Facebook::OAuth.new(ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_SECRET"], url("/auth/facebook/callback"))
+    end
   end
 
   # allow for javascript authentication
@@ -697,7 +697,7 @@ get "/auth/facebook" do
   if IsItMobile.mobile?(ENV["HTTP_USER_AGENT"])
     redirect mobile.authenticator.url_for_oauth_code(:permissions => FACEBOOK_SCOPE)
   else
-    redirect authenticator.url_for_oauth_code(:permissions => FACEBOOK_SCOPE)
+    redirect mobile.authenticator.url_for_oauth_code(:permissions => FACEBOOK_SCOPE)
   end
 end
 
@@ -708,6 +708,6 @@ get '/auth/facebook/callback' do
 end
 
 get '/auth/facebook/callback/mobile' do
-  session[:access_token] = mobile.authenticator.get_access_token(params[:code])
+  session[:access_token] = authenticator.get_access_token(params[:code])
   redirect '/'
 end
