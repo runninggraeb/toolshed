@@ -42,7 +42,11 @@ helpers do
   end
 
   def url(path = '')
-    "#{scheme}://#{host}#{path}"
+    if IsItMobile.mobile?(ENV["HTTP_USER_AGENT"])
+      "{scheme}://toolshed.herokuapps.com"
+    else
+      "#{scheme}://#{host}#{path}"
+    end
   end
 
   def authenticator
