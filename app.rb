@@ -27,7 +27,7 @@ before do
     if IsItMobile.mobile?(ENV["HTTP_USER_AGENT"])
       redirect 'https://toolshed.herokuapp.com/'
     else
-      redirect "https://#{request.env['HTTP_HOST']}"
+      redirect "https://apps.facebook.com/toolshed/"
     end
   end
 end
