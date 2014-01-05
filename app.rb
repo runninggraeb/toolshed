@@ -49,10 +49,6 @@ helpers do
     @authenticator ||= Koala::Facebook::OAuth.new(ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_SECRET"], url("/auth/facebook/callback"))
   end
 
-  def mobile.authenticator
-    @authenticator ||= Koala::Facebook::OAuth.new(ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_SECRET"], url("/auth/facebook/callback/mobile"))
-  end
-
   # allow for javascript authentication
   def access_token_from_cookie
     authenticator.get_user_info_from_cookies(request.cookies)['access_token']
@@ -686,20 +682,11 @@ end
 # Allows for direct oauth authentication
 get "/auth/facebook" do
   session[:access_token] = nil
-  if IsItMobile.mobile?(ENV["HTTP_USER_AGENT"])
-    redirect mobile.authenticator.url_for_oauth_code(:permissions => FACEBOOK_SCOPE)
-  else
-    redirect authenticator.url_for_oauth_code(:permissions => FACEBOOK_SCOPE)
-  end
+  redirect authenticator.url_for_oauth_code(:permissions => FACEBOOK_SCOPE)
 end
 
 
 get '/auth/facebook/callback' do
   session[:access_token] = authenticator.get_access_token(params[:code])
-  redirect 'https://apps.facebook.com/toolshed/'
-end
-
-get '/auth/facebook/callback/mobile' do
-  session[:access_token] = mobile.authenticator.get_access_token(params[:code])
   redirect '/'
 end
