@@ -685,7 +685,7 @@ get "/auth/facebook" do
   redirect authenticator.url_for_oauth_code(:permissions => FACEBOOK_SCOPE)
 end
 
-
+#redirects all to page on authentication, then works well.
 get '/auth/facebook/callback' do
   session[:access_token] = authenticator.get_access_token(params[:code])
   redirect '/'
