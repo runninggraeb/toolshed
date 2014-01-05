@@ -38,27 +38,19 @@ helpers do
   end
 
   def url_no_scheme(path = '')
-    if IsItMobile.mobile?(ENV["HTTP_USER_AGENT"])
-      "//toolshed.herokuapps.com#{path}"
-    else
-      "//#{host}#{path}"
-    end
+    "//#{host}#{path}"
   end
 
   def url(path = '')
-    if IsItMobile.mobile?(ENV["HTTP_USER_AGENT"])
-      "{scheme}://toolshed.herokuapps.com#{path}"
-    else
-      "#{scheme}://#{host}#{path}"
-    end
+    "#{scheme}://#{host}#{path}"
   end
 
   def authenticator
-    if IsItMobile.mobile?(ENV["HTTP_USER_AGENT"])
-      @authenticator ||= Koala::Facebook::OAuth.new(ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_SECRET"], url("/auth/facebook/callback/mobile"))
-    else
-      @authenticator ||= Koala::Facebook::OAuth.new(ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_SECRET"], url("/auth/facebook/callback"))
-    end
+    @authenticator ||= Koala::Facebook::OAuth.new(ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_SECRET"], url("/auth/facebook/callback"))
+  end
+
+  def mobile.authenticator
+    @authenticator ||= Koala::Facebook::OAuth.new(ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_SECRET"], url("/auth/facebook/callback/mobile"))
   end
 
   # allow for javascript authentication
@@ -697,7 +689,7 @@ get "/auth/facebook" do
   if IsItMobile.mobile?(ENV["HTTP_USER_AGENT"])
     redirect mobile.authenticator.url_for_oauth_code(:permissions => FACEBOOK_SCOPE)
   else
-    redirect mobile.authenticator.url_for_oauth_code(:permissions => FACEBOOK_SCOPE)
+    redirect authenticator.url_for_oauth_code(:permissions => FACEBOOK_SCOPE)
   end
 end
 
@@ -708,6 +700,6 @@ get '/auth/facebook/callback' do
 end
 
 get '/auth/facebook/callback/mobile' do
-  session[:access_token] = authenticator.get_access_token(params[:code])
+  session[:access_token] = mobile.authenticator.get_access_token(params[:code])
   redirect '/'
 end
